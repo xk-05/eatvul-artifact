@@ -1,44 +1,176 @@
 # Detection, Not Sanitization: JISA Reproducibility Artifact
 
-This repository is a reproducibility artifact for the manuscript
+This repository is the reproducibility artifact for the manuscript
 **Detection, Not Sanitization: Capability Boundaries of AST-token-only Defenses
 against EaTVul-style Code Insertion**.
 
-The artifact supports inspection of the manuscript source, bibliography,
-figures, experiment scripts, aggregate result tables, selected CSV/JSON/JSONL
-outputs where available, and the exact limits of reproducibility. It focuses on
-defensive evaluation: review routing, quarantine, residual silent-bypass rate,
-diagnostic deletion tests, public AST-token artifacts, project-coherent
-calibration, and mixed-source stress settings.
+The artifact supports inspection and reproduction of the defense-boundary study:
+manuscript source, bibliography, figures, experiment scripts, aggregate result
+tables, selected CSV/JSON/JSONL outputs where available, configurations,
+calibrated thresholds, and the exact limits of reproducibility. The evaluation
+focuses on defensive behavior: review routing, quarantine, residual
+silent-bypass rate, diagnostic deletion tests, public AST-token artifacts,
+project-coherent calibration, and mixed-source stress settings.
 
-## Included
+This artifact does **not** claim reliable automatic sanitization. The paper's
+central claim is that AST-token-only evidence can support suspicious benign
+prediction detection and quarantine in some settings, but it is insufficient for
+verified source-level repair without richer program context.
 
-- Manuscript source under `paper_eatvul_defense_framework/latex_submission/`.
-- Submission figures under `paper_eatvul_defense_framework/figures_submission/`.
-- Public EaTVul-style AST-token splits under `Code and Dataset/file/data/`.
-- Defensive evaluation scripts under `scripts/`.
-- Aggregate result tables under `results/`.
-- Selected prediction or sanitized-output logs where they are present locally.
-- Reviewer documentation in `ARTIFACT.md`, `REPRODUCIBILITY.md`, `DATA.md`,
-  `MISSING_OBJECTS.md`, and `docs/`.
+## Table of Contents
 
-## Not Included
+1. [Artifact Scope](#artifact-scope)
+2. [Repository Layout](#repository-layout)
+3. [What Can and Cannot Be Reproduced](#what-can-and-cannot-be-reproduced)
+4. [Environment Setup](#environment-setup)
+5. [Quick Reproduction Path](#quick-reproduction-path)
+6. [Step-by-step Reproduction Guide](#step-by-step-reproduction-guide)
+7. [Main Table Reproduction Map](#main-table-reproduction-map)
+8. [Full Experiment Reruns](#full-experiment-reruns)
+9. [Paper Compilation](#paper-compilation)
+10. [Expected Outputs](#expected-outputs)
+11. [Troubleshooting](#troubleshooting)
+12. [Responsible Use](#responsible-use)
+13. [Citation](#citation)
 
-This repository does not provide true inserted spans, source diffs,
-source-to-token mappings, CFGs, PDGs, compiler-validated adaptive snippets, or
-complete paired prediction logs for all defense layers. These missing objects
-are part of the paper's capability-boundary claim: whole-sample detection and
-quarantine can be evaluated from AST-token sequences, while reliable
-source-level sanitization requires richer program context.
+## Artifact Scope
 
-This artifact does not add attack-generation prompts or new offensive
-attack-generation tooling.
+This repository includes:
 
-## Quick Start
+- manuscript source under `paper_eatvul_defense_framework/latex_submission/`;
+- bibliography under `paper_eatvul_defense_framework/latex_submission/references.bib`;
+- submission figures under `paper_eatvul_defense_framework/figures_submission/`;
+- public EaTVul-style AST-token splits under `Code and Dataset/file/data/`;
+- defensive evaluation scripts under `scripts/`;
+- aggregate result tables under `results/`;
+- selected prediction or sanitized-output logs where available;
+- reviewer documentation in `ARTIFACT.md`, `REPRODUCIBILITY.md`, `DATA.md`,
+  `MISSING_OBJECTS.md`, and `docs/`;
+- a lightweight artifact validator in `scripts/check_artifact.py`;
+- a SHA256 manifest generator in `scripts/build_manifest.py`.
 
-```powershell
+This repository does not add attack-generation prompts or new offensive
+attack-generation tools.
+
+## Repository Layout
+
+```text
+.
+|-- README.md
+|-- ARTIFACT.md
+|-- REPRODUCIBILITY.md
+|-- DATA.md
+|-- MISSING_OBJECTS.md
+|-- CITATION.cff
+|-- requirements.txt
+|-- environment.yml
+|-- Makefile
+|-- Code and Dataset/file/data/
+|-- configs/
+|   |-- gate/
+|   |-- anomaly_baselines/
+|   |-- diagnostic_deletion/
+|   `-- deployment_policies/
+|-- docs/
+|   |-- ARTIFACT_INVENTORY.md
+|   |-- TABLE_REPRODUCTION_MAP.md
+|   |-- RUNBOOK.md
+|   `-- LIMITATIONS_FOR_REVIEWERS.md
+|-- paper_eatvul_defense_framework/
+|   |-- figures_submission/
+|   `-- latex_submission/
+|-- results/
+|   |-- eatvul_defense/
+|   |-- eatvul_anomaly_baselines/
+|   |-- neural_target_gate/
+|   |-- eatvul_local_defense/
+|   |-- eatvul_component_defense/
+|   |-- eatvul_quarantine_defense/
+|   |-- eatvul_f1_constrained_defense/
+|   |-- tables/
+|   `-- figures/
+`-- scripts/
+```
+
+## What Can and Cannot Be Reproduced
+
+### Reproducible or auditable from this repository
+
+- Dataset sizes for ASTERISK, OPENSSL, CWE119, and CWE399.
+- RQ1 sample-level gate under hard override.
+- RQ2 anomaly-baseline comparison.
+- RQ3 bounded neural target sanity-check rows from existing aggregate files.
+- RQ4 fixed-window diagnostic deletion rows.
+- RQ5 AST-token component diagnostic deletion rows.
+- RQ6 quarantine policy and F1-constrained hard override.
+- The table and figure inventories used by the review artifact.
+
+### Not fully reproducible from current files
+
+The following objects are unavailable and are explicitly documented in
+`MISSING_OBJECTS.md`:
+
+- true inserted spans;
+- source diffs;
+- source-to-token mappings;
+- CFGs;
+- PDGs;
+- compiler-validated adaptive snippets;
+- complete paired prediction logs for all defense layers.
+
+These missing objects are not incidental. They are part of the capability
+boundary studied in the paper. Whole-sample detection and quarantine can be
+evaluated from AST-token sequences, but reliable source-level sanitization
+requires richer source and program-analysis evidence.
+
+## Environment Setup
+
+### Lightweight artifact checks
+
+The lightweight checks use only the Python standard library. Use Python 3.9 or
+newer.
+
+```bash
+python --version
+python scripts/check_artifact.py
+```
+
+Expected final line:
+
+```text
+Artifact check passed
+```
+
+### Full experiment environment
+
+The original local reruns used a Conda environment named `eatvul`. The supplied
+`environment.yml` records the expected packages:
+
+```bash
+conda env create -f environment.yml
+conda activate eatvul
+```
+
+If the environment already exists:
+
+```bash
+conda run -n eatvul python --version
+```
+
+The fast artifact checks do not require this environment. Full gate, anomaly,
+deployment-policy, and diagnostic-deletion reruns do.
+
+## Quick Reproduction Path
+
+Use this path first. It verifies that the artifact is complete, the expected
+dataset splits are present, and the aggregate result files needed by the
+manuscript exist with the expected columns.
+
+```bash
 python scripts/check_artifact.py
 python scripts/eatvul_reproduce.py dataset-summary
+python scripts/make_tables.py
+python scripts/make_figures.py
 python scripts/build_manifest.py
 ```
 
@@ -52,57 +184,415 @@ make figures
 make manifest
 ```
 
-## Environment
+Note for Windows PowerShell users: if `make` is not installed, run the Python
+commands above directly. They are equivalent to the lightweight Makefile
+targets.
 
-The lightweight artifact checks require Python 3.9+ and only the standard
-library. Full experiment reruns use the local Conda environment named `eatvul`
-with `numpy`, `scipy`, `scikit-learn`, `pandas`, and optional neural-model
-dependencies. See `requirements.txt` and `environment.yml`.
+## Step-by-step Reproduction Guide
 
-## Reproduce Aggregate Tables
+### Step 1: Validate the artifact package
 
-The main manuscript tables are backed by the result files listed in
-`docs/TABLE_REPRODUCTION_MAP.md`. For a fast audit, run:
+Command:
 
-```powershell
+```bash
 python scripts/check_artifact.py
+```
+
+What this checks:
+
+- required documentation files exist;
+- required manuscript files exist;
+- required result CSV files exist;
+- result CSV files contain expected columns;
+- AST-token dataset split counts match the manuscript;
+- missing objects are explicitly documented;
+- tracked files do not look like obvious secrets.
+
+Expected output:
+
+```text
+Required files: 16 OK
+Result files: 7 OK
+Dataset split counts: 4 OK
+Missing-object documentation: OK
+Tracked-file hygiene: OK
+Artifact check passed
+```
+
+### Step 2: Verify the public AST-token split sizes
+
+Command:
+
+```bash
+python scripts/eatvul_reproduce.py dataset-summary
+```
+
+Expected output:
+
+```text
+dataset,split,total,label_0,label_1
+asterisk,train,880,810,70
+asterisk,test,367,347,20
+asterisk,adv,50,0,50
+openssl,train,520,400,120
+openssl,test,213,176,37
+openssl,adv,50,0,50
+cwe119,train,5670,3500,2170
+cwe119,test,2451,1518,933
+cwe119,adv,200,0,200
+cwe399,train,545,330,215
+cwe399,test,255,157,98
+cwe399,adv,200,0,200
+```
+
+This reproduces the dataset-size evidence used in the manuscript.
+
+### Step 3: Rebuild the table inventory
+
+Command:
+
+```bash
 python scripts/make_tables.py
 ```
 
-Representative full reruns use the original scripts, for example:
+Expected output file:
 
-```powershell
+```text
+results/tables/table_reproduction_summary.csv
+```
+
+This file records which aggregate CSVs back the main manuscript tables and how
+many rows each source file contains.
+
+### Step 4: Rebuild the figure inventory
+
+Command:
+
+```bash
+python scripts/make_figures.py
+```
+
+Expected output file:
+
+```text
+results/figures/figure_inventory.csv
+```
+
+This step verifies that all expected manuscript figure assets are present under
+`paper_eatvul_defense_framework/figures_submission/`.
+
+### Step 5: Build a checksum manifest
+
+Command:
+
+```bash
+python scripts/build_manifest.py
+```
+
+Expected output file:
+
+```text
+artifact_manifest.json
+```
+
+The manifest records SHA256 checksums for key manuscript, documentation,
+script, figure, result, and AST-token split files. It intentionally skips very
+large local model/checkpoint artifacts.
+
+### Step 6: Inspect the detailed table map
+
+Open:
+
+```text
+docs/TABLE_REPRODUCTION_MAP.md
+```
+
+This file maps each manuscript table or figure to its source script, source data
+or result file, output file, reproducibility level, and limitations.
+
+## Main Table Reproduction Map
+
+The most important aggregate sources are:
+
+| Manuscript item | Main source file |
+| --- | --- |
+| Table 2: dataset sizes | `Code and Dataset/file/data/*_ast_*.json` |
+| Table 4: sample-level gate | `results/eatvul_defense/lodo_calib_fpr_0.1_results.csv` |
+| Table 5: aggregate-count uncertainty checks | `results/eatvul_defense/lodo_calib_fpr_0.1_results.csv` |
+| Table 7: anomaly baselines | `results/eatvul_anomaly_baselines/anomaly_baseline_results.csv` |
+| Table 8: neural sanity check | `results/neural_target_gate/neural_target_gate_results.csv` |
+| Table 9: fixed-window deletion | `results/eatvul_local_defense/localize_sanitize_w1536_s768_fpr0.01_max2_guided_benign_gate_no_sample_gate_results.csv` |
+| Table 9: component deletion | `results/eatvul_component_defense/component_sanitize_fpr0.01_cluster3_max1_benign_gate_no_sample_gate_results.csv` |
+| Table 10: quarantine policy | `results/eatvul_quarantine_defense/quarantine_cleanblock0.1_benignonly_results.csv` |
+| Table 11: F1-constrained policy | `results/eatvul_f1_constrained_defense/f1_constrained_maxf1drop0.03_benignonly_results.csv` |
+
+For the complete mapping, see `docs/TABLE_REPRODUCTION_MAP.md`.
+
+## Full Experiment Reruns
+
+The following commands recompute the main aggregate result files from the
+released AST-token splits. They can take longer than the lightweight artifact
+checks because they train target models, train gates, delete candidate token
+regions, and rerun target detectors.
+
+### RQ1: Sample-level gate under hard override
+
+Command:
+
+```bash
 conda run -n eatvul python scripts/eatvul_defense.py --leave-one-dataset-out --calibrate-clean-fpr 0.1
+```
+
+Expected output file:
+
+```text
+results/eatvul_defense/lodo_calib_fpr_0.1_results.csv
+```
+
+Representative expected OPENSSL row values:
+
+- `target_clean_f1`: approximately `0.829`
+- `defended_clean_f1`: approximately `0.693`
+- `baseline_asr`: `0.760`
+- `defended_asr`: `0.120`
+- `asr_reduction`: `0.640`
+
+### RQ2: Classic anomaly baselines
+
+Command:
+
+```bash
+conda run -n eatvul python scripts/eatvul_anomaly_baselines.py
+```
+
+Expected output file:
+
+```text
+results/eatvul_anomaly_baselines/anomaly_baseline_results.csv
+```
+
+This compares the supervised gate with Isolation Forest, One-Class SVM, Local
+Outlier Factor, and Mahalanobis baselines under the same clean-FPR calibration.
+
+### RQ3: Bounded neural sanity check
+
+Command:
+
+```bash
+conda run -n eatvul python scripts/eatvul_neural_target_gate.py
+```
+
+Expected output file:
+
+```text
+results/neural_target_gate/neural_target_gate_results.csv
+```
+
+This step is more expensive and may require local neural-model dependencies and
+model files. The stored aggregate CSV is included for auditability. The neural
+rows are a bounded sanity check, not broad neural-model evidence.
+
+### RQ4: Fixed-window diagnostic deletion
+
+Command:
+
+```bash
+conda run -n eatvul python scripts/eatvul_localize_sanitize.py --datasets asterisk openssl cwe119 cwe399 --calibrate-window-fpr 0.01 --window 1536 --stride 768 --max-spans 2 --candidate-windows 32 --min-prob-gain 0.005 --gate-on-benign
+```
+
+Expected output file:
+
+```text
+results/eatvul_local_defense/localize_sanitize_w1536_s768_fpr0.01_max2_guided_benign_gate_no_sample_gate_results.csv
+```
+
+This is a diagnostic deletion test. It deletes suspicious AST-token windows and
+reruns the target detector. It is not a verified source-level sanitizer.
+
+### RQ5: AST-token component diagnostic deletion
+
+Command:
+
+```bash
+conda run -n eatvul python scripts/eatvul_component_sanitize.py --datasets asterisk openssl cwe119 cwe399 --calibrate-component-fpr 0.01 --max-cluster 3 --max-spans 1 --candidate-components 16 --min-prob-gain 0.001 --gate-on-benign --calibration-items 200
+```
+
+Expected output file:
+
+```text
+results/eatvul_component_defense/component_sanitize_fpr0.01_cluster3_max1_benign_gate_no_sample_gate_results.csv
+```
+
+This is also a diagnostic boundary test. It uses approximate AST-token
+components, not source spans, CFG regions, or PDG slices.
+
+### RQ6: Quarantine policy
+
+Command:
+
+```bash
 conda run -n eatvul python scripts/eatvul_quarantine_defense.py --clean-block-budget 0.1
+```
+
+Expected output file:
+
+```text
+results/eatvul_quarantine_defense/quarantine_cleanblock0.1_benignonly_results.csv
+```
+
+Quarantine means review routing. Quarantined adversarial samples are not counted
+as corrected vulnerable predictions. The security metric is residual
+silent-bypass rate.
+
+### RQ6: F1-constrained hard override
+
+Command:
+
+```bash
 conda run -n eatvul python scripts/eatvul_f1_constrained_defense.py --max-clean-f1-drop 0.03
 ```
 
-The diagnostic deletion scripts are slower because they delete candidate
-windows or components and rerun the target detector.
+Expected output file:
 
-## Compile the Paper
+```text
+results/eatvul_f1_constrained_defense/f1_constrained_maxf1drop0.03_benignonly_results.csv
+```
 
-From the repository root:
+This is a utility-constrained diagnostic override policy, not the deployment
+recommendation.
+
+## Paper Compilation
+
+The canonical manuscript source is:
+
+```text
+paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex
+```
+
+The compatibility entry point is:
+
+```text
+paper_eatvul_defense_framework/latex_submission/main.tex
+```
+
+### Using the bundled Tectonic helper
+
+From the repository root on the original local setup:
 
 ```powershell
 $env:PYTHONUTF8='1'
-python 'C:/Users/Administrator/.codex/plugins/cache/openai-bundled/latex/0.2.2/scripts/compile_latex.py' `
+python 'C:/Users/Administrator/.codex/plugins/cache/openai-bundled/latex/0.2.3/scripts/compile_latex.py' `
   'D:/EatVul-Resources/paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex' `
   --compiler tectonic `
-  --output-directory 'D:/EatVul-Resources/paper_eatvul_defense_framework/latex_submission/build_citation_bib_check' `
+  --output-directory 'D:/EatVul-Resources/paper_eatvul_defense_framework/latex_submission/build_artifact_check' `
   --json
 ```
 
-If that bundled compiler is not available, use a local LaTeX installation on
-`paper_eatvul_defense_framework/latex_submission/main.tex`.
+Expected result:
+
+```text
+paper_eatvul_defense_framework/latex_submission/build_artifact_check/main_usenix_style_round3_clean.pdf
+```
+
+### Using a local LaTeX installation
+
+If you have Tectonic:
+
+```bash
+cd paper_eatvul_defense_framework/latex_submission
+tectonic main.tex
+```
+
+If you have TeX Live with `latexmk`:
+
+```bash
+cd paper_eatvul_defense_framework/latex_submission
+latexmk -pdf -xelatex main.tex
+```
+
+The repository also contains an audited compiled PDF at:
+
+```text
+paper_eatvul_defense_framework/latex_submission/build_citation_bib_check/main_usenix_style_round3_clean.pdf
+```
+
+## Expected Outputs
+
+After the quick reproduction path, these files should exist:
+
+```text
+artifact_manifest.json
+results/tables/table_reproduction_summary.csv
+results/figures/figure_inventory.csv
+```
+
+The artifact check should end with:
+
+```text
+Artifact check passed
+```
+
+The dataset-summary command should report the split sizes listed in
+[Step 2](#step-2-verify-the-public-ast-token-split-sizes).
+
+## Troubleshooting
+
+### `make` is not installed
+
+Run the Python commands directly:
+
+```bash
+python scripts/check_artifact.py
+python scripts/eatvul_reproduce.py dataset-summary
+python scripts/make_tables.py
+python scripts/make_figures.py
+python scripts/build_manifest.py
+```
+
+### `conda run -n eatvul` fails
+
+Create the environment:
+
+```bash
+conda env create -f environment.yml
+```
+
+If dependency resolution differs on your platform, install the experiment
+packages manually:
+
+```bash
+pip install numpy scipy scikit-learn pandas matplotlib python-docx
+```
+
+Neural sanity-check scripts may additionally require `torch`, `transformers`,
+and `tensorflow`.
+
+### Full reruns overwrite aggregate CSVs
+
+The experiment scripts write to their documented `results/` paths. If you want
+to compare a fresh run against the stored artifact values, copy the existing CSV
+first or run in a separate working tree.
+
+### GitHub warns about large files
+
+One AST-token split may exceed GitHub's recommended 50 MB file size. GitHub can
+store it below the hard limit, but a future archival release may prefer Git LFS
+or external dataset preparation instructions plus checksums.
+
+### The diagnostic deletion rows do not show strong recovery
+
+That is expected. The deletion methods are diagnostic boundary tests. They do
+not have true inserted spans, source diffs, source-to-token mappings, CFGs, or
+PDGs, so they should not be interpreted as verified source-level repair.
 
 ## Responsible Use
 
 This artifact is for defensive evaluation and reproducibility. Do not use it to
-generate new evasive code snippets or to attack deployed vulnerability-detection
-services.
+generate new evasive code snippets or attack deployed vulnerability-detection
+services. The repository does not add attack-generation prompts or new
+offensive attack-generation tools.
 
 ## Citation
 
-Use `CITATION.cff` for software citation metadata. Update the DOI, URL, and
+Use `CITATION.cff` for software citation metadata. Update DOI, URL, and
 publication metadata after the JISA submission receives final identifiers.
