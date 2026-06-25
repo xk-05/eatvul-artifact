@@ -120,6 +120,7 @@ KEY_CSV_MIN_ROWS = {
 BAD_PYTHON_PATTERNS = [
     re.compile(r"\bimport[ \t]+\w+[^\n;]*[ \t]+import[ \t]+\w+"),
     re.compile(r"\bfrom[ \t]+\S+[ \t]+import[ \t]+\S+[^\n;]*[ \t]+from[ \t]+"),
+    re.compile(r"\bdef[ \t]+\w+\([^)]*\)[^\n;]*[ \t]+import[ \t]+\w+"),
 ]
 
 
@@ -191,6 +192,10 @@ def check_python(files: list[Path], errors: list[str]) -> None:
         lines = text.splitlines()
         if len(lines) <= 2 and len(text) > 80:
             fail(errors, f"{rel}: suspiciously short Python file ({len(lines)} lines)")
+        if lines and lines[0].startswith("#!"):
+            shebang_payload = lines[0][2:].strip()
+            if any(marker in shebang_payload for marker in (" import ", " def ", " class ")):
+                fail(errors, f"{rel}: shebang line appears to contain Python code")
         for line_number, line in enumerate(lines, start=1):
             code_line = line.split("#", 1)[0]
             for pattern in BAD_PYTHON_PATTERNS:

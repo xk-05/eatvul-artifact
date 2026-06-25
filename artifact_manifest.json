@@ -364,8 +364,8 @@
     },
     {
       "path": "scripts/check_text_integrity.py",
-      "bytes": 15191,
-      "sha256": "4d3e14e6c9fbe8ece38b529b4536b1dc45c0b9a6e08922629622649deb41c156"
+      "bytes": 15540,
+      "sha256": "906b8e20ddfc4bbfceacfab76f082ef6c1e71a640d4f0d0553270278f5139131"
     },
     {
       "path": "scripts/download_codebert.py",
