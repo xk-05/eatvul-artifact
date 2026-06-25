@@ -9,6 +9,7 @@ venv/
 .matplotlib/
 .pydeps/
 .pytest_cache/
+.cache/
 cache/
 tmp/
 paper_eatvul_defense_framework/latex_submission/build_artifact_check/
@@ -26,10 +27,14 @@ model/
 models/
 checkpoint*/
 checkpoints/
+huggingface/
 model/model/saved_newbap_models/
 results/**/checkpoint-best-acc/
 results/**/*.bin
 *.pt
+*.bin
+*.pkl
+*.joblib
 *.pth
 *.ckpt
 *.safetensors
@@ -38,6 +43,11 @@ results/**/*.bin
 external/
 data/linevul_bigvul/*.part
 *.zip
+*.tar
+*.tar.gz
+Code and Dataset/
+Code and Dataset.zip
+model.zip
 Code and Dataset/__MACOSX/
 Code and Dataset/file/code/
 Code and Dataset/**/*.DS_Store

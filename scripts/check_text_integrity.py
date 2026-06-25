@@ -67,7 +67,7 @@ CORE_FILE_MIN_LINES = {
     "Makefile": 10,
     ".gitignore": 10,
     ".gitattributes": 10,
-    "paper_eatvul_defense_framework/latex_submission/main.tex": 3,
+    "paper_eatvul_defense_framework/latex_submission/main.tex": 2,
     "paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex": 100,
     "paper_eatvul_defense_framework/latex_submission/references.bib": 20,
 }
@@ -88,15 +88,29 @@ REQUIRED_GITATTRIBUTES_RULES = {
 }
 REQUIRED_GITIGNORE_RULES = {
     "__pycache__/",
+    "*.pyc",
     ".pytest_cache/",
+    ".venv/",
+    "venv/",
     ".hf_cache/",
+    ".cache/",
     "cache/",
     "model/",
     "models/",
     "checkpoint*/",
     "checkpoints/",
+    "huggingface/",
     "results/**/checkpoint-best-acc/",
     "*.zip",
+    "*.tar",
+    "*.tar.gz",
+    "*.pt",
+    "*.bin",
+    "*.pkl",
+    "*.joblib",
+    "Code and Dataset/",
+    "Code and Dataset.zip",
+    "model.zip",
 }
 REQUIRED_MAKE_TARGETS = {
     "check",
@@ -190,7 +204,7 @@ def check_python(files: list[Path], errors: list[str]) -> None:
         path = ROOT / rel
         text = read_text(path)
         lines = text.splitlines()
-        if len(lines) <= 2 and len(text) > 80:
+        if len(lines) <= 2:
             fail(errors, f"{rel}: suspiciously short Python file ({len(lines)} lines)")
         if lines and lines[0].startswith("#!"):
             shebang_payload = lines[0][2:].strip()
@@ -305,6 +319,12 @@ def check_gitattributes(errors: list[str]) -> None:
     lines = read_text(path).splitlines()
     if len(lines) <= 2:
         fail(errors, ".gitattributes: suspiciously short; LF rules may be commented out")
+    for index, line in enumerate(lines, start=1):
+        stripped = line.strip()
+        if stripped.startswith("#") and "text=auto" in stripped and "eol=lf" in stripped:
+            fail(errors, f".gitattributes:{index}: LF rule appears inside a comment")
+        if not stripped.startswith("#") and stripped.count("eol=lf") > 1:
+            fail(errors, f".gitattributes:{index}: multiple LF rules appear collapsed")
     rules = set(normalized_rule_lines(path))
     missing = sorted(REQUIRED_GITATTRIBUTES_RULES - rules)
     for rule in missing:
@@ -380,6 +400,19 @@ def check_makefile(errors: list[str]) -> None:
     missing_targets = sorted(REQUIRED_MAKE_TARGETS - set(targets))
     for target in missing_targets:
         fail(errors, f"Makefile: missing required target {target!r}")
+    if not any(target["commands"] for target in targets.values()):
+        fail(errors, "Makefile: no tab-indented command lines found")
+    if "check" in targets:
+        required_check_deps = {
+            "text-integrity",
+            "compile",
+            "artifact",
+            "reported-values",
+            "dataset-summary",
+        }
+        missing_check_deps = sorted(required_check_deps - set(targets["check"]["dependencies"]))
+        for target in missing_check_deps:
+            fail(errors, f"Makefile: check target does not run {target!r}")
     for name in ("check", "verify"):
         if name not in targets:
             continue
@@ -390,20 +423,49 @@ def check_makefile(errors: list[str]) -> None:
 
 
 def check_tex(errors: list[str]) -> None:
-    tex_files = [
-        ROOT / "paper_eatvul_defense_framework/latex_submission/main.tex",
-        ROOT / "paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex",
+    wrapper = ROOT / "paper_eatvul_defense_framework/latex_submission/main.tex"
+    wrapper_lines = wrapper.read_text(encoding="utf-8").splitlines()
+    wrapper_content = []
+    for line in wrapper_lines:
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if stripped.startswith("%") and stripped != "% !TEX root = main.tex":
+            continue
+        wrapper_content.append(line)
+    expected_wrapper = [
+        "% !TEX root = main.tex",
+        r"\input{main_usenix_style_round3_clean.tex}",
     ]
-    for path in tex_files:
-        lines = path.read_text(encoding="utf-8").splitlines()
-        if len(lines) <= 2:
-            fail(errors, f"{path.relative_to(ROOT)}: suspiciously short TeX file")
-        for index, line in enumerate(lines, start=1):
-            if "% !TEX root" in line and ("\\input" in line or "\\documentclass" in line):
+    if wrapper_content != expected_wrapper:
+        fail(
+            errors,
+            f"{wrapper.relative_to(ROOT)}: wrapper must contain TEX root and input as the only non-empty lines",
+        )
+
+    manuscript = ROOT / "paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex"
+    manuscript_lines = manuscript.read_text(encoding="utf-8").splitlines()
+    if len(manuscript_lines) <= 2:
+        fail(errors, f"{manuscript.relative_to(ROOT)}: suspiciously short TeX file")
+    has_root = False
+    has_documentclass = False
+    for index, line in enumerate(manuscript_lines, start=1):
+        stripped = line.strip()
+        if "% !TEX root" in line:
+            has_root = True
+            if "\\input" in line or "\\documentclass" in line:
                 fail(
                     errors,
-                    f"{path.relative_to(ROOT)}:{index}: TEX root directive shares line with TeX code",
+                    f"{manuscript.relative_to(ROOT)}:{index}: TEX root directive shares line with TeX code",
                 )
+        if stripped.startswith(r"\documentclass"):
+            has_documentclass = True
+            if stripped.startswith("%"):
+                fail(errors, f"{manuscript.relative_to(ROOT)}:{index}: documentclass is commented")
+    if not has_root:
+        fail(errors, f"{manuscript.relative_to(ROOT)}: missing TEX root directive")
+    if not has_documentclass:
+        fail(errors, f"{manuscript.relative_to(ROOT)}: missing uncommented documentclass line")
     print("TeX wrappers: checked")
 
 
@@ -446,3 +508,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

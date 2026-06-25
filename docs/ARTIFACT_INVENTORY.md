@@ -59,11 +59,16 @@ Expected files:
 - `scripts/export_gate_feature_importance.py`
 - `scripts/build_manifest.py`
 
-## Public AST-token Splits
+## Local External AST-token Splits
 
 ```text
 Code and Dataset/file/data/
 ```
+
+These files are not redistributed through public Git tracking because their
+redistribution terms are not confirmed in this package. Prepare them locally
+from the upstream/source package when running dataset-size checks,
+feature-importance recomputation, or full experiment reruns.
 
 Expected datasets:
 

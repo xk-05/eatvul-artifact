@@ -3,7 +3,10 @@
 ## What Can Be Reproduced
 
 The main numerical claims in the AST-token defense-boundary manuscript can be
-audited from the files in this repository:
+audited from the tracked files in this repository where aggregate result CSVs
+are available. Dataset-size checks, Table 6 feature-importance recomputation,
+and full experiment reruns require locally prepared external AST-token split
+files under `Code and Dataset/file/data/`:
 
 - dataset sizes for ASTERISK, OPENSSL, CWE119, and CWE399;
 - sample-level gate results under hard override;
@@ -28,6 +31,11 @@ python scripts/check_text_integrity.py
 python -m compileall scripts
 python scripts/check_artifact.py
 python scripts/check_reported_values.py
+```
+
+After preparing the external AST-token split files locally, also run:
+
+```bash
 python scripts/eatvul_reproduce.py dataset-summary
 ```
 
@@ -36,6 +44,9 @@ versions. This release therefore records a Python 3.9 Conda environment with
 bounded dependency ranges in `environment.yml` and `requirements.txt`.
 
 ## Representative Rerun Commands
+
+Prepare the external AST-token split files described in `DATA.md` before
+running the representative full-rerun commands below.
 
 ```bash
 conda run -n eatvul python scripts/eatvul_defense.py --leave-one-dataset-out --calibrate-clean-fpr 0.1

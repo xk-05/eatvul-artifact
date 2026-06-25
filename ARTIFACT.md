@@ -10,10 +10,14 @@ limits of the public AST-token setting.
 
 ## Claimed Reproducibility Level
 
-The main aggregate tables in the defense-boundary manuscript are reproducible
-or auditable from the released scripts, AST-token splits, and aggregate result
-files in this repository. The artifact is not a complete reproduction of every
-original EaTVul attack-generation artifact or external victim-model checkpoint.
+The main aggregate tables in the defense-boundary manuscript are auditable from
+the released scripts and aggregate result files in this repository. Dataset-size
+checks, Table 6 feature-importance recomputation, and full experiment reruns
+also require locally prepared EaTVul-style AST-token split files under
+`Code and Dataset/file/data/`. Those split files are not redistributed through
+public Git tracking because their redistribution terms are not confirmed in
+this package. The artifact is not a complete reproduction of every original
+EaTVul attack-generation artifact or external victim-model checkpoint.
 
 ## Directory Map
 
@@ -21,7 +25,9 @@ original EaTVul attack-generation artifact or external victim-model checkpoint.
   bibliography, and compiled-output directories.
 - `paper_eatvul_defense_framework/figures_submission/`: figures imported by the
   manuscript.
-- `Code and Dataset/file/data/`: public EaTVul-style AST-token splits.
+- `data/README.md`: preparation notes for external AST-token resources.
+- `Code and Dataset/file/data/`: local-only external AST-token split location
+  for users who prepare the data under upstream terms.
 - `scripts/`: defensive experiments, wrappers, artifact checks, and manifest
   generation.
 - `results/`: aggregate CSVs and selected CSV/JSON/JSONL outputs.
@@ -58,16 +64,15 @@ runtime than the smoke checks.
 make smoke
 ```
 
-This verifies artifact structure and prints dataset counts. It does not retrain
-large neural models.
+This verifies artifact structure and, when local external AST-token split files
+are present, prints dataset counts. It does not retrain large neural models.
 
 ## Full Reproduction
 
 Use the scripts listed in `docs/TABLE_REPRODUCTION_MAP.md`. Full reruns for the
-gate, quarantine, F1-constrained policy, and diagnostic deletion tests are
-supported from the public AST-token splits. Some rows are documented as
-aggregate-file reproducible only because complete paired per-sample logs are not
-available.
+gate, quarantine, F1-constrained policy, and diagnostic deletion tests require
+locally prepared AST-token splits. Some rows are documented as aggregate-file
+reproducible only because complete paired per-sample logs are not available.
 
 ## Expected Outputs
 

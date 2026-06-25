@@ -40,9 +40,10 @@ This repository includes:
 - manuscript source under `paper_eatvul_defense_framework/latex_submission/`;
 - bibliography under `paper_eatvul_defense_framework/latex_submission/references.bib`;
 - submission figures under `paper_eatvul_defense_framework/figures_submission/`;
-- public EaTVul-style AST-token splits under `Code and Dataset/file/data/`;
+- aggregate result tables under `results/`, with external EaTVul-style
+  AST-token splits prepared locally under `Code and Dataset/file/data/` only
+  when needed for full reruns;
 - defensive evaluation scripts under `scripts/`;
-- aggregate result tables under `results/`;
 - selected prediction or sanitized-output logs where available;
 - reviewer documentation in `ARTIFACT.md`, `REPRODUCIBILITY.md`, `DATA.md`,
   `MISSING_OBJECTS.md`, `THIRD_PARTY_DATA.md`, and `docs/`;
@@ -69,7 +70,8 @@ attack-generation tools.
 |-- requirements.txt
 |-- environment.yml
 |-- Makefile
-|-- Code and Dataset/file/data/
+|-- data/
+|   `-- README.md
 |-- configs/
 |   |-- gate/
 |   |-- anomaly_baselines/
@@ -282,7 +284,7 @@ The checker reads existing aggregate CSV files and fails with the source file,
 dataset, method, column, expected value, and actual value if any reported value
 differs by more than `1e-3`.
 
-### Step 2: Verify the public AST-token split sizes
+### Step 2: Verify locally prepared AST-token split sizes
 
 Command:
 
@@ -290,7 +292,10 @@ Command:
 python scripts/eatvul_reproduce.py dataset-summary
 ```
 
-Expected output:
+The public Git repository does not redistribute the external AST-token split
+files. If they have not been prepared locally, this command prints an
+external-data notice and exits without changing result files. If the files are
+present under `Code and Dataset/file/data/`, expected output is:
 
 ```text
 dataset,split,total,label_0,label_1
@@ -308,7 +313,8 @@ cwe399,test,255,157,98
 cwe399,adv,200,0,200
 ```
 
-This reproduces the dataset-size evidence used in the manuscript.
+This verifies the dataset-size evidence used in the manuscript for a prepared
+local copy.
 
 ### Step 3: Rebuild the table inventory
 
@@ -379,9 +385,11 @@ Expected output file:
 artifact_manifest.json
 ```
 
-The manifest records SHA256 checksums for key manuscript, documentation,
-script, figure, result, and AST-token split files. It intentionally skips very
-large local model/checkpoint artifacts.
+The manifest records SHA256 checksums for tracked manuscript, documentation,
+script, figure, result, and configuration files. It intentionally excludes
+license-unclear external AST-token splits and local model/checkpoint artifacts.
+Pre-removal checksums for the external split files are recorded in
+`THIRD_PARTY_DATA.md`.
 
 ### Step 6: Inspect the detailed table map
 
@@ -400,7 +408,7 @@ The most important aggregate sources are:
 
 | Manuscript item | Main source file |
 | --- | --- |
-| Table 2: dataset sizes | `Code and Dataset/file/data/*_ast_*.json` |
+| Table 2: dataset sizes | local external `Code and Dataset/file/data/*_ast_*.json`; checksums in `THIRD_PARTY_DATA.md` |
 | Table 4: sample-level gate | `results/eatvul_defense/lodo_calib_fpr_0.1_results.csv` |
 | Table 5: aggregate-count uncertainty checks | `results/eatvul_defense/lodo_calib_fpr_0.1_results.csv` |
 | Table 6: gate feature-family contribution | `results/eatvul_defense/gate_feature_family_importance.csv` |
@@ -415,10 +423,11 @@ For the complete mapping, see `docs/TABLE_REPRODUCTION_MAP.md`.
 
 ## Full Experiment Reruns
 
-The following commands recompute the main aggregate result files from the
-released AST-token splits. They can take longer than the lightweight artifact
+The following commands recompute the main aggregate result files from locally
+prepared AST-token splits. They can take longer than the lightweight artifact
 checks because they train target models, train gates, delete candidate token
-regions, and rerun target detectors.
+regions, and rerun target detectors. Prepare the external data as described in
+`DATA.md` before running them.
 
 ### RQ1: Sample-level gate under hard override
 
@@ -647,8 +656,10 @@ The reported-value check should begin with:
 Reported-value check passed
 ```
 
-The dataset-summary command should report the split sizes listed in
-[Step 2](#step-2-verify-the-public-ast-token-split-sizes).
+With local external data prepared, the dataset-summary command should report
+the split sizes listed in
+[Step 2](#step-2-verify-locally-prepared-ast-token-split-sizes). Without local
+external data, it prints an external-data preparation notice.
 
 ## Troubleshooting
 
@@ -661,12 +672,14 @@ python scripts/check_text_integrity.py
 python -m compileall scripts
 python scripts/check_artifact.py
 python scripts/check_reported_values.py
-python scripts/eatvul_reproduce.py dataset-summary
 python scripts/export_gate_feature_importance.py
 python scripts/make_tables.py
 python scripts/make_figures.py
 python scripts/build_manifest.py
 ```
+
+Run `python scripts/eatvul_reproduce.py dataset-summary` after preparing the
+external AST-token split files locally.
 
 ### `conda run -n eatvul` fails
 
@@ -699,11 +712,13 @@ and documentation only. Dataset archives, model archives, pretrained weights,
 and cached checkpoints may require upstream permission review before public
 redistribution.
 
-### GitHub warns about large files
+### External AST-token data are missing
 
-One AST-token split may exceed GitHub's recommended 50 MB file size. GitHub can
-store it below the hard limit, but a future archival release may prefer Git LFS
-or external dataset preparation instructions plus checksums.
+The public repository intentionally does not track `Code and Dataset/` because
+the redistribution terms for those EaTVul-style resources are not confirmed in
+this package. Use `DATA.md` and `THIRD_PARTY_DATA.md` to prepare a local copy
+when running dataset-size checks, feature-importance recomputation, or full
+experiment reruns.
 
 ### The diagnostic deletion rows do not show strong recovery
 

@@ -34,6 +34,21 @@ DATASETS = {
 }
 
 
+def expected_dataset_paths():
+    return [
+        path
+        for paths in DATASETS.values()
+        for path in paths.values()
+    ]
+
+
+def external_data_status():
+    paths = expected_dataset_paths()
+    present = [path for path in paths if path.exists()]
+    missing = [path for path in paths if not path.exists()]
+    return present, missing
+
+
 def iter_jsonl(path):
     with Path(path).open(encoding="utf-8") as handle:
         for line in handle:
@@ -53,6 +68,15 @@ def label_counts(path):
 
 
 def dataset_summary(_args):
+    present, missing = external_data_status()
+    if not present:
+        print("dataset,split,total,label_0,label_1")
+        print("# External AST-token split files are not bundled in the public release.")
+        print("# Prepare them under Code and Dataset/file/data/ as described in DATA.md.")
+        return
+    if missing:
+        missing_text = ", ".join(path.relative_to(ROOT).as_posix() for path in missing)
+        raise SystemExit(f"partial external AST-token split set is missing: {missing_text}")
     print("dataset,split,total,label_0,label_1")
     for name, paths in DATASETS.items():
         for split, path in paths.items():

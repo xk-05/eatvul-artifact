@@ -39,7 +39,6 @@ INCLUDE_PATTERNS = [
     "results/**/*.csv",
     "results/**/*_config.json",
     "results/**/*.txt",
-    "Code and Dataset/file/data/*.json",
 ]
 
 EXCLUDE_PARTS = {

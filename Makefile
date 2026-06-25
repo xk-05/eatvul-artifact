@@ -2,7 +2,7 @@
 
 PYTHON ?= python
 
-check: text-integrity compile reported-values smoke
+check: text-integrity compile artifact reported-values dataset-summary
 
 verify: check feature-importance
 

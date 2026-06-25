@@ -6,20 +6,44 @@ cover third-party datasets, pretrained models, checkpoints, EaTVul resources,
 LineVul/Big-Vul resources, CodeBERT weights, GraphCodeBERT weights, or cached
 model files.
 
-Redistribution permissions for several bundled resources are not fully
-established in this review package. If a public archival release cannot confirm
-permission, remove the affected archive or checkpoint from the public release
-and keep only checksums plus preparation instructions.
+Redistribution permissions for the EaTVul-style AST-token split files bundled
+in the local author workspace are not confirmed in this package. They have been
+removed from public Git tracking and are ignored locally. The aggregate result
+CSVs needed for manuscript table audit remain tracked under `results/`.
 
-| Resource name | Path | Source/origin | License or terms if known | Tracked in public release | Required for aggregate-table audit | Size and checksum | Recommended user action |
+## Resource Inventory
+
+| Resource name | Path | Source/origin | License or terms if known | Public redistribution status | Required for aggregate-table audit | Checksum / size | Recommended user action |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| EaTVul-style AST-token datasets: ASTERISK, OPENSSL, CWE119, CWE399 | `Code and Dataset/file/data/*_ast_*.json` | Local EaTVul resource package derived from public EaTVul-style artifacts | Not confirmed in this package | Yes, to support artifact checks and full reruns | Yes | See `artifact_manifest.json` | Confirm original dataset terms. If redistribution cannot be confirmed, remove these files from the public archival release and provide upstream preparation instructions plus checksums. |
-| `Code and Dataset.zip` | `Code and Dataset.zip` | Historical local archive of the AST-token dataset/code package | Not confirmed in this package | No; removed from Git tracking and ignored | No; split JSON files and result CSVs are sufficient | 13,959,325 bytes; SHA256 `3A064C0F1AE26A32F28F7A7621403A5A4392DEDE613486965608B24C419C6200` | Keep only as a local author/reviewer convenience copy unless redistribution permission is confirmed. |
-| EaTVul helper code from local package | `Code and Dataset/file/code/*.py` | Local EaTVul resource package | Not confirmed in this package | No; removed from Git tracking and ignored | No | Local-only; not included in manifest after release cleanup | Confirm upstream terms before redistributing as public code. The aggregate audit uses artifact scripts under `scripts/` instead. |
-| Apple metadata files | `Code and Dataset/__MACOSX/**`, `Code and Dataset/**/.DS_Store` | Local archive extraction metadata | Not applicable | No; removed from Git tracking and ignored | No | Not applicable | Do not include in public archival releases. |
-| `model.zip` | `model.zip` | Historical local model archive | Not confirmed in this package | No; removed from Git tracking and ignored | No | 19,267 bytes; SHA256 `9A2DF2FC01335B17795C694FFB3ECE0D97EC845A812A0F4E4D624C36F03C9511` | Keep only as a local author/reviewer convenience copy unless redistribution permission is confirmed. |
-| Cached CodeBERT pilot checkpoint | `results/codebert_poc/openssl_pilot/checkpoint-best-acc/model.bin` | Locally fine-tuned checkpoint derived from CodeBERT-base | CodeBERT upstream terms plus local fine-tuning provenance not fully documented here | No tracked checkpoint in the public release; ignored by `.gitignore` if present locally | No | Local checkpoint SHA256, if present: `D6F63755A4F1AB55D64A92C3C23B9CA1132251CE47B0F66BA888F88A40CB62F2` | Do not rely on redistributing this checkpoint unless upstream and derived-model terms are confirmed. |
-| CodeBERT / Hugging Face weights | Referenced by `scripts/download_codebert.py`, `scripts/download_hf_model_files.py`, and neural scripts | Hugging Face model repositories such as `microsoft/codebert-base` | Governed by upstream model-card/license terms | No bundled public redistribution claim | No for aggregate audit; optional for neural reruns | Not included | Download from upstream under applicable terms. |
-| LineVul / Big-Vul resources | `data/linevul_bigvul/`, `external/LineVul/`, `results/extension_experiments/official_linevul/` where present locally | LineVul and Big-Vul resources used for supplementary source-text stress harness | Governed by upstream project and dataset terms | Not part of the required artifact; local/untracked files may exist | No | Local large files are not required for aggregate-table checks | Keep as user-prepared local data unless redistribution is confirmed. |
+| EaTVul-style AST-token split package | `Code and Dataset/file/data/*_ast_*.json` | Local EaTVul-style resource package derived from upstream/public EaTVul artifacts | Not confirmed in this package | Not redistributed through Git; removed with `git rm --cached -r` | No for stored aggregate CSV audit; yes for dataset-summary checks and full reruns | See per-file table below | Obtain from the upstream/source package under applicable terms, place files under `Code and Dataset/file/data/`, then verify checksums if using the same package. |
+| `Code and Dataset.zip` | `Code and Dataset.zip` | Historical local archive of the AST-token dataset/code package | Not confirmed in this package | Not tracked; ignored | No | Previously observed local copy: 13,959,325 bytes; SHA256 `3a064c0f1ae26a32f28f7a7621403a5a4392dede613486965608b24c419c6200` | Keep only as a local author/reviewer convenience copy unless redistribution permission is confirmed. |
+| `model.zip` | `model.zip` | Historical local model archive | Not confirmed in this package | Not tracked; ignored | No | Previously observed local copy: 19,267 bytes; SHA256 `9a2df2fc01335b17795c694ffb3ece0d97ec845a812a0f4e4d624c36f03c9511` | Keep only as a local author/reviewer convenience copy unless redistribution permission is confirmed. |
+| EaTVul helper code from local package | `Code and Dataset/file/code/*.py` | Local EaTVul resource package | Not confirmed in this package | Not tracked; ignored | No | Local-only; not included in public manifest | Confirm upstream terms before redistributing. The aggregate audit uses artifact scripts under `scripts/`. |
+| Apple metadata files | `Code and Dataset/__MACOSX/**`, `Code and Dataset/**/.DS_Store` | Local archive extraction metadata | Not applicable | Not tracked; ignored | No | Not applicable | Do not include in public archival releases. |
+| Cached CodeBERT pilot checkpoint | `results/codebert_poc/openssl_pilot/checkpoint-best-acc/model.bin` | Locally fine-tuned checkpoint derived from CodeBERT-base | CodeBERT upstream terms plus local fine-tuning provenance not fully documented here | Not tracked; ignored if present locally | No | Local checkpoint SHA256, if present: `d6f63755a4f1ab55d64a92c3c23b9ca1132251ce47b0f66ba888f88a40cb62f2` | Do not redistribute unless upstream and derived-model terms are confirmed. |
+| CodeBERT / Hugging Face weights | Referenced by `scripts/download_codebert.py`, `scripts/download_hf_model_files.py`, and neural scripts | Hugging Face model repositories such as `microsoft/codebert-base` | Governed by upstream model-card/license terms | Not bundled | No for aggregate audit; optional for neural reruns | Not included | Download from upstream under applicable terms. |
+| LineVul / Big-Vul resources | `data/linevul_bigvul/`, `external/LineVul/`, `results/extension_experiments/official_linevul/` where present locally | LineVul and Big-Vul resources used for supplementary source-text stress harness | Governed by upstream project and dataset terms | Local/untracked unless explicitly reviewed | No | Local large files are not required for aggregate-table checks | Keep as user-prepared local data unless redistribution is confirmed. |
 | Generated source-text stress-check data | `results/extension_experiments/**/adaptive_samples/*.jsonl` and related prediction files | Generated by the supplementary extension harness | Artifact-authored generated outputs, but may contain derived third-party code text | Only tracked where already part of the supplementary artifact | No | See `artifact_manifest.json` for tracked files | Treat as supplementary. Verify source-project license before public redistribution. |
-| Cached local model/checkpoint directories | `model/`, `models/`, `external/`, `results/**/checkpoint-best-acc/` | Local downloads or training caches | Governed by upstream terms | No; ignored unless explicitly reviewed | No | Not required | Keep out of public release unless terms and sizes are reviewed. |
+| Cached local model/checkpoint directories | `model/`, `models/`, `external/`, `results/**/checkpoint-best-acc/` | Local downloads or training caches | Governed by upstream terms | Not tracked; ignored unless explicitly reviewed | No | Not required | Keep out of public release unless terms and sizes are reviewed. |
+
+## Removed AST-token Split File Checksums
+
+These files were tracked before the public-release cleanup. The values below
+were recorded before removal from the Git index. They are retained so reviewers
+can verify a locally prepared copy without redistributing the files through this
+repository.
+
+| Path | Size | SHA256 |
+| --- | ---: | --- |
+| `Code and Dataset/file/data/asterisk_ast_test.json` | 12,689,868 bytes (12.10 MiB) | `f1fc237016994b88d380ab5aeb184481f43fb09d47289f4ccbc06e7721412650` |
+| `Code and Dataset/file/data/asterisk_ast_test_ADV.json` | 1,796,605 bytes (1.71 MiB) | `475e84722009275460b8dea4d65edfd34225bd78c7dc6a7fe2dbd86588ddf221` |
+| `Code and Dataset/file/data/asterisk_ast_train.json` | 30,411,010 bytes (29.00 MiB) | `8fcf4a89c11dbed1e9d0a4a27065405a96b487d9adf7907c98c1208513b31e74` |
+| `Code and Dataset/file/data/cwe119_ast_test.json` | 31,054,554 bytes (29.62 MiB) | `4355c1835d4b24a8658b377e736c5f59f5e5e41eb5b590c6b754de2c77029e75` |
+| `Code and Dataset/file/data/cwe119_ast_test_ADV.json` | 2,313,158 bytes (2.21 MiB) | `64e5682845c81936cd56972ace1798f6398a65057f390ecd4896cf7b587e36b4` |
+| `Code and Dataset/file/data/cwe119_ast_train.json` | 72,797,243 bytes (69.42 MiB) | `ff704a92d80c5988f88b9e8abf96e233e5690e3618905ad4ff2aeaad6598115c` |
+| `Code and Dataset/file/data/cwe399_ast_test.json` | 4,763,410 bytes (4.54 MiB) | `308ac24b70d9a239db09f7ca9c43277fd4334aafc3df922c323d9a4683699764` |
+| `Code and Dataset/file/data/cwe399_ast_test_ADV.json` | 2,848,311 bytes (2.72 MiB) | `b68e64f6062a3da7d9e86524fa6214f3128d57b8d65e33bbc758dd5a58f87598` |
+| `Code and Dataset/file/data/cwe399_ast_train.json` | 10,581,011 bytes (10.09 MiB) | `0da4406369e21d605ef8a14468dac60afdb061befcef2c5e1aa6e3f75e0ab0a4` |
+| `Code and Dataset/file/data/openssl_ast_test.json` | 3,565,470 bytes (3.40 MiB) | `c45167b5d24c8aab93136c4717f55e74791254f9104face5eaa22181f316a07c` |
+| `Code and Dataset/file/data/openssl_ast_test_ADV.json` | 1,863,135 bytes (1.78 MiB) | `b2fd9e1d861d91f795ae344078e48115418088a47744bb4372c71eb675dc1efa` |
+| `Code and Dataset/file/data/openssl_ast_train.json` | 8,656,908 bytes (8.26 MiB) | `b37fba27a143ec7723c7ad931f44da0b4005f9174fcd1653a82cb2027af3010d` |

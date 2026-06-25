@@ -28,6 +28,7 @@ REQUIRED_FILES = [
     "docs/TABLE_REPRODUCTION_MAP.md",
     "docs/RUNBOOK.md",
     "docs/LIMITATIONS_FOR_REVIEWERS.md",
+    "data/README.md",
     "scripts/check_reported_values.py",
     "scripts/export_gate_feature_importance.py",
     "paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex",
@@ -189,6 +190,18 @@ def count_jsonl(path: Path) -> int:
 
 def check_data_splits() -> None:
     data_dir = ROOT / "Code and Dataset" / "file" / "data"
+    expected_paths = [
+        data_dir / f"{dataset}_ast_{suffix}.json"
+        for dataset in DATA_SPLITS
+        for suffix in ["train", "test", "test_ADV"]
+    ]
+    present = [path for path in expected_paths if path.exists()]
+    if not present:
+        print("Dataset split counts: external AST-token splits not bundled; see DATA.md")
+        return
+    missing = [rel(path) for path in expected_paths if not path.exists()]
+    if missing:
+        fail("partial external AST-token split set is missing: " + ", ".join(missing))
     for dataset, expected in DATA_SPLITS.items():
         observed = []
         for suffix in ["train", "test", "test_ADV"]:

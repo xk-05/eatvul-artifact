@@ -1,6 +1,6 @@
 {
   "schema": "jisa-eatvul-artifact-manifest-v1",
-  "file_count": 96,
+  "file_count": 85,
   "files": [
     {
       "path": ".gitattributes",
@@ -14,13 +14,13 @@
     },
     {
       "path": ".gitignore",
-      "bytes": 828,
-      "sha256": "9b4efc871fa29ad89ee26913e099f8c78809418d913a1d60c58868b7be7c349e"
+      "bytes": 934,
+      "sha256": "22a9247862fffd27fb88d5beecffa4fefc66c6e339a37aa451c22baea6832dc5"
     },
     {
       "path": "ARTIFACT.md",
-      "bytes": 3675,
-      "sha256": "79bea244d4a533fe6ff44438513bde85ccd6f3f978a20bafb26605aec81bc2bd"
+      "bytes": 4155,
+      "sha256": "b8ff0102c883c4ccbc55736f629123250dab9440bf7af4cb2ed8b779215e14a6"
     },
     {
       "path": "CITATION.cff",
@@ -28,64 +28,9 @@
       "sha256": "2cd8e3a6a57c1cf4c2c86ee014e168b31c1cea8e285485f67eb2817f13e85009"
     },
     {
-      "path": "Code and Dataset/file/data/asterisk_ast_test.json",
-      "bytes": 12689868,
-      "sha256": "f1fc237016994b88d380ab5aeb184481f43fb09d47289f4ccbc06e7721412650"
-    },
-    {
-      "path": "Code and Dataset/file/data/asterisk_ast_test_ADV.json",
-      "bytes": 1796605,
-      "sha256": "475e84722009275460b8dea4d65edfd34225bd78c7dc6a7fe2dbd86588ddf221"
-    },
-    {
-      "path": "Code and Dataset/file/data/asterisk_ast_train.json",
-      "bytes": 30411010,
-      "sha256": "8fcf4a89c11dbed1e9d0a4a27065405a96b487d9adf7907c98c1208513b31e74"
-    },
-    {
-      "path": "Code and Dataset/file/data/cwe119_ast_test.json",
-      "bytes": 31054554,
-      "sha256": "4355c1835d4b24a8658b377e736c5f59f5e5e41eb5b590c6b754de2c77029e75"
-    },
-    {
-      "path": "Code and Dataset/file/data/cwe119_ast_test_ADV.json",
-      "bytes": 2313158,
-      "sha256": "64e5682845c81936cd56972ace1798f6398a65057f390ecd4896cf7b587e36b4"
-    },
-    {
-      "path": "Code and Dataset/file/data/cwe399_ast_test.json",
-      "bytes": 4763410,
-      "sha256": "308ac24b70d9a239db09f7ca9c43277fd4334aafc3df922c323d9a4683699764"
-    },
-    {
-      "path": "Code and Dataset/file/data/cwe399_ast_test_ADV.json",
-      "bytes": 2848311,
-      "sha256": "b68e64f6062a3da7d9e86524fa6214f3128d57b8d65e33bbc758dd5a58f87598"
-    },
-    {
-      "path": "Code and Dataset/file/data/cwe399_ast_train.json",
-      "bytes": 10581011,
-      "sha256": "0da4406369e21d605ef8a14468dac60afdb061befcef2c5e1aa6e3f75e0ab0a4"
-    },
-    {
-      "path": "Code and Dataset/file/data/openssl_ast_test.json",
-      "bytes": 3565470,
-      "sha256": "c45167b5d24c8aab93136c4717f55e74791254f9104face5eaa22181f316a07c"
-    },
-    {
-      "path": "Code and Dataset/file/data/openssl_ast_test_ADV.json",
-      "bytes": 1863135,
-      "sha256": "b2fd9e1d861d91f795ae344078e48115418088a47744bb4372c71eb675dc1efa"
-    },
-    {
-      "path": "Code and Dataset/file/data/openssl_ast_train.json",
-      "bytes": 8656908,
-      "sha256": "b37fba27a143ec7723c7ad931f44da0b4005f9174fcd1653a82cb2027af3010d"
-    },
-    {
       "path": "DATA.md",
-      "bytes": 3938,
-      "sha256": "2707c1b758e7f74b0e6b1a943702c7d25e3df14881d5600d5d4a82ff448bfb35"
+      "bytes": 3774,
+      "sha256": "6827223a963cec5af4e7b78f7b336e3345a359d91ac25195c9938b90241384ec"
     },
     {
       "path": "LICENSE",
@@ -99,18 +44,18 @@
     },
     {
       "path": "Makefile",
-      "bytes": 955,
-      "sha256": "042e1ccdc641b1bd2e7c8b8cfd52a50d82b9f0a16479a570fa06b4b55940ab9f"
+      "bytes": 974,
+      "sha256": "e092a9e05ae43998c573c5688f7eaeda237dbcc069980bdcdd7558c216c6b48d"
     },
     {
       "path": "README.md",
-      "bytes": 20892,
-      "sha256": "2883d339e628781165b71403eb9169ba57cdc5be861cb90534995fc09ec22d4a"
+      "bytes": 21808,
+      "sha256": "267f6821c6db5022cdccbac467972572cfee3c7940a2c28df182c09c68b94d39"
     },
     {
       "path": "REPRODUCIBILITY.md",
-      "bytes": 2853,
-      "sha256": "556c7e5b495cd25fb8731f84de2420f367ab117a02131e43bc99e91b500988f3"
+      "bytes": 3298,
+      "sha256": "c9a8c935e2243a1ebfc61f8ce5faadb85e862a3a431c86f18bcfd907b78ba58e"
     },
     {
       "path": "SUBMISSION_JISA.md",
@@ -119,8 +64,8 @@
     },
     {
       "path": "THIRD_PARTY_DATA.md",
-      "bytes": 5037,
-      "sha256": "1c067f1564de2f2123ff4c02cfdcf702fe1d38bab60a43b894bffd7140fb81c0"
+      "bytes": 7114,
+      "sha256": "f9121f588575c86ce0927fc675b0ed80e651b5ac34a32f95a3ea4983aec8a5c6"
     },
     {
       "path": "configs/anomaly_baselines/README.md",
@@ -144,8 +89,8 @@
     },
     {
       "path": "docs/ARTIFACT_INVENTORY.md",
-      "bytes": 4170,
-      "sha256": "e699371920c45db71cbe86980bf44f55a66be423954a44ff24ebd2ff5910f813"
+      "bytes": 4460,
+      "sha256": "5d750f42b69826abdfe9baa28a30ac7ecaa4ca74828d9ad3d614609a6bd2e6de"
     },
     {
       "path": "docs/LIMITATIONS_FOR_REVIEWERS.md",
@@ -159,8 +104,8 @@
     },
     {
       "path": "docs/TABLE_REPRODUCTION_MAP.md",
-      "bytes": 5125,
-      "sha256": "66e06e785d40346e858677db0c53a5737ff7ec897e70268ecbcc88645654aaa6"
+      "bytes": 5189,
+      "sha256": "2aac70c324a3dd66b1a707d67151f8c225182afa8f14dafa83574f624e8850c4"
     },
     {
       "path": "environment.yml",
@@ -204,8 +149,8 @@
     },
     {
       "path": "paper_eatvul_defense_framework/latex_submission/main.tex",
-      "bytes": 167,
-      "sha256": "dcef41520e65fa1feed437f50d1b5f70747397d56521b1fe2cdbc70aa03d5595"
+      "bytes": 68,
+      "sha256": "a3382be45a7caf0f7e6923687f92efdcf002a8f43d2282c26f972f1e819e3b58"
     },
     {
       "path": "paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex",
@@ -339,8 +284,8 @@
     },
     {
       "path": "scripts/build_manifest.py",
-      "bytes": 2803,
-      "sha256": "218e94fa154a835b1229bbae758c1989012106b1b124de9674fc55a784dbbcff"
+      "bytes": 2762,
+      "sha256": "a4e17dfe59450e6be0463610a2f348a707c00349093f0ce0de4c71d838c7a350"
     },
     {
       "path": "scripts/build_nature_eatvul_figure.py",
@@ -354,8 +299,8 @@
     },
     {
       "path": "scripts/check_artifact.py",
-      "bytes": 7936,
-      "sha256": "a46211fb03dfec6260963d996fbce09e3cc532cd289f70d0c816b4df74f0137f"
+      "bytes": 8491,
+      "sha256": "6f15fd92e5769741d814afe95a74540c5f91eadd4ae75540e94c8b83512ae9ba"
     },
     {
       "path": "scripts/check_reported_values.py",
@@ -364,8 +309,8 @@
     },
     {
       "path": "scripts/check_text_integrity.py",
-      "bytes": 15540,
-      "sha256": "906b8e20ddfc4bbfceacfab76f082ef6c1e71a640d4f0d0553270278f5139131"
+      "bytes": 17965,
+      "sha256": "c227f42cbde7c65dcfe9073793da2a47574e288e2ef085c49c44ba218cd4c1b3"
     },
     {
       "path": "scripts/download_codebert.py",
@@ -419,8 +364,8 @@
     },
     {
       "path": "scripts/eatvul_reproduce.py",
-      "bytes": 7598,
-      "sha256": "f13af33e374228311400572e95833bbdabade116dfcb7632a0d5fbe298c84938"
+      "bytes": 8458,
+      "sha256": "c59516627a34c15cb7af237265fb7b034dd1dc49bd4a60a8336b8bd76ebbcdf7"
     },
     {
       "path": "scripts/export_gate_feature_importance.py",
