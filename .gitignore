@@ -8,6 +8,8 @@ venv/
 .hf_cache/
 .matplotlib/
 .pydeps/
+.pytest_cache/
+cache/
 tmp/
 paper_eatvul_defense_framework/latex_submission/build_artifact_check/
 *.log
@@ -20,7 +22,10 @@ paper_eatvul_defense_framework/latex_submission/build_artifact_check/
 *.synctex.gz
 
 # Local models, checkpoints, and heavyweight scratch outputs.
+model/
 models/
+checkpoint*/
+checkpoints/
 model/model/saved_newbap_models/
 results/**/checkpoint-best-acc/
 results/**/*.bin

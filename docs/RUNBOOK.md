@@ -9,6 +9,7 @@ python -m compileall scripts
 
 Expected: exit code 0. The text-integrity check should end with
 `Text integrity check passed`, and compileall should not report syntax errors.
+The Makefile alias is `make text-check` when GNU Make is available.
 
 ## 1. Check Artifact Structure
 
@@ -26,6 +27,8 @@ python scripts/check_reported_values.py
 
 Expected: exit code 0 and a summary beginning with
 `Reported-value check passed`.
+The Makefile alias for the reported-value and Table 6 provenance checks is
+`make table-check`.
 
 ## 2. Verify Dataset Counts
 

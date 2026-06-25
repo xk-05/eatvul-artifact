@@ -46,6 +46,70 @@ CORE_DOCS = [
     "docs/RUNBOOK.md",
     "docs/TABLE_REPRODUCTION_MAP.md",
 ]
+CORE_FILE_MIN_LINES = {
+    "scripts/eatvul_defense.py": 50,
+    "scripts/check_artifact.py": 50,
+    "scripts/check_reported_values.py": 50,
+    "scripts/check_text_integrity.py": 50,
+    "scripts/export_gate_feature_importance.py": 50,
+    "scripts/eatvul_reproduce.py": 50,
+    "scripts/make_tables.py": 20,
+    "scripts/make_figures.py": 20,
+    "scripts/build_manifest.py": 50,
+    "results/eatvul_defense/lodo_calib_fpr_0.1_results.csv": 5,
+    "results/eatvul_defense/gate_feature_family_importance.csv": 5,
+    "results/eatvul_anomaly_baselines/anomaly_baseline_results.csv": 5,
+    "results/neural_target_gate/neural_target_gate_results.csv": 3,
+    "results/eatvul_quarantine_defense/quarantine_cleanblock0.1_benignonly_results.csv": 5,
+    "requirements.txt": 5,
+    "environment.yml": 5,
+    "pyproject.toml": 5,
+    "Makefile": 10,
+    ".gitignore": 10,
+    ".gitattributes": 10,
+    "paper_eatvul_defense_framework/latex_submission/main.tex": 3,
+    "paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex": 100,
+    "paper_eatvul_defense_framework/latex_submission/references.bib": 20,
+}
+REQUIRED_GITATTRIBUTES_RULES = {
+    "* text=auto eol=lf",
+    "*.py text eol=lf",
+    "*.csv text eol=lf",
+    "*.json text eol=lf",
+    "*.jsonl text eol=lf",
+    "*.md text eol=lf",
+    "*.tex text eol=lf",
+    "*.bib text eol=lf",
+    "*.yml text eol=lf",
+    "*.yaml text eol=lf",
+    "*.toml text eol=lf",
+    "Makefile text eol=lf",
+    "requirements.txt text eol=lf",
+}
+REQUIRED_GITIGNORE_RULES = {
+    "__pycache__/",
+    ".pytest_cache/",
+    ".hf_cache/",
+    "cache/",
+    "model/",
+    "models/",
+    "checkpoint*/",
+    "checkpoints/",
+    "results/**/checkpoint-best-acc/",
+    "*.zip",
+}
+REQUIRED_MAKE_TARGETS = {
+    "check",
+    "verify",
+    "text-integrity",
+    "text-check",
+    "compile",
+    "artifact",
+    "reported-values",
+    "feature-importance",
+    "table-check",
+    "dataset-summary",
+}
 KEY_CSV_MIN_ROWS = {
     "results/eatvul_defense/lodo_calib_fpr_0.1_results.csv": 4,
     "results/eatvul_defense/gate_feature_family_importance.csv": 5,
@@ -100,6 +164,23 @@ def check_line_endings(files: list[Path], errors: list[str]) -> None:
         if crlf or cr_only:
             fail(errors, f"{rel}: contains CR bytes (CRLF={crlf}, CR-only={cr_only})")
     print(f"Text line endings: {checked} tracked text files checked")
+
+
+def check_core_line_counts(errors: list[str]) -> None:
+    checked = 0
+    for rel, min_lines in CORE_FILE_MIN_LINES.items():
+        path = ROOT / rel
+        if not path.exists():
+            fail(errors, f"{rel}: missing core artifact file")
+            continue
+        checked += 1
+        data = path.read_bytes()
+        lines = line_count(data)
+        if lines < min_lines:
+            fail(errors, f"{rel}: expected at least {min_lines} lines, found {lines}")
+        if lines <= 2 and len(data) > 80:
+            fail(errors, f"{rel}: suspiciously collapsed text file ({lines} lines)")
+    print(f"Core file line counts: {checked} files checked")
 
 
 def check_python(files: list[Path], errors: list[str]) -> None:
@@ -206,6 +287,42 @@ def check_requirements(errors: list[str]) -> None:
     print(f"Requirements: {len(lines)} dependency lines checked")
 
 
+def normalized_rule_lines(path: Path) -> list[str]:
+    return [
+        re.sub(r"\s+", " ", line.strip())
+        for line in read_text(path).splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    ]
+
+
+def check_gitattributes(errors: list[str]) -> None:
+    path = ROOT / ".gitattributes"
+    lines = read_text(path).splitlines()
+    if len(lines) <= 2:
+        fail(errors, ".gitattributes: suspiciously short; LF rules may be commented out")
+    rules = set(normalized_rule_lines(path))
+    missing = sorted(REQUIRED_GITATTRIBUTES_RULES - rules)
+    for rule in missing:
+        fail(errors, f".gitattributes: missing required LF rule {rule!r}")
+    print(f".gitattributes: {len(rules)} active rules checked")
+
+
+def check_gitignore(errors: list[str]) -> None:
+    path = ROOT / ".gitignore"
+    lines = read_text(path).splitlines()
+    if len(lines) <= 2:
+        fail(errors, ".gitignore: suspiciously short; ignore rules may be collapsed")
+    active = {line.strip() for line in lines if line.strip() and not line.lstrip().startswith("#")}
+    missing = sorted(REQUIRED_GITIGNORE_RULES - active)
+    for rule in missing:
+        fail(errors, f".gitignore: missing required ignore rule {rule!r}")
+    for index, line in enumerate(lines, start=1):
+        stripped = line.strip()
+        if stripped.startswith("*.zip") and " " in stripped:
+            fail(errors, f".gitignore:{index}: multiple ignore patterns may be collapsed")
+    print(f".gitignore: {len(active)} active rules checked")
+
+
 def check_environment(errors: list[str]) -> None:
     path = ROOT / "environment.yml"
     text = read_text(path)
@@ -255,6 +372,9 @@ def check_makefile(errors: list[str]) -> None:
 
     if "check" not in targets and "verify" not in targets:
         fail(errors, "Makefile: missing check or verify target")
+    missing_targets = sorted(REQUIRED_MAKE_TARGETS - set(targets))
+    for target in missing_targets:
+        fail(errors, f"Makefile: missing required target {target!r}")
     for name in ("check", "verify"):
         if name not in targets:
             continue
@@ -301,7 +421,10 @@ def main() -> int:
     check_python(files, errors)
     check_csv(files, errors)
     check_json(files, errors)
+    check_core_line_counts(errors)
     check_requirements(errors)
+    check_gitattributes(errors)
+    check_gitignore(errors)
     check_environment(errors)
     check_makefile(errors)
     check_tex(errors)

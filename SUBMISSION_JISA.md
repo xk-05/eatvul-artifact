@@ -67,7 +67,9 @@ python scripts/check_artifact.py
 python scripts/check_reported_values.py
 python scripts/export_gate_feature_importance.py
 python scripts/eatvul_reproduce.py dataset-summary
+make text-check
 make check
+make table-check
 make verify
 ```
 

@@ -190,7 +190,9 @@ python scripts/build_manifest.py
 On systems with `make`:
 
 ```bash
+make text-check
 make check
+make table-check
 make verify
 make tables
 make figures
