@@ -26,6 +26,7 @@ INCLUDE_PATTERNS = [
     "Makefile",
     "highlights.md",
     "SUBMISSION_JISA.md",
+    ".gitattributes",
     ".gitignore",
     ".github/workflows/*.yml",
     "configs/**/*.md",

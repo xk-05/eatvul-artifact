@@ -1,7 +1,12 @@
 {
   "schema": "jisa-eatvul-artifact-manifest-v1",
-  "file_count": 94,
+  "file_count": 95,
   "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 498,
+      "sha256": "73af78d330257a946fce6b61c8ed592b66ffd0e3a9e05afa7459d48286a16e88"
+    },
     {
       "path": ".github/workflows/artifact-check.yml",
       "bytes": 556,
@@ -224,28 +229,28 @@
     },
     {
       "path": "results/codebert_poc/codebert_gate_poc_results.csv",
-      "bytes": 393,
-      "sha256": "d34a6e424b87b2e07e98b74e5aec2fd292825d7cfbb82c4ce1a58643945d47c4"
+      "bytes": 391,
+      "sha256": "8ef4a2e9917a60fb78112a871fd47ce505f1b057f5d97d79d7ac955f5a71274f"
     },
     {
       "path": "results/codebert_poc/openssl_pilot/predictions.txt",
-      "bytes": 290,
-      "sha256": "79253150519d54ba0f43ca086276c3abab84e08529e842268a6f36ce5fdc1123"
+      "bytes": 240,
+      "sha256": "516c3c37b4062235aaae8151cd70b87164595b41774226acceb69fc20869889d"
     },
     {
       "path": "results/codebert_poc/openssl_pilot/predictions_adv.txt",
-      "bytes": 290,
-      "sha256": "79253150519d54ba0f43ca086276c3abab84e08529e842268a6f36ce5fdc1123"
+      "bytes": 240,
+      "sha256": "516c3c37b4062235aaae8151cd70b87164595b41774226acceb69fc20869889d"
     },
     {
       "path": "results/codebert_poc/openssl_pilot/predictions_clean.txt",
-      "bytes": 504,
-      "sha256": "7dc651bf9d8be42cd8fa0f99a11ad6622eb59fca95288ab4433717aa279a9795"
+      "bytes": 427,
+      "sha256": "1b240a3a1642ca8689a3b567d9ccd1595bf2be13ce112838e8e9b58492108248"
     },
     {
       "path": "results/eatvul_anomaly_baselines/anomaly_baseline_results.csv",
-      "bytes": 1124,
-      "sha256": "c30b8ad4b12e7566cfbb9ee45b3a1394cc38c00629025f756690fd238b4dfc6b"
+      "bytes": 1113,
+      "sha256": "c4cdc1220408343b9415d0acd93712aaa1bcdcab18e957095d62e5f3d6beeceb"
     },
     {
       "path": "results/eatvul_component_defense/component_sanitize_fpr0.01_cluster3_max1_benign_gate_no_sample_gate_config.json",
@@ -254,23 +259,23 @@
     },
     {
       "path": "results/eatvul_component_defense/component_sanitize_fpr0.01_cluster3_max1_benign_gate_no_sample_gate_results.csv",
-      "bytes": 1055,
-      "sha256": "3f7f0ad4a458951f5b8915e977f580431d20c092e3dbbb9518047c8c0c47e0c8"
+      "bytes": 1050,
+      "sha256": "b4ed7b36ef1a9b4328737e5edd364a2ad0924d3616fcefe2ec63e083b57169b4"
     },
     {
       "path": "results/eatvul_defense/gate_feature_family_importance.csv",
-      "bytes": 507,
-      "sha256": "4582b1ee32c6bbba9d51f0fcba29f23525041ec1007ccd58ab41f164ae2ae440"
+      "bytes": 501,
+      "sha256": "10b3912bdeec63228058a2c3f9e3ac01386fb65917b37dc72a42b8fd3b052e14"
     },
     {
       "path": "results/eatvul_defense/lodo_calib_fpr_0.1_results.csv",
-      "bytes": 1164,
-      "sha256": "de4e57692ce03cd0dc5bda6c808d02149a186b1f6c71920d55715b1b7fd1bc08"
+      "bytes": 1159,
+      "sha256": "9e806ba3b25de0b4c79d5684c6c5a4d171cfc7bf9c7c50286ce8d4bb82feddb8"
     },
     {
       "path": "results/eatvul_f1_constrained_defense/f1_constrained_maxf1drop0.03_benignonly_results.csv",
-      "bytes": 928,
-      "sha256": "2c5d70f20e33f8540c28b2a8be2820b4837183fe3b916b12f0806042f91df2cd"
+      "bytes": 923,
+      "sha256": "f69b1ce3a55990c457dfa40b23b89852ed90eb45e91db93c52466afdb9d03283"
     },
     {
       "path": "results/eatvul_local_defense/localize_sanitize_w1536_s768_fpr0.01_max2_guided_benign_gate_no_sample_gate_config.json",
@@ -279,43 +284,43 @@
     },
     {
       "path": "results/eatvul_local_defense/localize_sanitize_w1536_s768_fpr0.01_max2_guided_benign_gate_no_sample_gate_results.csv",
-      "bytes": 1152,
-      "sha256": "40d78f9123d92d9d49b8ead0db6cb4a2f193ae16e9ef9b12dd15eb9b5b7740bc"
+      "bytes": 1147,
+      "sha256": "f492afcd3a4e0002d16ea5a7f311297889e9a17dd6bf46510fe18ec8d89b0110"
     },
     {
       "path": "results/eatvul_quarantine_defense/quarantine_cleanblock0.1_benignonly_results.csv",
-      "bytes": 999,
-      "sha256": "fa35c3b78e6579115e8f8549c362d45a8e87bbdda529c721fc53301a2f23eaa3"
+      "bytes": 994,
+      "sha256": "bcb2ab0af98ccc0db1209028c803393261094fc8b842a4e5dc61eac79d6c5090"
     },
     {
       "path": "results/extension_experiments/adaptive_validation_final/adaptive_validation.csv",
-      "bytes": 254,
-      "sha256": "66db69f9771e04dd50769c4ccf7760a0ea95a5598b1b68bec0df6558849c9b99"
+      "bytes": 249,
+      "sha256": "82b9a29681a06ae451c09a10829efe6c58ae4d6742e6e952f359b7841ed3c86a"
     },
     {
       "path": "results/extension_experiments/dataset_summary_final/dataset_summary.csv",
-      "bytes": 312,
-      "sha256": "98b82edb688b3c7b4bb10636907aeb5ded997c731e54da27da814d7805d2a099"
+      "bytes": 305,
+      "sha256": "29109988c186102c871806cd424028487276ebded2c5071441d4627e83109f56"
     },
     {
       "path": "results/extension_experiments/official_linevul/official_linevul_results.csv",
-      "bytes": 853,
-      "sha256": "77d9e0f2a4838e3d9086713b1ef72a9a903ae8ca7cc5ceb88f87aa1ce2301695"
+      "bytes": 848,
+      "sha256": "5dd5d130cb479259f96ce586ba0dce39a9932d4e8225146d4aff689e7ec17afb"
     },
     {
       "path": "results/figures/figure_inventory.csv",
-      "bytes": 575,
-      "sha256": "b0702d7b93b2823dcbcf39888c1daabff830ff71352c2665e9b7a2deae5eb744"
+      "bytes": 568,
+      "sha256": "599d1ea589463fb49f6dbb5c32392e4db242b1a093c9def0ef30c4fbc281b4d5"
     },
     {
       "path": "results/neural_target_gate/neural_target_gate_results.csv",
-      "bytes": 727,
-      "sha256": "26e48419004451071a13075f218f63b44f35e87411c680056eb865cbd5aa92d4"
+      "bytes": 722,
+      "sha256": "b042f03581e2ea1d3df173a5d145a1b7a8c581660ff97c6d8342fc759900b8f9"
     },
     {
       "path": "results/tables/table_reproduction_summary.csv",
-      "bytes": 964,
-      "sha256": "6af9b5f65ea269eddd9eef9a8a18bfc9616c7368f8cedbc18b8a60844f57b361"
+      "bytes": 955,
+      "sha256": "ac3b7153b360bd8655d2556b159d45015df9c88b1b24f1560c08f1fa1645b10a"
     },
     {
       "path": "scripts/build_component_defense_report.py",
@@ -334,8 +339,8 @@
     },
     {
       "path": "scripts/build_manifest.py",
-      "bytes": 2731,
-      "sha256": "47fce2f3f2728efd2324fe3a710672f5e77537fd87632023899c386dd3accce3"
+      "bytes": 2753,
+      "sha256": "f04353a0c779d2b3ca5ab06df2064dd12ce71705e4040cca763f94cf8f300ecf"
     },
     {
       "path": "scripts/build_nature_eatvul_figure.py",
@@ -414,8 +419,8 @@
     },
     {
       "path": "scripts/export_gate_feature_importance.py",
-      "bytes": 4201,
-      "sha256": "f72fa5ca2f0d25a277b70a103c9afb23e9fd3177f0f6f8bb5e9b6d8565e489d0"
+      "bytes": 4222,
+      "sha256": "df82f9f980041df26904c62a6923944e1b79f020a96795aa9feda30bdebe3694"
     },
     {
       "path": "scripts/extension_jsonl_to_linevul_csv.py",
