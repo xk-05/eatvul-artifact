@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,6 +25,7 @@ INCLUDE_PATTERNS = [
     "pyproject.toml",
     "Makefile",
     "highlights.md",
+    "SUBMISSION_JISA.md",
     ".gitignore",
     ".github/workflows/*.yml",
     "configs/**/*.md",
@@ -47,6 +49,14 @@ EXCLUDE_PARTS = {
 MAX_SIZE = 50 * 1024 * 1024
 
 
+def git_tracked_paths() -> set[str] | None:
+    try:
+        output = subprocess.check_output(["git", "ls-files"], cwd=ROOT, text=True)
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        return None
+    return set(output.splitlines())
+
+
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -63,10 +73,14 @@ def include_file(path: Path) -> bool:
 
 def main() -> int:
     files: dict[str, Path] = {}
+    tracked_paths = git_tracked_paths()
     for pattern in INCLUDE_PATTERNS:
         for path in ROOT.glob(pattern):
+            rel = path.relative_to(ROOT).as_posix()
+            if tracked_paths is not None and rel not in tracked_paths:
+                continue
             if include_file(path):
-                files[path.relative_to(ROOT).as_posix()] = path
+                files[rel] = path
     manifest = {
         "schema": "jisa-eatvul-artifact-manifest-v1",
         "file_count": len(files),

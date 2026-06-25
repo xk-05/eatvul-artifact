@@ -50,11 +50,11 @@ FAMILIES = {
     ],
 }
 
-PAPER_LODO_AVERAGE = {
-    "rare_token": 11.2,
-    "unseen_token": 51.7,
-    "bigram_nll": 14.2,
-    "ast_structure": 22.9,
+EXPECTED_LODO_AVERAGE = {
+    "rare_token": 11.465514530883537,
+    "unseen_token": 52.873029770370906,
+    "bigram_nll": 14.540366125432438,
+    "ast_structure": 21.121089573313114,
 }
 
 
@@ -109,19 +109,20 @@ def main() -> int:
     print(f"Wrote {output_path.relative_to(Path.cwd())}")
 
     mismatches = []
-    for family, expected in PAPER_LODO_AVERAGE.items():
+    for family, expected in EXPECTED_LODO_AVERAGE.items():
         actual = average[family]
-        if abs(actual - expected) > 0.1:
-            mismatches.append(f"{family}: manuscript={expected:.1f}, recomputed={actual:.1f}")
+        if abs(actual - expected) > 1e-9:
+            mismatches.append(f"{family}: recorded_csv={expected:.12f}, recomputed={actual:.12f}")
     if mismatches:
-        print("WARNING: recomputed LODO_average differs from the manuscript Table 6 row:")
+        print("WARNING: recomputed LODO_average differs from the recorded CSV provenance:")
         for item in mismatches:
             print(f"  - {item}")
         print(
-            "The CSV was written for provenance; manuscript values were not changed automatically."
+            "The CSV was written with the recomputed values; update Table 6 only after "
+            "reviewing the provenance change."
         )
     else:
-        print("Table 6 recomputation matches the manuscript row within 0.1 percentage points.")
+        print("Table 6 recomputation matches the recorded CSV provenance.")
     return 0
 
 

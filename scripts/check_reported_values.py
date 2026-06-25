@@ -13,6 +13,19 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 TOLERANCE = 1e-3
+TABLE6_FILE = "results/eatvul_defense/gate_feature_family_importance.csv"
+TABLE6_EXACT_EXPECTED = {
+    "rare_token": 11.465514530883537,
+    "unseen_token": 52.873029770370906,
+    "bigram_nll": 14.540366125432438,
+    "ast_structure": 21.121089573313114,
+}
+TABLE6_ROUNDED_EXPECTED = {
+    "rare_token": 11.5,
+    "unseen_token": 52.9,
+    "bigram_nll": 14.5,
+    "ast_structure": 21.1,
+}
 
 
 @dataclass(frozen=True)
@@ -237,6 +250,42 @@ def check_value(cache: dict[str, pd.DataFrame], check: Check) -> None:
         )
 
 
+def check_table6(cache: dict[str, pd.DataFrame]) -> int:
+    path = ROOT / TABLE6_FILE
+    if not path.exists():
+        raise FileNotFoundError(f"missing source file for Table 6: {TABLE6_FILE}")
+    if TABLE6_FILE not in cache:
+        cache[TABLE6_FILE] = pd.read_csv(path)
+    df = cache[TABLE6_FILE]
+    rows = df.loc[df["split"].astype(str) == "LODO_average"]
+    if len(rows) != 1:
+        raise ValueError(
+            f"{TABLE6_FILE}: expected exactly one row where split=LODO_average, "
+            f"found {len(rows)}"
+        )
+    row = rows.iloc[0]
+    checks_run = 0
+    for column, expected in TABLE6_EXACT_EXPECTED.items():
+        actual = float(row[column])
+        if not math.isclose(actual, expected, rel_tol=0.0, abs_tol=TOLERANCE):
+            raise AssertionError(
+                f"Table 6 mismatch: file={TABLE6_FILE}, row=LODO_average, "
+                f"column={column}, expected={expected:.12f}, actual={actual:.12f}"
+            )
+        checks_run += 1
+
+        rounded_actual = round(actual, 1)
+        rounded_expected = TABLE6_ROUNDED_EXPECTED[column]
+        if not math.isclose(rounded_actual, rounded_expected, rel_tol=0.0, abs_tol=TOLERANCE):
+            raise AssertionError(
+                f"Table 6 rounded manuscript mismatch: file={TABLE6_FILE}, "
+                f"row=LODO_average, column={column}, expected={rounded_expected:.1f}, "
+                f"actual={rounded_actual:.1f}"
+            )
+        checks_run += 1
+    return checks_run
+
+
 def main() -> int:
     checks: list[Check] = []
     checks.extend(table4_checks())
@@ -247,14 +296,16 @@ def main() -> int:
     checks.extend(table11_checks())
 
     cache: dict[str, pd.DataFrame] = {}
+    table6_count = check_table6(cache)
     for check in checks:
         check_value(cache, check)
 
-    print(f"Reported-value check passed: {len(checks)} aggregate values within {TOLERANCE:g}.")
     print(
-        "Table 6 verification skipped because the manuscript row predates a saved "
-        "per-split feature-importance provenance file; run "
-        "scripts/export_gate_feature_importance.py to recompute and compare it."
+        "Reported-value check passed: "
+        f"{len(checks) + table6_count} aggregate values within {TOLERANCE:g}."
+    )
+    print(
+        "Table 6 feature-family LODO_average verified against gate_feature_family_importance.csv."
     )
     return 0
 

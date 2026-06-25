@@ -15,11 +15,12 @@ and `idx`-style fields where available.
 
 ## Required and Optional Data
 
-The aggregate manuscript tables can be audited from the AST-token split files
-under `Code and Dataset/file/data/` plus the stored aggregate result CSV files
-under `results/`. Full reruns of the main TF-IDF/logistic-regression target,
-gate, anomaly-baseline, quarantine, F1-constrained, and diagnostic-deletion
-experiments also read those AST-token split files directly.
+The lightweight aggregate-table audit uses the stored result CSV files under
+`results/` and, for dataset-size and feature-importance checks, the AST-token
+split files under `Code and Dataset/file/data/`. Full reruns of the main
+TF-IDF/logistic-regression target, gate, anomaly-baseline, quarantine,
+F1-constrained, and diagnostic-deletion experiments read those AST-token split
+files directly.
 
 Neural sanity-check reruns may additionally require pretrained CodeBERT or
 other Hugging Face model files and local fine-tuned checkpoints. Those files are
@@ -28,14 +29,25 @@ aggregate CSV values.
 
 ## Redistribution Status
 
-The AST-token files are part of the local EaTVul resource package. The
-repository also contains historical release archives such as `Code and
-Dataset.zip` and `model.zip`. Redistribution permission for the bundled
-third-party datasets, pretrained weights, and cached model artifacts is not
-fully established in this package. Before publishing a public artifact, confirm
-that redistribution is permitted by the original dataset, model, and paper
-licenses. If redistribution is not permitted, remove the affected files from the
-public release and keep only preparation instructions and checksums.
+The AST-token files are part of a local EaTVul resource package. They are
+included in this artifact to support aggregate-table checks and full reruns,
+but their upstream redistribution terms are not established in this package and
+they are not covered by the MIT license. If the archival release cannot confirm
+permission, remove these split files from the public release and provide
+checksum-based preparation instructions instead.
+
+Historical local archives (`Code and Dataset.zip`, `model.zip`), Apple metadata
+files, and EaTVul helper code under `Code and Dataset/file/code/` are not part
+of the tracked public release. Local copies may remain in a reviewer or author
+workspace, but they are ignored to avoid implying that license-unclear archives,
+model packages, or helper code are redistributed under this artifact license.
+
+Redistribution permission for third-party datasets, pretrained weights, cached
+model artifacts, and local source-text stress data is not fully established in
+this package. Before publishing a public artifact, confirm that redistribution
+is permitted by the original dataset, model, project, and paper licenses. If
+redistribution is not permitted, keep only preparation instructions and
+checksums.
 
 See `THIRD_PARTY_DATA.md` for the resource-by-resource inventory.
 
@@ -66,3 +78,8 @@ If the AST-token files or archives must be removed from a public release:
 3. Run `python scripts/eatvul_reproduce.py dataset-summary` and confirm the
    expected split counts.
 4. Run `python scripts/build_manifest.py` to record local checksums.
+
+True inserted spans, source diffs, CFGs, PDGs, and parser-validated source
+contexts are not available in this artifact. The diagnostic deletion tables
+therefore report token-removal proxy metrics rather than source-level repair or
+insertion-span recovery.
