@@ -1,0 +1,17 @@
+name: eatvul
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - numpy
+  - scipy
+  - scikit-learn
+  - pandas
+  - matplotlib
+  - pip
+  - pip:
+      - python-docx
+      - torch
+      - transformers
+      - tensorflow

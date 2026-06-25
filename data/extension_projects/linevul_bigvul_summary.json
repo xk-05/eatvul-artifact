@@ -1,0 +1,72 @@
+[
+  {
+    "project": "chrome",
+    "total": 7670,
+    "train": 5368,
+    "test": 2302,
+    "adv_seed": 106,
+    "train_vul": 247,
+    "test_vul": 106,
+    "evidence_role": "generalization"
+  },
+  {
+    "project": "linux",
+    "total": 4769,
+    "train": 3338,
+    "test": 1431,
+    "adv_seed": 64,
+    "train_vul": 149,
+    "test_vul": 64,
+    "evidence_role": "generalization"
+  },
+  {
+    "project": "android",
+    "total": 858,
+    "train": 599,
+    "test": 259,
+    "adv_seed": 38,
+    "train_vul": 86,
+    "test_vul": 38,
+    "evidence_role": "generalization"
+  },
+  {
+    "project": "tcpdump",
+    "total": 87,
+    "train": 60,
+    "test": 27,
+    "adv_seed": 9,
+    "train_vul": 18,
+    "test_vul": 9,
+    "evidence_role": "small_case"
+  },
+  {
+    "project": "php-src",
+    "total": 152,
+    "train": 105,
+    "test": 47,
+    "adv_seed": 9,
+    "train_vul": 19,
+    "test_vul": 9,
+    "evidence_role": "small_case"
+  },
+  {
+    "project": "imagemagick",
+    "total": 295,
+    "train": 206,
+    "test": 89,
+    "adv_seed": 7,
+    "train_vul": 16,
+    "test_vul": 7,
+    "evidence_role": "small_case"
+  },
+  {
+    "project": "ffmpeg",
+    "total": 185,
+    "train": 129,
+    "test": 56,
+    "adv_seed": 4,
+    "train_vul": 8,
+    "test_vul": 4,
+    "evidence_role": "small_case"
+  }
+]

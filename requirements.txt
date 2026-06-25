@@ -1,0 +1,11 @@
+# Lightweight artifact checks use only the Python standard library.
+# The packages below are required by the experiment and reporting scripts.
+numpy
+scipy
+scikit-learn
+pandas
+matplotlib
+python-docx
+torch
+transformers
+tensorflow

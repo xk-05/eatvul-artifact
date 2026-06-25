@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this artifact, please cite the accompanying JISA manuscript."
+title: "Detection, Not Sanitization: Capability Boundaries of AST-token-only Defenses against EaTVul-style Code Insertion"
+authors:
+  - family-names: "Xie"
+    given-names: "Kang"
+type: software
+version: "0.1-review-artifact"
+date-released: "2026-06-25"
+license: "MIT"
+abstract: "Reproducibility artifact for AST-token-only defensive evaluation against EaTVul-style insertion evasion."

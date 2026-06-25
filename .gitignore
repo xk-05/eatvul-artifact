@@ -1,0 +1,38 @@
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.venv/
+venv/
+.edge-profile/
+.hf_cache/
+.matplotlib/
+.pydeps/
+tmp/
+paper_eatvul_defense_framework/latex_submission/build_artifact_check/
+*.log
+*.aux
+*.out
+*.blg
+*.bbl
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Local models, checkpoints, and heavyweight scratch outputs.
+models/
+model/model/saved_newbap_models/
+results/**/checkpoint-best-acc/
+results/**/*.bin
+*.pt
+*.pth
+
+# Local external checkouts and raw scratch data that need license review.
+external/
+data/linevul_bigvul/*.part
+
+# Keep selected aggregate results and documented artifact files trackable.
+!results/**/*.csv
+!results/**/*.json
+!results/**/*.jsonl
+!results/**/*.txt

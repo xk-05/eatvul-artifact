@@ -1,60 +1,108 @@
-This paper was accepted by USENIX Security '24. The source code and datasets provided are for research use only and not for commercial use.
+# Detection, Not Sanitization: JISA Reproducibility Artifact
 
-# EatVul-Resources
-EaTVul: ChatGPT-based Evasion Attack Against Software Vulnerability Detection
+This repository is a reproducibility artifact for the manuscript
+**Detection, Not Sanitization: Capability Boundaries of AST-token-only Defenses
+against EaTVul-style Code Insertion**.
 
-This paper was accepted by USENIX Security '24. The source code and datasets provided are for research use only and not for commercial use.
+The artifact supports inspection of the manuscript source, bibliography,
+figures, experiment scripts, aggregate result tables, selected CSV/JSON/JSONL
+outputs where available, and the exact limits of reproducibility. It focuses on
+defensive evaluation: review routing, quarantine, residual silent-bypass rate,
+diagnostic deletion tests, public AST-token artifacts, project-coherent
+calibration, and mixed-source stress settings.
 
-## Idea
-Machine learning-as-a-service has been widely applied in software security. However, Adversarial learning has long been a threat for cybersecurity. In the cybersecurity domain, especiaily within the topic of automatic vulnerability detection with deep learning techniques, there is lack of thorough assessment the security
-issues when facing adversarial learning. In this paper, we explored the susceptibility of machine learning/deep neural vulnerability detector to adversarial attacks and developed an effective scheme to generate adversarial code and inject it into vulnerable samples to bypass deep neural detection systems.
+## Included
 
-Our proposed attackinv strategy consists of two main phases: adversarial data generation (①) and adversarial learning (②). And our work are based on the assumption that the adversary has no knowledge of the target model and cannot manipulate the training data. In the first stage, we train a surrogate model based on BiLSTM with an attention mechanism with knowleddge distaillation to approximate the target model. We identify significant non-vulnerable samples using SVM. Then, we retrieve the averaged attention scores from the attention layer to identify the key features that contribute significantly to the prediction. We further utilize chatGPT to generate adversarial data. In the second phase, we utilize a fuzzy genetic algorithm to select the best seed data, which is added to the vulnerable test case, aiming to bypass the machine learning-based software vulnerability detection system.
+- Manuscript source under `paper_eatvul_defense_framework/latex_submission/`.
+- Submission figures under `paper_eatvul_defense_framework/figures_submission/`.
+- Public EaTVul-style AST-token splits under `Code and Dataset/file/data/`.
+- Defensive evaluation scripts under `scripts/`.
+- Aggregate result tables under `results/`.
+- Selected prediction or sanitized-output logs where they are present locally.
+- Reviewer documentation in `ARTIFACT.md`, `REPRODUCIBILITY.md`, `DATA.md`,
+  `MISSING_OBJECTS.md`, and `docs/`.
 
-## About this repository
+## Not Included
 
-The "model" folder contains the Python code for:  
-&emsp;&emsp;1. Loading the targte model -- ori_model.py & ori_model_run.py  
-&emsp;&emsp;2. Train the surrogate model -- surrogate_model.py & surrogate_train.py  
-&emsp;&emsp;3. Obtain the support vectors -- function get_support_vector_idx (in ori_model_run.py)  
-&emsp;&emsp;4. Get the key tokens from the support vectors -- key_token_capture.py
+This repository does not provide true inserted spans, source diffs,
+source-to-token mappings, CFGs, PDGs, compiler-validated adaptive snippets, or
+complete paired prediction logs for all defense layers. These missing objects
+are part of the paper's capability-boundary claim: whole-sample detection and
+quarantine can be evaluated from AST-token sequences, while reliable
+source-level sanitization requires richer program context.
 
-To fine-tune the target model (in this case, CodeBERT works as an example.)via the following command:
+This artifact does not add attack-generation prompts or new offensive
+attack-generation tooling.
+
+## Quick Start
+
+```powershell
+python scripts/check_artifact.py
+python scripts/eatvul_reproduce.py dataset-summary
+python scripts/build_manifest.py
 ```
-python ori_model_run.py\
-  --output_dir=./saved_newbap_models/model\
-  --model_type=roberta \
-  --tokenizer_name=microsoft/codebert-base \
-  --model_name_or_path=microsoft/codebert-base \
-  --do_train \
-  --train_data_file=./example_train.json \
-  --eval_data_file=./example_test.json \
-  --test_data_file=./example_test.json \
-  --epoch 10 \
-  --block_size 400 \
-  --train_batch_size 16 \
-  --eval_batch_size 32 \
-  --learning_rate 2e-5 \
-  --max_grad_norm 1.0 \
-  --evaluate_during_training \
-  --seed 123456 2>&1 | tee train.log
-```  
-To train the surrogate model with knowledge distillation, please run the follwoing commands:
+
+On systems with `make`:
+
+```bash
+make check
+make smoke
+make tables
+make figures
+make manifest
 ```
-python surrogate_train.py
+
+## Environment
+
+The lightweight artifact checks require Python 3.9+ and only the standard
+library. Full experiment reruns use the local Conda environment named `eatvul`
+with `numpy`, `scipy`, `scikit-learn`, `pandas`, and optional neural-model
+dependencies. See `requirements.txt` and `environment.yml`.
+
+## Reproduce Aggregate Tables
+
+The main manuscript tables are backed by the result files listed in
+`docs/TABLE_REPRODUCTION_MAP.md`. For a fast audit, run:
+
+```powershell
+python scripts/check_artifact.py
+python scripts/make_tables.py
 ```
-To evaluate the performance of the surrogate model, run the following commands:
+
+Representative full reruns use the original scripts, for example:
+
+```powershell
+conda run -n eatvul python scripts/eatvul_defense.py --leave-one-dataset-out --calibrate-clean-fpr 0.1
+conda run -n eatvul python scripts/eatvul_quarantine_defense.py --clean-block-budget 0.1
+conda run -n eatvul python scripts/eatvul_f1_constrained_defense.py --max-clean-f1-drop 0.03
 ```
-python surrogate_test.py
+
+The diagnostic deletion scripts are slower because they delete candidate
+windows or components and rerun the target detector.
+
+## Compile the Paper
+
+From the repository root:
+
+```powershell
+$env:PYTHONUTF8='1'
+python 'C:/Users/Administrator/.codex/plugins/cache/openai-bundled/latex/0.2.2/scripts/compile_latex.py' `
+  'D:/EatVul-Resources/paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex' `
+  --compiler tectonic `
+  --output-directory 'D:/EatVul-Resources/paper_eatvul_defense_framework/latex_submission/build_citation_bib_check' `
+  --json
 ```
-The "data" folder conatins the data samples used in this paper to validate the findings, where "xxxxx_train.json" is the train dataset and "xxxxx_test.json" works as the test dataset. And the “xxxxx_test_ADV.json” is the testcase set with adversarial code snippets (with code snippet size of 1).  
 
-The "code" folder contains two functional modules:  
-&emsp;&emsp;1. Generate adversarial code snippets with chatGPT. -- adversarial_code_generation.py  
-&emsp;&emsp;2. Use FGA to select the seed adversarial samples. -- fga_selection.py  
+If that bundled compiler is not available, use a local LaTeX installation on
+`paper_eatvul_defense_framework/latex_submission/main.tex`.
 
+## Responsible Use
 
-Remark: The data file suffixed with ‘train’ is used for training the model, and the file suffixed with ‘adv’ is used as the adversarial file.
-Python version: Python3.7
+This artifact is for defensive evaluation and reproducibility. Do not use it to
+generate new evasive code snippets or to attack deployed vulnerability-detection
+services.
 
+## Citation
 
+Use `CITATION.cff` for software citation metadata. Update the DOI, URL, and
+publication metadata after the JISA submission receives final identifiers.

@@ -1,0 +1,5 @@
+project,victim,attack,attack_label,clean_n,adv_n,clean_accuracy,clean_f1,defended_clean_f1,baseline_asr,defended_asr,asr_reduction,adv_bypassed,gate_detected_bypasses,gate_recall_on_bypassed,clean_non_vul_fpr
+linux,official_linevul,project_mimicry,Project mimicry,1431,64,0.9979035639412998,0.9763779527559056,0.4714828897338403,0.953125,0.671875,0.28125,61,18,0.29508196721311475,0.10021945866861741
+linux,official_linevul,fragmented,Fragmented insertion,1431,64,0.9979035639412998,0.9763779527559056,0.4714828897338403,0.9375,0.625,0.3125,60,20,0.3333333333333333,0.10021945866861741
+ffmpeg,official_linevul,project_mimicry,Project mimicry,56,4,1.0,1.0,0.5714285714285714,1.0,0.75,0.25,4,1,0.25,0.11538461538461539
+ffmpeg,official_linevul,fragmented,Fragmented insertion,56,4,1.0,1.0,0.5714285714285714,1.0,0.75,0.25,4,1,0.25,0.11538461538461539

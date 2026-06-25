@@ -1,0 +1,57 @@
+# Reproducibility Guide
+
+## What Can Be Reproduced
+
+The main numerical claims in the AST-token defense-boundary manuscript can be
+audited from the files in this repository:
+
+- dataset sizes for ASTERISK, OPENSSL, CWE119, and CWE399;
+- sample-level gate results under hard override;
+- aggregate-count uncertainty checks;
+- feature-family contribution summary;
+- anomaly-baseline comparison;
+- bounded CodeBERT/BiLSTM sanity-check rows where result files are present;
+- fixed-window diagnostic deletion rows;
+- AST-token component diagnostic deletion rows;
+- quarantine and F1-constrained deployment-policy rows.
+
+## What Is Aggregate-File Reproducible
+
+Some tables are reproduced from aggregate CSVs because complete paired
+prediction logs are not available for every defense layer. This is intentional
+and documented in the manuscript.
+
+## Smoke Commands
+
+```bash
+python scripts/check_artifact.py
+python scripts/eatvul_reproduce.py dataset-summary
+```
+
+## Representative Rerun Commands
+
+```bash
+conda run -n eatvul python scripts/eatvul_defense.py --leave-one-dataset-out --calibrate-clean-fpr 0.1
+conda run -n eatvul python scripts/eatvul_anomaly_baselines.py
+conda run -n eatvul python scripts/eatvul_quarantine_defense.py --clean-block-budget 0.1
+conda run -n eatvul python scripts/eatvul_f1_constrained_defense.py --max-clean-f1-drop 0.03
+conda run -n eatvul python scripts/eatvul_localize_sanitize.py --datasets asterisk openssl cwe119 cwe399 --calibrate-window-fpr 0.01 --window 1536 --stride 768 --max-spans 2 --candidate-windows 32 --min-prob-gain 0.005 --gate-on-benign
+conda run -n eatvul python scripts/eatvul_component_sanitize.py --datasets asterisk openssl cwe119 cwe399 --calibrate-component-fpr 0.01 --max-cluster 3 --max-spans 1 --candidate-components 16 --min-prob-gain 0.001 --gate-on-benign --calibration-items 200
+```
+
+## Paper Compilation
+
+The canonical source is:
+
+```text
+paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex
+```
+
+The compatibility entry point is:
+
+```text
+paper_eatvul_defense_framework/latex_submission/main.tex
+```
+
+Compile with the bundled Tectonic helper when available, or use a local LaTeX
+installation.

@@ -1,0 +1,2 @@
+dataset,victim,train_n,clean_test_n,adv_n,clean_acc,clean_f1,adv_bypassed,adv_asr,gate_threshold,gate_recall_all_adv,gate_recall_on_neural_bypassed,clean_non_vul_fpr,clean_vul_gate_rate,mean_adv_gate_score,mean_clean_non_vul_gate_score
+openssl,CodeBERT pilot,160,77,50,0.6623376623376623,0.675,41,0.82,0.9257729807007303,0.56,0.5609756097560976,0.1,0.0,0.9087260792707028,0.7544840363543915
