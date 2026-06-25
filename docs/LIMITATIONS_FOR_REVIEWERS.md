@@ -18,6 +18,12 @@ This artifact is intentionally bounded.
   baseline or attack-generation stage.
 - The artifact does not include complete paired prediction logs for all defense
   layers.
+- Redistribution permissions for bundled third-party data archives, model
+  archives, pretrained weights, and cached checkpoints are not fully established
+  in this package; see `THIRD_PARTY_DATA.md`.
+- Table 6 now has an executable feature-family export script, but the original
+  manuscript row predates a saved per-split provenance file. The script writes
+  a recomputed CSV and warns if it differs from the reported row.
 
 ## Missing Evidence
 

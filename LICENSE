@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2024 Kevin
+Copyright (c) Kang Xie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+Scope clarification: this MIT license applies only to original code, scripts,
+manuscript source, figures, and documentation authored for this artifact. It
+does not grant rights to third-party datasets, pretrained models, model
+checkpoints, EaTVul artifacts, LineVul/Big-Vul resources, CodeBERT or
+GraphCodeBERT weights, Hugging Face-hosted model files, or other external data.
+Those resources remain governed by their respective upstream licenses and
+terms. See THIRD_PARTY_DATA.md for the data/model inventory and redistribution
+status.

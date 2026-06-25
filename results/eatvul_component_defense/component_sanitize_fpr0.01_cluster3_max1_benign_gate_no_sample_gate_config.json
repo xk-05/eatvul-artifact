@@ -1,0 +1,22 @@
+{
+  "script": "scripts/eatvul_component_sanitize.py",
+  "command": "conda run -n eatvul python scripts/eatvul_component_sanitize.py --datasets asterisk openssl cwe119 cwe399 --calibrate-component-fpr 0.01 --max-cluster 3 --max-spans 1 --candidate-components 16 --min-prob-gain 0.001 --gate-on-benign --calibration-items 200",
+  "random_seed": 7,
+  "window_size": null,
+  "stride": null,
+  "clean_fpr_threshold": 0.01,
+  "max_windows": null,
+  "max_spans": 1,
+  "max_cluster_size": 3,
+  "candidate_windows": null,
+  "candidate_components": 16,
+  "calibration_items": 200,
+  "min_prob_gain": 0.001,
+  "benign_only_gating": true,
+  "sample_level_gate_used": false,
+  "target_model": "TF-IDF token/token-bigram logistic regression trained per dataset",
+  "datasets": ["asterisk", "openssl", "cwe119", "cwe399"],
+  "reported_tables": ["Table 9", "Table 15"],
+  "created_or_recorded_date": "2026-06-25",
+  "commit": "not recorded in original run; sidecar added during artifact consistency revision"
+}

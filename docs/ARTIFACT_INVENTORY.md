@@ -2,8 +2,8 @@
 
 ## Repository Context
 
-- Branch inspected: `fix-python-errors`.
-- Remote inspected: `https://github.com/xk-05/EatVul-Resources.git`.
+- Branch inspected: `artifact-release`.
+- Remote inspected: `https://github.com/xk-05/eatvul-jisa-artifact.git`.
 - Important anonymity note: pushing to this personal remote may deanonymize a
   double-blind submission.
 
@@ -55,6 +55,8 @@ Expected files:
 - `scripts/make_tables.py`
 - `scripts/make_figures.py`
 - `scripts/check_artifact.py`
+- `scripts/check_reported_values.py`
+- `scripts/export_gate_feature_importance.py`
 - `scripts/build_manifest.py`
 
 ## Public AST-token Splits
@@ -73,12 +75,24 @@ Expected datasets:
 ## Aggregate Result Tables
 
 - `results/eatvul_defense/lodo_calib_fpr_0.1_results.csv`
+- `results/eatvul_defense/gate_feature_family_importance.csv`
 - `results/eatvul_anomaly_baselines/anomaly_baseline_results.csv`
 - `results/neural_target_gate/neural_target_gate_results.csv`
 - `results/eatvul_local_defense/localize_sanitize_w1536_s768_fpr0.01_max2_guided_benign_gate_no_sample_gate_results.csv`
 - `results/eatvul_component_defense/component_sanitize_fpr0.01_cluster3_max1_benign_gate_no_sample_gate_results.csv`
 - `results/eatvul_quarantine_defense/quarantine_cleanblock0.1_benignonly_results.csv`
 - `results/eatvul_f1_constrained_defense/f1_constrained_maxf1drop0.03_benignonly_results.csv`
+
+## Configuration Sidecars
+
+- `results/eatvul_local_defense/localize_sanitize_w1536_s768_fpr0.01_max2_guided_benign_gate_no_sample_gate_config.json`
+- `results/eatvul_component_defense/component_sanitize_fpr0.01_cluster3_max1_benign_gate_no_sample_gate_config.json`
+
+## Third-party Data and License Notes
+
+- `THIRD_PARTY_DATA.md` records bundled and referenced data/model resources,
+  known checksums, redistribution status, and required reviewer/user action
+  where permissions are unknown.
 
 ## Selected Per-sample or Diagnostic Logs
 

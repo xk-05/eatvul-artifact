@@ -8,6 +8,15 @@ python scripts/check_artifact.py
 
 Expected: exit code 0 and a summary ending with `Artifact check passed`.
 
+Then verify that manuscript-reported aggregate values match the result CSVs:
+
+```bash
+python scripts/check_reported_values.py
+```
+
+Expected: exit code 0 and a summary beginning with
+`Reported-value check passed`.
+
 ## 2. Verify Dataset Counts
 
 ```bash
@@ -32,6 +41,21 @@ Expected output:
 ```text
 results/tables/table_reproduction_summary.csv
 ```
+
+## 3b. Export Table 6 Feature-family Provenance
+
+```bash
+python scripts/export_gate_feature_importance.py
+```
+
+Expected output:
+
+```text
+results/eatvul_defense/gate_feature_family_importance.csv
+```
+
+If the recomputed LODO average differs from the manuscript Table 6 row, the
+script prints a warning and leaves manuscript values unchanged.
 
 ## 4. Rebuild Lightweight Figure Inventory
 
@@ -73,6 +97,10 @@ Diagnostic deletion reruns are slower:
 conda run -n eatvul python scripts/eatvul_localize_sanitize.py --datasets asterisk openssl cwe119 cwe399 --calibrate-window-fpr 0.01 --window 1536 --stride 768 --max-spans 2 --candidate-windows 32 --min-prob-gain 0.005 --gate-on-benign
 conda run -n eatvul python scripts/eatvul_component_sanitize.py --datasets asterisk openssl cwe119 cwe399 --calibrate-component-fpr 0.01 --max-cluster 3 --max-spans 1 --candidate-components 16 --min-prob-gain 0.001 --gate-on-benign --calibration-items 200
 ```
+
+The fixed-window Table 9/Table 15 row uses `min_prob_gain = 0.005`; the
+component Table 9/Table 15 row uses `min_prob_gain = 0.001`. Use the sidecar
+configuration JSONs beside the reported CSVs to audit the exact settings.
 
 ## 7. Compile Manuscript
 

@@ -26,10 +26,13 @@ results/**/checkpoint-best-acc/
 results/**/*.bin
 *.pt
 *.pth
+*.ckpt
+*.safetensors
 
 # Local external checkouts and raw scratch data that need license review.
 external/
 data/linevul_bigvul/*.part
+*.zip
 
 # Keep selected aggregate results and documented artifact files trackable.
 !results/**/*.csv

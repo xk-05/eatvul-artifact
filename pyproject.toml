@@ -1,0 +1,12 @@
+[tool.black]
+line-length = 100
+target-version = ["py39"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+known_first_party = ["eatvul_defense", "eatvul_localize_sanitize", "eatvul_component_sanitize"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

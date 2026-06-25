@@ -1,5 +1,6 @@
 table,description,source_file,exists,rows
 Table 4,Sample-level gate,results/eatvul_defense/lodo_calib_fpr_0.1_results.csv,true,4
+Table 6,Gate feature-family contribution,results/eatvul_defense/gate_feature_family_importance.csv,true,5
 Table 7,Anomaly baselines,results/eatvul_anomaly_baselines/anomaly_baseline_results.csv,true,10
 Table 8,Neural sanity check,results/neural_target_gate/neural_target_gate_results.csv,true,4
 Table 9,Fixed-window deletion,results/eatvul_local_defense/localize_sanitize_w1536_s768_fpr0.01_max2_guided_benign_gate_no_sample_gate_results.csv,true,4

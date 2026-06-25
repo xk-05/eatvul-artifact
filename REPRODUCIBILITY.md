@@ -25,8 +25,13 @@ and documented in the manuscript.
 
 ```bash
 python scripts/check_artifact.py
+python scripts/check_reported_values.py
 python scripts/eatvul_reproduce.py dataset-summary
 ```
+
+The original experiment environment did not fully lock exact historical package
+versions. This release therefore records a Python 3.9 Conda environment with
+bounded dependency ranges in `environment.yml` and `requirements.txt`.
 
 ## Representative Rerun Commands
 
@@ -37,7 +42,13 @@ conda run -n eatvul python scripts/eatvul_quarantine_defense.py --clean-block-bu
 conda run -n eatvul python scripts/eatvul_f1_constrained_defense.py --max-clean-f1-drop 0.03
 conda run -n eatvul python scripts/eatvul_localize_sanitize.py --datasets asterisk openssl cwe119 cwe399 --calibrate-window-fpr 0.01 --window 1536 --stride 768 --max-spans 2 --candidate-windows 32 --min-prob-gain 0.005 --gate-on-benign
 conda run -n eatvul python scripts/eatvul_component_sanitize.py --datasets asterisk openssl cwe119 cwe399 --calibrate-component-fpr 0.01 --max-cluster 3 --max-spans 1 --candidate-components 16 --min-prob-gain 0.001 --gate-on-benign --calibration-items 200
+conda run -n eatvul python scripts/export_gate_feature_importance.py
 ```
+
+For the diagnostic deletion rows, the reported fixed-window setting uses
+`min_prob_gain = 0.005`, while the reported AST-token component setting uses
+`min_prob_gain = 0.001`. The sidecar config JSONs in the corresponding
+`results/` directories record these values.
 
 ## Paper Compilation
 

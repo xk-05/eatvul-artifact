@@ -12,7 +12,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Install value-check dependency
+        run: python -m pip install "pandas>=1.3,<3.0"
       - name: Run artifact check
         run: python scripts/check_artifact.py
+      - name: Run reported-value check
+        run: python scripts/check_reported_values.py
       - name: Run smoke check
         run: make smoke

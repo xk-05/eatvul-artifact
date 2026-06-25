@@ -26,6 +26,8 @@ original EaTVul attack-generation artifact or external victim-model checkpoint.
   generation.
 - `results/`: aggregate CSVs and selected CSV/JSON/JSONL outputs.
 - `docs/`: reviewer-facing inventory, runbook, table map, and limitations.
+- `THIRD_PARTY_DATA.md`: inventory of bundled or referenced third-party data,
+  archives, pretrained weights, checkpoints, and redistribution status.
 
 ## Requirements
 
@@ -33,6 +35,7 @@ Lightweight checks:
 
 ```bash
 python scripts/check_artifact.py
+python scripts/check_reported_values.py
 python scripts/eatvul_reproduce.py dataset-summary
 ```
 
@@ -68,6 +71,11 @@ available.
 
 - `scripts/check_artifact.py`: exits with status 0 when required files and
   result columns are present.
+- `scripts/check_reported_values.py`: exits with status 0 when the reported
+  aggregate table values match result CSVs within `1e-3`.
+- `scripts/export_gate_feature_importance.py`: writes
+  `results/eatvul_defense/gate_feature_family_importance.csv` for Table 6
+  provenance and warns if it differs from the manuscript row.
 - `scripts/make_tables.py`: writes a lightweight summary under
   `results/tables/table_reproduction_summary.csv`.
 - `scripts/make_figures.py`: verifies expected manuscript figures and writes

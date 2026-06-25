@@ -7,7 +7,6 @@ import hashlib
 import json
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "artifact_manifest.json"
 
@@ -16,11 +15,15 @@ INCLUDE_PATTERNS = [
     "ARTIFACT.md",
     "REPRODUCIBILITY.md",
     "DATA.md",
+    "THIRD_PARTY_DATA.md",
     "MISSING_OBJECTS.md",
     "CITATION.cff",
+    "LICENSE",
     "requirements.txt",
     "environment.yml",
+    "pyproject.toml",
     "Makefile",
+    "highlights.md",
     ".gitignore",
     ".github/workflows/*.yml",
     "configs/**/*.md",
@@ -29,7 +32,9 @@ INCLUDE_PATTERNS = [
     "paper_eatvul_defense_framework/latex_submission/references.bib",
     "paper_eatvul_defense_framework/figures_submission/*.png",
     "scripts/*.py",
+    "tests/*.py",
     "results/**/*.csv",
+    "results/**/*_config.json",
     "results/**/*.txt",
     "Code and Dataset/file/data/*.json",
 ]

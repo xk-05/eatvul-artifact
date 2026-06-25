@@ -45,8 +45,11 @@ This repository includes:
 - aggregate result tables under `results/`;
 - selected prediction or sanitized-output logs where available;
 - reviewer documentation in `ARTIFACT.md`, `REPRODUCIBILITY.md`, `DATA.md`,
-  `MISSING_OBJECTS.md`, and `docs/`;
+  `MISSING_OBJECTS.md`, `THIRD_PARTY_DATA.md`, and `docs/`;
 - a lightweight artifact validator in `scripts/check_artifact.py`;
+- a reported-value checker in `scripts/check_reported_values.py`;
+- a Table 6 feature-family export script in
+  `scripts/export_gate_feature_importance.py`;
 - a SHA256 manifest generator in `scripts/build_manifest.py`.
 
 This repository does not add attack-generation prompts or new offensive
@@ -144,7 +147,9 @@ Artifact check passed
 ### Full experiment environment
 
 The original local reruns used a Conda environment named `eatvul`. The supplied
-`environment.yml` records the expected packages:
+`environment.yml` records the release environment. Exact historical package
+versions were not fully locked in the original experiment logs; this artifact
+therefore uses bounded dependencies for reproducible checks and reruns:
 
 ```bash
 conda env create -f environment.yml
@@ -168,7 +173,9 @@ manuscript exist with the expected columns.
 
 ```bash
 python scripts/check_artifact.py
+python scripts/check_reported_values.py
 python scripts/eatvul_reproduce.py dataset-summary
+python scripts/export_gate_feature_importance.py
 python scripts/make_tables.py
 python scripts/make_figures.py
 python scripts/build_manifest.py
@@ -178,7 +185,9 @@ On systems with `make`:
 
 ```bash
 make check
+make reported-values
 make smoke
+make feature-importance
 make tables
 make figures
 make manifest
@@ -211,13 +220,36 @@ What this checks:
 Expected output:
 
 ```text
-Required files: 16 OK
+Required files: 21 OK
 Result files: 7 OK
+Config sidecars: 2 OK
 Dataset split counts: 4 OK
 Missing-object documentation: OK
 Tracked-file hygiene: OK
 Artifact check passed
 ```
+
+### Step 1b: Check manuscript-reported aggregate values
+
+Command:
+
+```bash
+python scripts/check_reported_values.py
+```
+
+What this checks:
+
+- Table 4 sample-level gate values;
+- Table 7 anomaly-baseline values;
+- Table 8 CodeBERT bounded sanity-check values;
+- Table 9 diagnostic deletion values;
+- Table 10 quarantine values;
+- Table 11 F1-constrained hard-override values;
+- Table 15 token-modification proxy values.
+
+The checker reads existing aggregate CSV files and fails with the source file,
+dataset, method, column, expected value, and actual value if any reported value
+differs by more than `1e-3`.
 
 ### Step 2: Verify the public AST-token split sizes
 
@@ -263,6 +295,27 @@ results/tables/table_reproduction_summary.csv
 
 This file records which aggregate CSVs back the main manuscript tables and how
 many rows each source file contains.
+
+### Step 3b: Export Table 6 feature-family provenance
+
+Command:
+
+```bash
+python scripts/export_gate_feature_importance.py
+```
+
+Expected output file:
+
+```text
+results/eatvul_defense/gate_feature_family_importance.csv
+```
+
+This script retrains the leave-one-dataset-out random-forest gate using the same
+feature extraction path as `scripts/eatvul_defense.py`, groups selected scalar
+feature importances into rare-token, unseen-token, bigram-NLL, and AST-structure
+families, and normalizes those four families to 100%. If the recomputed LODO
+average differs from the manuscript Table 6 row, the script writes the CSV and
+prints a warning rather than changing the manuscript silently.
 
 ### Step 4: Rebuild the figure inventory
 
@@ -319,6 +372,7 @@ The most important aggregate sources are:
 | Table 2: dataset sizes | `Code and Dataset/file/data/*_ast_*.json` |
 | Table 4: sample-level gate | `results/eatvul_defense/lodo_calib_fpr_0.1_results.csv` |
 | Table 5: aggregate-count uncertainty checks | `results/eatvul_defense/lodo_calib_fpr_0.1_results.csv` |
+| Table 6: gate feature-family contribution | `results/eatvul_defense/gate_feature_family_importance.csv` |
 | Table 7: anomaly baselines | `results/eatvul_anomaly_baselines/anomaly_baseline_results.csv` |
 | Table 8: neural sanity check | `results/neural_target_gate/neural_target_gate_results.csv` |
 | Table 9: fixed-window deletion | `results/eatvul_local_defense/localize_sanitize_w1536_s768_fpr0.01_max2_guided_benign_gate_no_sample_gate_results.csv` |
@@ -406,6 +460,12 @@ Expected output file:
 results/eatvul_local_defense/localize_sanitize_w1536_s768_fpr0.01_max2_guided_benign_gate_no_sample_gate_results.csv
 ```
 
+Configuration sidecar:
+
+```text
+results/eatvul_local_defense/localize_sanitize_w1536_s768_fpr0.01_max2_guided_benign_gate_no_sample_gate_config.json
+```
+
 This is a diagnostic deletion test. It deletes suspicious AST-token windows and
 reruns the target detector. It is not a verified source-level sanitizer.
 
@@ -423,8 +483,19 @@ Expected output file:
 results/eatvul_component_defense/component_sanitize_fpr0.01_cluster3_max1_benign_gate_no_sample_gate_results.csv
 ```
 
+Configuration sidecar:
+
+```text
+results/eatvul_component_defense/component_sanitize_fpr0.01_cluster3_max1_benign_gate_no_sample_gate_config.json
+```
+
 This is also a diagnostic boundary test. It uses approximate AST-token
 components, not source spans, CFG regions, or PDG slices.
+
+The reported fixed-window setting uses `min_prob_gain = 0.005`; the reported
+AST-token component setting uses `min_prob_gain = 0.001`. The component script's
+default may differ from the reported command, so use the command and sidecar
+above when reproducing Table 9 and Table 15.
 
 ### RQ6: Quarantine policy
 
@@ -522,6 +593,7 @@ After the quick reproduction path, these files should exist:
 
 ```text
 artifact_manifest.json
+results/eatvul_defense/gate_feature_family_importance.csv
 results/tables/table_reproduction_summary.csv
 results/figures/figure_inventory.csv
 ```
@@ -530,6 +602,12 @@ The artifact check should end with:
 
 ```text
 Artifact check passed
+```
+
+The reported-value check should begin with:
+
+```text
+Reported-value check passed
 ```
 
 The dataset-summary command should report the split sizes listed in
@@ -543,7 +621,9 @@ Run the Python commands directly:
 
 ```bash
 python scripts/check_artifact.py
+python scripts/check_reported_values.py
 python scripts/eatvul_reproduce.py dataset-summary
+python scripts/export_gate_feature_importance.py
 python scripts/make_tables.py
 python scripts/make_figures.py
 python scripts/build_manifest.py
@@ -572,6 +652,13 @@ and `tensorflow`.
 The experiment scripts write to their documented `results/` paths. If you want
 to compare a fresh run against the stored artifact values, copy the existing CSV
 first or run in a separate working tree.
+
+### Third-party data and model permissions
+
+See `THIRD_PARTY_DATA.md`. The MIT license covers the artifact's original code
+and documentation only. Dataset archives, model archives, pretrained weights,
+and cached checkpoints may require upstream permission review before public
+redistribution.
 
 ### GitHub warns about large files
 

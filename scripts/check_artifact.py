@@ -4,10 +4,10 @@
 from __future__ import annotations
 
 import csv
+import json
 import subprocess
 import sys
 from pathlib import Path
-
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -16,19 +16,39 @@ REQUIRED_FILES = [
     "ARTIFACT.md",
     "REPRODUCIBILITY.md",
     "DATA.md",
+    "THIRD_PARTY_DATA.md",
     "MISSING_OBJECTS.md",
     "CITATION.cff",
     "LICENSE",
     "requirements.txt",
     "environment.yml",
+    "pyproject.toml",
     "Makefile",
     "docs/ARTIFACT_INVENTORY.md",
     "docs/TABLE_REPRODUCTION_MAP.md",
     "docs/RUNBOOK.md",
     "docs/LIMITATIONS_FOR_REVIEWERS.md",
+    "scripts/check_reported_values.py",
+    "scripts/export_gate_feature_importance.py",
     "paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex",
     "paper_eatvul_defense_framework/latex_submission/references.bib",
+    "highlights.md",
 ]
+
+CONFIG_FILES = {
+    "results/eatvul_local_defense/localize_sanitize_w1536_s768_fpr0.01_max2_guided_benign_gate_no_sample_gate_config.json": {
+        "script": "scripts/eatvul_localize_sanitize.py",
+        "min_prob_gain": 0.005,
+        "benign_only_gating": True,
+        "sample_level_gate_used": False,
+    },
+    "results/eatvul_component_defense/component_sanitize_fpr0.01_cluster3_max1_benign_gate_no_sample_gate_config.json": {
+        "script": "scripts/eatvul_component_sanitize.py",
+        "min_prob_gain": 0.001,
+        "benign_only_gating": True,
+        "sample_level_gate_used": False,
+    },
+}
 
 RESULT_COLUMNS = {
     "results/eatvul_defense/lodo_calib_fpr_0.1_results.csv": {
@@ -147,6 +167,21 @@ def check_result_columns() -> None:
     print(f"Result files: {len(RESULT_COLUMNS)} OK")
 
 
+def check_config_sidecars() -> None:
+    for file_name, expected in CONFIG_FILES.items():
+        path = ROOT / file_name
+        if not path.exists():
+            fail(f"missing config sidecar: {file_name}")
+        try:
+            config = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            fail(f"{file_name} is not valid JSON: {exc}")
+        for key, value in expected.items():
+            if config.get(key) != value:
+                fail(f"{file_name} has {key}={config.get(key)!r}, expected {value!r}")
+    print(f"Config sidecars: {len(CONFIG_FILES)} OK")
+
+
 def count_jsonl(path: Path) -> int:
     with path.open(encoding="utf-8") as handle:
         return sum(1 for line in handle if line.strip())
@@ -210,6 +245,7 @@ def check_tracked_file_hygiene() -> None:
 def main() -> int:
     check_required_files()
     check_result_columns()
+    check_config_sidecars()
     check_data_splits()
     check_missing_objects_doc()
     check_tracked_file_hygiene()
