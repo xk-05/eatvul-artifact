@@ -1,8 +1,18 @@
-.PHONY: check reported-values feature-importance smoke tables figures paper manifest
+.PHONY: check verify text-integrity compile artifact reported-values feature-importance dataset-summary smoke tables figures paper manifest
 
 PYTHON ?= python
 
-check:
+check: text-integrity compile reported-values smoke
+
+verify: check feature-importance
+
+text-integrity:
+	$(PYTHON) scripts/check_text_integrity.py
+
+compile:
+	$(PYTHON) -m compileall scripts
+
+artifact:
 	$(PYTHON) scripts/check_artifact.py
 
 reported-values:
@@ -11,8 +21,10 @@ reported-values:
 feature-importance:
 	$(PYTHON) scripts/export_gate_feature_importance.py
 
-smoke: check
+dataset-summary:
 	$(PYTHON) scripts/eatvul_reproduce.py dataset-summary
+
+smoke: artifact dataset-summary
 
 tables:
 	$(PYTHON) scripts/make_tables.py

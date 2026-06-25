@@ -61,10 +61,14 @@ remains a limitation and future-work item.
 Run from the repository root:
 
 ```bash
+python scripts/check_text_integrity.py
+python -m compileall scripts
 python scripts/check_artifact.py
 python scripts/check_reported_values.py
 python scripts/export_gate_feature_importance.py
-python -m compileall scripts
+python scripts/eatvul_reproduce.py dataset-summary
+make check
+make verify
 ```
 
 Optional hygiene checks, when available:

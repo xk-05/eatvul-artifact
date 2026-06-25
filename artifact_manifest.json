@@ -1,6 +1,6 @@
 {
   "schema": "jisa-eatvul-artifact-manifest-v1",
-  "file_count": 95,
+  "file_count": 96,
   "files": [
     {
       "path": ".gitattributes",
@@ -19,8 +19,8 @@
     },
     {
       "path": "ARTIFACT.md",
-      "bytes": 3411,
-      "sha256": "436e295407ceab8db0ee087bf517a123d134867ccd97cea8b2034411bbec139e"
+      "bytes": 3675,
+      "sha256": "79bea244d4a533fe6ff44438513bde85ccd6f3f978a20bafb26605aec81bc2bd"
     },
     {
       "path": "CITATION.cff",
@@ -99,23 +99,23 @@
     },
     {
       "path": "Makefile",
-      "bytes": 570,
-      "sha256": "1abbb6cb5eeab466253f4b8543b55b0d46e83eba3390429393bf9233ef1a43fd"
+      "bytes": 855,
+      "sha256": "577721a9b775ce7fd433a2727c8ff75971889cccf2c4e62733d2ea7940b68798"
     },
     {
       "path": "README.md",
-      "bytes": 19806,
-      "sha256": "9514dd6d6c417c4c1f01fb133f390bb8a2f0b099e907a5a671c2c6544a3f8767"
+      "bytes": 20859,
+      "sha256": "7f7eb63d7e530b070f91e1af21a4532d9d588007800ae91d001d9ba933cf71fb"
     },
     {
       "path": "REPRODUCIBILITY.md",
-      "bytes": 2785,
-      "sha256": "95d02cd0f1d5b294d96c747774a7132bb5e5292eefca23a2bf732287f1584247"
+      "bytes": 2853,
+      "sha256": "556c7e5b495cd25fb8731f84de2420f367ab117a02131e43bc99e91b500988f3"
     },
     {
       "path": "SUBMISSION_JISA.md",
-      "bytes": 3359,
-      "sha256": "ef2f7da3055041f3d0a79af50a590b9028c59e0e842bea6eae2214a4ebb1d01f"
+      "bytes": 3472,
+      "sha256": "2449996484473380f2afbfeb1ba96f42d2665eb65864f91d97b0189e660f075d"
     },
     {
       "path": "THIRD_PARTY_DATA.md",
@@ -154,8 +154,8 @@
     },
     {
       "path": "docs/RUNBOOK.md",
-      "bytes": 2765,
-      "sha256": "3c4d3a5f963f407091c29facb5f7563082caa7f13b836efa1fad558c1c5daa36"
+      "bytes": 3036,
+      "sha256": "88fb397d185b27e80db9e3db84982b478a79969fbd22b5fcc42e6eebd3180eaf"
     },
     {
       "path": "docs/TABLE_REPRODUCTION_MAP.md",
@@ -339,8 +339,8 @@
     },
     {
       "path": "scripts/build_manifest.py",
-      "bytes": 2753,
-      "sha256": "f04353a0c779d2b3ca5ab06df2064dd12ce71705e4040cca763f94cf8f300ecf"
+      "bytes": 2803,
+      "sha256": "218e94fa154a835b1229bbae758c1989012106b1b124de9674fc55a784dbbcff"
     },
     {
       "path": "scripts/build_nature_eatvul_figure.py",
@@ -361,6 +361,11 @@
       "path": "scripts/check_reported_values.py",
       "bytes": 11682,
       "sha256": "36a09f9231ff67c0467a842ea53fc32c6be3c027462803c71ca33dfbe2d8f63f"
+    },
+    {
+      "path": "scripts/check_text_integrity.py",
+      "bytes": 10791,
+      "sha256": "bb095fd9b9a52090606cdfb28f074ce151eb994e7b4b7f95423bc2c1c9a3d677"
     },
     {
       "path": "scripts/download_codebert.py",

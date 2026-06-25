@@ -24,6 +24,8 @@ and documented in the manuscript.
 ## Smoke Commands
 
 ```bash
+python scripts/check_text_integrity.py
+python -m compileall scripts
 python scripts/check_artifact.py
 python scripts/check_reported_values.py
 python scripts/eatvul_reproduce.py dataset-summary

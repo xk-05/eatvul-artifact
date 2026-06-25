@@ -47,6 +47,7 @@ This repository includes:
 - reviewer documentation in `ARTIFACT.md`, `REPRODUCIBILITY.md`, `DATA.md`,
   `MISSING_OBJECTS.md`, `THIRD_PARTY_DATA.md`, and `docs/`;
 - a lightweight artifact validator in `scripts/check_artifact.py`;
+- a text/newline and parseability validator in `scripts/check_text_integrity.py`;
 - a reported-value checker in `scripts/check_reported_values.py`;
 - a Table 6 feature-family export script in
   `scripts/export_gate_feature_importance.py`;
@@ -130,11 +131,14 @@ requires richer source and program-analysis evidence.
 
 ### Lightweight artifact checks
 
-The lightweight checks use only the Python standard library. Use Python 3.9 or
-newer.
+Use Python 3.9 or newer. The structure and text-integrity checks are lightweight;
+the reported-value checks and CSV smoke tests use `pandas`, which is included in
+`requirements.txt` and `environment.yml`.
 
 ```bash
 python --version
+python scripts/check_text_integrity.py
+python -m compileall scripts
 python scripts/check_artifact.py
 ```
 
@@ -172,6 +176,8 @@ dataset splits are present, and the aggregate result files needed by the
 manuscript exist with the expected columns.
 
 ```bash
+python scripts/check_text_integrity.py
+python -m compileall scripts
 python scripts/check_artifact.py
 python scripts/check_reported_values.py
 python scripts/eatvul_reproduce.py dataset-summary
@@ -185,9 +191,7 @@ On systems with `make`:
 
 ```bash
 make check
-make reported-values
-make smoke
-make feature-importance
+make verify
 make tables
 make figures
 make manifest
@@ -199,7 +203,31 @@ targets.
 
 ## Step-by-step Reproduction Guide
 
-### Step 1: Validate the artifact package
+### Step 1: Validate text integrity and Python syntax
+
+Command:
+
+```bash
+python scripts/check_text_integrity.py
+python -m compileall scripts
+```
+
+What this checks:
+
+- tracked text files use LF line endings without CR bytes;
+- tracked Python files parse with `ast.parse`;
+- tracked result CSV files can be parsed and have data rows;
+- result JSON files parse as JSON;
+- `requirements.txt`, `environment.yml`, `Makefile`, TeX wrappers, and core
+  documentation have normal multiline structure.
+
+Expected final line:
+
+```text
+Text integrity check passed
+```
+
+### Step 1b: Validate the artifact package
 
 Command:
 
@@ -229,7 +257,7 @@ Tracked-file hygiene: OK
 Artifact check passed
 ```
 
-### Step 1b: Check manuscript-reported aggregate values
+### Step 1c: Check manuscript-reported aggregate values
 
 Command:
 
@@ -240,6 +268,7 @@ python scripts/check_reported_values.py
 What this checks:
 
 - Table 4 sample-level gate values;
+- Table 6 gate feature-family LODO-average values;
 - Table 7 anomaly-baseline values;
 - Table 8 CodeBERT bounded sanity-check values;
 - Table 9 diagnostic deletion values;
@@ -604,6 +633,12 @@ The artifact check should end with:
 Artifact check passed
 ```
 
+The text-integrity check should end with:
+
+```text
+Text integrity check passed
+```
+
 The reported-value check should begin with:
 
 ```text
@@ -620,6 +655,8 @@ The dataset-summary command should report the split sizes listed in
 Run the Python commands directly:
 
 ```bash
+python scripts/check_text_integrity.py
+python -m compileall scripts
 python scripts/check_artifact.py
 python scripts/check_reported_values.py
 python scripts/eatvul_reproduce.py dataset-summary

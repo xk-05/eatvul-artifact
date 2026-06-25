@@ -34,6 +34,8 @@ original EaTVul attack-generation artifact or external victim-model checkpoint.
 Lightweight checks:
 
 ```bash
+python scripts/check_text_integrity.py
+python -m compileall scripts
 python scripts/check_artifact.py
 python scripts/check_reported_values.py
 python scripts/eatvul_reproduce.py dataset-summary
@@ -69,6 +71,9 @@ available.
 
 ## Expected Outputs
 
+- `scripts/check_text_integrity.py`: exits with status 0 when tracked text
+  files have real line breaks, tracked Python parses, result CSV/JSON files
+  parse, and core docs/configs are readable.
 - `scripts/check_artifact.py`: exits with status 0 when required files and
   result columns are present.
 - `scripts/check_reported_values.py`: exits with status 0 when the reported

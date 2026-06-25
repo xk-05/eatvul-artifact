@@ -1,5 +1,15 @@
 # Reviewer Runbook
 
+## 0. Check Text Integrity and Python Syntax
+
+```bash
+python scripts/check_text_integrity.py
+python -m compileall scripts
+```
+
+Expected: exit code 0. The text-integrity check should end with
+`Text integrity check passed`, and compileall should not report syntax errors.
+
 ## 1. Check Artifact Structure
 
 ```bash
@@ -54,8 +64,8 @@ Expected output:
 results/eatvul_defense/gate_feature_family_importance.csv
 ```
 
-If the recomputed LODO average differs from the manuscript Table 6 row, the
-script prints a warning and leaves manuscript values unchanged.
+If the recomputed LODO average differs from the stored provenance CSV, the
+script prints a warning; do not silently edit manuscript values.
 
 ## 4. Rebuild Lightweight Figure Inventory
 

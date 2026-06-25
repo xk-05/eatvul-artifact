@@ -94,7 +94,8 @@ def main() -> int:
             for rel, path in sorted(files.items())
         ],
     }
-    OUT.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    with OUT.open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write(json.dumps(manifest, indent=2) + "\n")
     print(f"Wrote {OUT.relative_to(ROOT)} with {len(files)} files")
     return 0
 
