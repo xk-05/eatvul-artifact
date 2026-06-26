@@ -594,32 +594,19 @@ The compatibility entry point is:
 paper_eatvul_defense_framework/latex_submission/main.tex
 ```
 
-### Using the bundled Tectonic helper
-
-From the repository root on the original local setup:
-
-```powershell
-$env:PYTHONUTF8='1'
-python 'C:/Users/Administrator/.codex/plugins/cache/openai-bundled/latex/0.2.3/scripts/compile_latex.py' `
-  'D:/EatVul-Resources/paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex' `
-  --compiler tectonic `
-  --output-directory 'D:/EatVul-Resources/paper_eatvul_defense_framework/latex_submission/build_artifact_check' `
-  --json
-```
-
-Expected result:
-
-```text
-paper_eatvul_defense_framework/latex_submission/build_artifact_check/main_usenix_style_round3_clean.pdf
-```
-
-### Using a local LaTeX installation
+### Build the manuscript PDF
 
 If you have Tectonic:
 
 ```bash
 cd paper_eatvul_defense_framework/latex_submission
 tectonic main.tex
+```
+
+Expected result:
+
+```text
+paper_eatvul_defense_framework/latex_submission/main.pdf
 ```
 
 If you have TeX Live with `latexmk`:

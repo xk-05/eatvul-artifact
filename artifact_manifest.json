@@ -49,8 +49,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 22040,
-      "sha256": "d72adde7821f87dc7f153bb1a43535aff9035152b41a8ee53f612282db7a849e"
+      "bytes": 21489,
+      "sha256": "d1df02f0e6c3ff634f15778840520ad47433e44c9edeee55af746c26e962e10a"
     },
     {
       "path": "REPRODUCIBILITY.md",
@@ -59,8 +59,8 @@
     },
     {
       "path": "SUBMISSION_JISA.md",
-      "bytes": 4417,
-      "sha256": "2691b2b9eda12c2a2b9a5676b35318a0fd05c373696e18b3de3b1556a49babf3"
+      "bytes": 4035,
+      "sha256": "56784513c2d785bbe8f9e4dfc4caf9c326d1492b24a044dfe93debbcf3fc22f8"
     },
     {
       "path": "THIRD_PARTY_DATA.md",

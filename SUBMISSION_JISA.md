@@ -20,19 +20,14 @@ Before submitting or archiving the artifact, regenerate the tracked review PDF
 from the canonical TeX source. Its extracted text should match the submission
 PDF generated from the same source.
 
-Bundled Tectonic build command used for local verification:
+Build from the submission directory with either Tectonic or TeX Live:
 
-```powershell
-$env:PYTHONUTF8 = '1'
-python 'C:/Users/Administrator/.codex/plugins/cache/openai-bundled/latex/0.2.3/scripts/compile_latex.py' `
-  'D:/EatVul-Resources/paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex' `
-  --compiler tectonic `
-  --output-directory 'D:/EatVul-Resources/paper_eatvul_defense_framework/latex_submission/build_jisa_sync_check' `
-  --json
+```bash
+cd paper_eatvul_defense_framework/latex_submission
+tectonic main.tex
 ```
 
-If a full TeX Live environment with `latexmk` is available, the neutral wrapper
-can also be built from the submission directory:
+If a full TeX Live environment with `latexmk` is available:
 
 ```bash
 cd paper_eatvul_defense_framework/latex_submission

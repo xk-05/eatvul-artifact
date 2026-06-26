@@ -11,15 +11,16 @@ This folder contains the canonical LaTeX manuscript for the EaTVul AST-token def
 
 ## Compile
 
-From the repository root:
+From this directory with Tectonic:
 
-```powershell
-$env:PYTHONUTF8='1'
-python 'C:/Users/Administrator/.codex/plugins/cache/openai-bundled/latex/0.2.3/scripts/compile_latex.py' `
-  'D:/EatVul-Resources/paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex' `
-  --compiler tectonic `
-  --output-directory 'D:/EatVul-Resources/paper_eatvul_defense_framework/latex_submission/build_citation_bib_check' `
-  --json
+```bash
+tectonic main.tex
+```
+
+Or with TeX Live:
+
+```bash
+latexmk -pdf -xelatex main.tex
 ```
 
 The manuscript imports figures from:
