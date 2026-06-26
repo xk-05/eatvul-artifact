@@ -56,6 +56,64 @@ EXPECTED_LODO_AVERAGE = {
     "bigram_nll": 14.540366125432438,
     "ast_structure": 21.121089573313114,
 }
+REQUIRED_EXTERNAL_SPLITS = ("test", "adv")
+
+
+def display_path(path: Path) -> str:
+    try:
+        return path.relative_to(Path.cwd()).as_posix()
+    except ValueError:
+        return path.as_posix()
+
+
+def missing_external_split_paths() -> list[Path]:
+    missing = []
+    for paths in DATASETS.values():
+        for split in REQUIRED_EXTERNAL_SPLITS:
+            path = Path(paths[split])
+            if not path.exists():
+                missing.append(path)
+    return missing
+
+
+def packaged_lodo_average_mismatches(path: Path) -> list[str]:
+    if not path.exists():
+        return [f"{display_path(path)} is missing"]
+    with path.open(newline="", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
+    average_row = next((row for row in rows if row.get("split") == "LODO_average"), None)
+    if average_row is None:
+        return [f"{display_path(path)} is missing the LODO_average row"]
+
+    mismatches = []
+    for family, expected in EXPECTED_LODO_AVERAGE.items():
+        try:
+            actual = float(average_row[family])
+        except (KeyError, TypeError, ValueError):
+            mismatches.append(f"{family}: packaged CSV has no numeric LODO_average value")
+            continue
+        if abs(actual - expected) > 1e-9:
+            mismatches.append(f"{family}: expected={expected:.12f}, packaged={actual:.12f}")
+    return mismatches
+
+
+def keep_packaged_csv_when_external_data_missing(output_path: Path, missing: list[Path]) -> int:
+    mismatches = packaged_lodo_average_mismatches(output_path)
+    if mismatches:
+        print("ERROR: external AST-token split files are missing and packaged CSV validation failed:")
+        for item in mismatches:
+            print(f"  - {item}")
+        return 1
+
+    print("External AST-token split files are not available; keeping packaged feature-family CSV.")
+    print(f"Verified packaged LODO_average values in {display_path(output_path)}.")
+    print(
+        "To recompute this CSV, prepare the external split files under "
+        "Code and Dataset/file/data/ as described in DATA.md."
+    )
+    if missing:
+        print(f"Missing example: {display_path(missing[0])}")
+    return 0
 
 
 def train_lodo_gate(heldout: str):
@@ -96,6 +154,11 @@ def write_csv(rows: list[dict[str, object]], output_path: Path) -> None:
 
 
 def main() -> int:
+    output_path = OUT_DIR / "gate_feature_family_importance.csv"
+    missing = missing_external_split_paths()
+    if missing:
+        return keep_packaged_csv_when_external_data_missing(output_path, missing)
+
     rows = []
     for heldout in DATASETS:
         values = family_importance_for_split(heldout)
@@ -104,9 +167,8 @@ def main() -> int:
     average = {family: float(np.mean([row[family] for row in rows])) for family in FAMILIES}
     rows.append({"split": "LODO_average", **average})
 
-    output_path = OUT_DIR / "gate_feature_family_importance.csv"
     write_csv(rows, output_path)
-    print(f"Wrote {output_path.relative_to(Path.cwd())}")
+    print(f"Wrote {display_path(output_path)}")
 
     mismatches = []
     for family, expected in EXPECTED_LODO_AVERAGE.items():
