@@ -67,7 +67,9 @@ def main() -> int:
         )
     with OUT.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(
-            handle, fieldnames=["table", "description", "source_file", "exists", "rows"]
+            handle,
+            fieldnames=["table", "description", "source_file", "exists", "rows"],
+            lineterminator="\n",
         )
         writer.writeheader()
         writer.writerows(rows)

@@ -38,7 +38,11 @@ def main() -> int:
             }
         )
     with OUT.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=["figure_file", "exists", "bytes"])
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=["figure_file", "exists", "bytes"],
+            lineterminator="\n",
+        )
         writer.writeheader()
         writer.writerows(rows)
     if missing:

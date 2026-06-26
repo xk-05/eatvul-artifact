@@ -384,13 +384,13 @@
     },
     {
       "path": "scripts/make_figures.py",
-      "bytes": 1501,
-      "sha256": "8adc4caac9d4f0033efc38ca7def386505c0605ebdc5a58a7a574878ae96b6f9"
+      "bytes": 1569,
+      "sha256": "e84cb333b146b9b4b935c5a3c4f4b4f5cdbcdbb96fbca2208d29cced52b43155"
     },
     {
       "path": "scripts/make_tables.py",
-      "bytes": 2454,
-      "sha256": "ced8b9b39f9beee4042868294f88d59e0eb50ba30bd41be1aa5cd52d4a574589"
+      "bytes": 2500,
+      "sha256": "223077fe37dab3789c611067dde4bb7dbf03d06526eb0f1adc3d38f1259421b2"
     },
     {
       "path": "scripts/prepare_linevul_extension_data.py",
