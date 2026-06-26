@@ -1,11 +1,11 @@
-# EaTVul Defense LaTeX Submission Draft
+# EaTVul Defense LaTeX Submission Package
 
-This folder contains the canonical LaTeX manuscript for the EaTVul AST-token defense boundary study and the existing experiment outputs. The source filename is inherited from earlier USENIX-style drafts; `main.tex` is retained as a neutral compatibility entry point for the JISA/Elsevier submission package.
+This folder contains the canonical LaTeX manuscript for the EaTVul AST-token defense boundary study. The source filename is inherited from earlier manuscript iterations; `main.tex` is retained as a neutral compatibility entry point for the JISA/Elsevier submission package.
 
 ## Files
 
 - `main_usenix_style_round3_clean.tex`: canonical manuscript source.
-- `main.tex`: compatibility entrypoint that inputs the canonical source, so older build commands do not compile the obsolete framework-centered draft.
+- `main.tex`: compatibility entry point that inputs the canonical source for portable builds.
 - `references.bib`: BibTeX references used by the manuscript.
 - `build_citation_bib_check/main_usenix_style_round3_clean.pdf`: current compiled PDF for the AST-token capability-boundary version.
 

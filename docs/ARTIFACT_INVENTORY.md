@@ -2,10 +2,11 @@
 
 ## Repository Context
 
-- Branch inspected: `artifact-release`.
-- Remote inspected: `https://github.com/xk-05/eatvul-jisa-artifact.git`.
-- Important anonymity note: pushing to this personal remote may deanonymize a
-  double-blind submission.
+- Public review artifact: `https://github.com/xk-05/eatvul-jisa-artifact`.
+- Public branch: `main`.
+- Purpose: inventory the manuscript sources, reviewer-facing documentation,
+  scripts, aggregate result files, and known reproducibility boundaries for the
+  JISA review package.
 
 ## Manuscript
 

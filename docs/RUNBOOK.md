@@ -36,7 +36,12 @@ The Makefile alias for the reported-value and Table 6 provenance checks is
 python scripts/eatvul_reproduce.py dataset-summary
 ```
 
-Expected counts:
+In a fresh public clone, the external AST-token split files are not bundled, so
+the expected output is a header followed by a note that the splits should be
+prepared under `Code and Dataset/file/data/` as described in `DATA.md`.
+
+After preparing the external AST-token split files locally, the expected counts
+are:
 
 - ASTERISK: 880 train, 367 test, 50 adv
 - OPENSSL: 520 train, 213 test, 50 adv
