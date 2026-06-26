@@ -589,7 +589,7 @@ LODO average & 11.5\% & 52.9\% & 14.5\% & 21.1\% \\
 \bottomrule
 \end{tabular}
 \vspace{2pt}
-\par\footnotesize\textbf{Note.} LODO means leave-one-dataset-out. The contribution percentages are produced by \texttt{scripts/export\_gate\_feature\_importance.py} and \texttt{results/eatvul\_defense/gate\_feature\_family\_importance.csv}; they do not change the ASR/Clean F1 results in Table~\ref{tab:samplegate}. Feature contributions are normalized to sum to 100\% across the four selected families.
+\par\footnotesize\textbf{Note.} LODO means leave-one-dataset-out. The contribution percentages are produced by the artifact's feature-importance export script and aggregate summary table. These values do not change the ASR/Clean F1 results in Table~\ref{tab:samplegate}. Feature contributions are normalized to sum to 100\% across the four selected families.
 \end{table*}
 
 These rows support detection and quarantine under project-coherent settings, but they do not establish reliable automatic sanitization or broad mixed-source transfer. Whole-sample detection can aggregate rare-token, unseen-token, bigram, and structure-distribution shifts without identifying the exact inserted span.
