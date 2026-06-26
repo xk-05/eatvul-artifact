@@ -11,8 +11,14 @@ USENIX-style filename for continuity and provides a neutral wrapper.
   `paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex`
 - Compatibility wrapper:
   `paper_eatvul_defense_framework/latex_submission/main.tex`
-- Expected generated PDF:
+- Submission-build PDF:
   `paper_eatvul_defense_framework/latex_submission/build_jisa_sync_check/main_usenix_style_round3_clean.pdf`
+- Tracked review PDF:
+  `paper_eatvul_defense_framework/latex_submission/build_citation_bib_check/main_usenix_style_round3_clean.pdf`
+
+Before submitting or archiving the artifact, regenerate the tracked review PDF
+from the canonical TeX source. Its extracted text should match the submission
+PDF generated from the same source.
 
 Bundled Tectonic build command used for local verification:
 
@@ -36,11 +42,18 @@ latexmk -xelatex -interaction=nonstopmode main.tex
 ## Submission Package Checklist
 
 - Manuscript PDF.
-- `highlights.md`.
+- Editable LaTeX source files and figures.
+- `highlights.md` with 3-5 bullet points, each no longer than 85 characters.
 - Data availability statement in the manuscript.
 - CRediT authorship contribution statement in the manuscript.
 - Declaration of competing interest in the manuscript.
 - Funding statement in the manuscript.
+- Declaration of generative AI and AI-assisted technologies in the manuscript.
+- Corresponding-author details in Editorial Manager, including email, full
+  postal address, and phone number.
+- Optional graphical abstract: convert the local SVG draft to an
+  Elsevier-supported submission format such as PDF, EPS, TIFF, or Office before
+  uploading.
 - Artifact/repository URL: `https://github.com/xk-05/eatvul-jisa-artifact`.
 - Artifact documentation: `README.md`, `ARTIFACT.md`, `DATA.md`,
   `THIRD_PARTY_DATA.md`, `docs/TABLE_REPRODUCTION_MAP.md`.
@@ -84,9 +97,11 @@ isort --check-only scripts
 ## Reproducibility Boundary
 
 The aggregate manuscript tables are checked against stored CSV/JSON artifacts
-and the AST-token split files included under `Code and Dataset/file/data/`.
-Historical archives, local helper code, model packages, cached model weights,
-and source-text extension data are governed by their upstream terms and are not
-covered by this artifact's MIT license. True inserted spans, source diffs, CFGs,
-PDGs, and parser-validated source contexts remain unavailable in the current
-public AST-token-only artifact.
+in the public repository. Dataset-size checks, Table 6 feature-importance
+recomputation, and full experiment reruns additionally require locally prepared
+AST-token split files under `Code and Dataset/file/data/`. Historical archives,
+local helper code, model packages, cached model weights, and source-text
+extension data are governed by their upstream terms and are not covered by this
+artifact's MIT license. True inserted spans, source diffs, CFGs, PDGs, and
+parser-validated source contexts remain unavailable in the current public
+AST-token-only artifact.

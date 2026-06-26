@@ -1,7 +1,7 @@
 # Highlights
 
-- AST-token artifacts support suspicious benign-prediction detection under project-coherent calibration.
-- Quarantine reduces automatically accepted EaTVul-style bypasses without claiming source repair.
-- Mixed-source transfer remains weak and should not be read as broad deployment coverage.
-- Token-only deletion fails to validate reliable source-level sanitization in the evaluated setting.
-- Reliable recovery requires source spans, insertion boundaries, CFGs, PDGs, or parser-validated source context.
+- AST-token artifacts support project-coherent suspicious-bypass detection.
+- Quarantine reduces silent EaTVul-style bypasses without claiming repair.
+- Mixed-source transfer remains weak and not broad deployment evidence.
+- Token-only deletion does not validate source-level sanitization.
+- Reliable recovery needs source spans, boundaries, CFGs, PDGs, or parsers.

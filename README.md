@@ -245,20 +245,28 @@ What this checks:
 - required manuscript files exist;
 - required result CSV files exist;
 - result CSV files contain expected columns;
-- AST-token dataset split counts match the manuscript;
+- AST-token dataset split counts match the manuscript when local external split
+  files are present;
 - missing objects are explicitly documented;
 - tracked files do not look like obvious secrets.
 
 Expected output:
 
 ```text
-Required files: 21 OK
+Required files: 22 OK
 Result files: 7 OK
 Config sidecars: 2 OK
 Dataset split counts: 4 OK
 Missing-object documentation: OK
 Tracked-file hygiene: OK
 Artifact check passed
+```
+
+If the external AST-token split files have not been prepared locally, the
+dataset line is instead:
+
+```text
+Dataset split counts: external AST-token splits not bundled; see DATA.md
 ```
 
 ### Step 1c: Check manuscript-reported aggregate values

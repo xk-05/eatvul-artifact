@@ -148,7 +148,7 @@
 \title{\Large Detection, Not Sanitization: Capability Boundaries of AST-token-only Defenses against EaTVul-style Code Insertion}
 \author{
   Kang Xie\\
-  University of South China, Hengyang, China\\
+  University of South China, Hengyang 421001, Hunan, China\\
   Corresponding author: \href{mailto:q1131714258@gmail.com}{q1131714258@gmail.com}
 }
 \date{}
@@ -820,9 +820,9 @@ The central construct is the observation-constrained public-artifact setting. Th
 The results depend on the specific AST-token serialization used in the public artifact. Other tree linearizations, marker vocabularies, or tokenization conventions could change local bigram statistics, structural-marker density, and gate calibration. The deployment interpretation also depends on review capacity. Quarantine can reduce silent bypasses only when suspicious samples can be reviewed or sent to a stronger source-aware analysis. In mixed-source settings, where gate recall is weaker and clean review load can still be nontrivial, the cost-benefit ratio of quarantine may deteriorate. Future evaluations should test multiple serializations, project-aware calibration strategies, and review-capacity constraints.
 
 \section{Reproducibility and Artifact Availability}
-The repository currently contains the manuscript source, bibliography, figures, experiment/table scripts, aggregate result tables, and selected CSV/JSON/JSONL outputs used for the reported rows. The main evaluation uses four public EaTVul-style AST-token datasets: \dataset{ASTERISK}, \dataset{OPENSSL}, \dataset{CWE119}, and \dataset{CWE399}. The clean-train, clean-test, and adversarial-test splits follow the available public artifact.
-% TODO before submission: replace this sentence with the final artifact URL or repository reference after the review artifact is pushed.
-A review artifact can be prepared from these files, including the experiment configuration for the \gate{}, anomaly baselines, diagnostic deletion boundary tests, deployment policies, and extension harness, together with trained gate settings, calibrated thresholds, aggregate result tables, and per-sample prediction logs where available.
+The review artifact is maintained at \url{https://github.com/xk-05/eatvul-jisa-artifact}. The public repository contains the manuscript source, bibliography, figures, experiment/table scripts, configurations, aggregate result tables, and selected CSV/JSON/JSONL outputs used for the reported rows. The main evaluation uses four EaTVul-style AST-token datasets: \dataset{ASTERISK}, \dataset{OPENSSL}, \dataset{CWE119}, and \dataset{CWE399}. Because the redistribution terms for the external AST-token split files are not confirmed in this package, the public Git repository does not redistribute those split files. Full reruns and dataset-size checks require users to prepare the clean-train, clean-test, and adversarial-test splits locally under the paths documented in the artifact.
+
+The artifact includes the experiment configuration for the \gate{}, anomaly baselines, diagnostic deletion boundary tests, deployment policies, and extension harness, together with trained gate settings, calibrated thresholds, aggregate result tables, and per-sample prediction logs where available.
 
 \paragraph{Artifact checklist.} The current package contains or should retain code, configurations, data splits where available, calibrated thresholds, per-sample prediction logs where available, table-generation scripts, random seeds, environment notes, and aggregate result tables. These objects are sufficient to reproduce the reported aggregate tables and to audit the thresholding and deployment-policy choices, but they are not a complete paired-log release for every defense layer.
 
@@ -847,8 +847,11 @@ The author declares that there are no known competing financial interests or per
 \section*{Funding}
 This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
 
+\section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
+During preparation of this work, the author used OpenAI Codex to assist with language polishing, consistency checks between the manuscript and artifact repository, and repository-quality checks. The author reviewed and edited the generated suggestions and takes full responsibility for the content of the published article.
+
 \section*{Data availability}
-The experiments use public EaTVul-style AST-token artifacts. The repository currently contains manuscript sources, implementation scripts, configurations, calibrated thresholds where available, figure/table-generation scripts, aggregate result tables, and selected per-sample prediction logs. True inserted spans, source diffs, CFGs, PDGs, compiler-validated adaptive snippets, and complete paired prediction logs for all defense layers are unavailable in the current public AST-token-only setting.
+The experiments use EaTVul-style AST-token artifacts. The public repository contains manuscript sources, implementation scripts, configurations, calibrated thresholds where available, figure/table-generation scripts, aggregate result tables, and selected per-sample prediction logs. The external AST-token split files are not redistributed through public Git tracking because their upstream redistribution terms are not confirmed in this package; preparation paths, expected counts, and checksum notes are documented in the artifact. True inserted spans, source diffs, CFGs, PDGs, compiler-validated adaptive snippets, and complete paired prediction logs for all defense layers are unavailable in the current public AST-token-only setting.
 
 \FloatBarrier
 \clearpage
