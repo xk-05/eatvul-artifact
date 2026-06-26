@@ -27,8 +27,9 @@ python scripts/check_reported_values.py
 
 Expected: exit code 0 and a summary beginning with
 `Reported-value check passed`.
-The Makefile alias for the reported-value and Table 6 provenance checks is
-`make table-check`.
+After preparing the external AST-token split files locally, `make table-check`
+also recomputes the Table 6 feature-family provenance. In a fresh public clone,
+run the reported-value checker directly instead of `make table-check`.
 
 ## 2. Verify Dataset Counts
 
@@ -71,6 +72,9 @@ Expected output:
 ```text
 results/eatvul_defense/gate_feature_family_importance.csv
 ```
+
+This command requires the external AST-token split files under
+`Code and Dataset/file/data/`; it is not part of the fresh-clone smoke path.
 
 If the recomputed LODO average differs from the stored provenance CSV, the
 script prints a warning; do not silently edit manuscript values.

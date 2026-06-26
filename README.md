@@ -173,9 +173,12 @@ deployment-policy, and diagnostic-deletion reruns do.
 
 ## Quick Reproduction Path
 
-Use this path first. It verifies that the artifact is complete, the expected
-dataset splits are present, and the aggregate result files needed by the
-manuscript exist with the expected columns.
+Use this path first. It verifies that the artifact is complete and that the
+aggregate result files needed by the manuscript exist with the expected
+columns. In a fresh public clone, the external AST-token split files are not
+bundled; `dataset-summary` therefore prints a preparation notice instead of
+split counts. After preparing those files locally, the same command reports the
+expected split counts.
 
 ```bash
 python scripts/check_text_integrity.py
@@ -183,7 +186,6 @@ python -m compileall scripts
 python scripts/check_artifact.py
 python scripts/check_reported_values.py
 python scripts/eatvul_reproduce.py dataset-summary
-python scripts/export_gate_feature_importance.py
 python scripts/make_tables.py
 python scripts/make_figures.py
 python scripts/build_manifest.py
@@ -194,8 +196,6 @@ On systems with `make`:
 ```bash
 make text-check
 make check
-make table-check
-make verify
 make tables
 make figures
 make manifest
@@ -204,6 +204,17 @@ make manifest
 Note for Windows PowerShell users: if `make` is not installed, run the Python
 commands above directly. They are equivalent to the lightweight Makefile
 targets.
+
+After preparing the external AST-token split files under
+`Code and Dataset/file/data/`, also run:
+
+```bash
+python scripts/export_gate_feature_importance.py
+```
+
+The Makefile aliases `make table-check` and `make verify` also run the Table 6
+feature-importance recomputation and therefore require those external split
+files.
 
 ## Step-by-step Reproduction Guide
 
@@ -667,7 +678,6 @@ python scripts/check_text_integrity.py
 python -m compileall scripts
 python scripts/check_artifact.py
 python scripts/check_reported_values.py
-python scripts/export_gate_feature_importance.py
 python scripts/make_tables.py
 python scripts/make_figures.py
 python scripts/build_manifest.py
@@ -675,6 +685,8 @@ python scripts/build_manifest.py
 
 Run `python scripts/eatvul_reproduce.py dataset-summary` after preparing the
 external AST-token split files locally.
+Run `python scripts/export_gate_feature_importance.py` only after those split
+files have also been prepared locally.
 
 ### `conda run -n eatvul` fails
 
