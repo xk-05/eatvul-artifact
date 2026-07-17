@@ -66,19 +66,21 @@ def tex_table(filename: str, caption: str, label: str, columns: str, header: str
 
 
 def make_dataset_profile() -> None:
+    profile_path = (
+        ROOT / "results" / "jisa_confidence_sensitivity" / "token_length_profile.csv"
+    )
+    profile = pd.read_csv(profile_path)
     rows = []
     for target in TARGETS:
         counts = []
         medians = []
-        for split in ("train", "test", "test_ADV"):
-            path = ROOT / "Code and Dataset" / "file" / "data" / f"{target}_ast_{split}.json"
-            lengths = []
-            with path.open(encoding="utf-8") as handle:
-                for line in handle:
-                    if line.strip():
-                        lengths.append(len(str(json.loads(line)["func"]).split()))
-            counts.append(len(lengths))
-            medians.append(int(np.median(lengths)))
+        for split in ("train", "test", "adv"):
+            matched = profile[(profile["dataset"] == target) & (profile["split"] == split)]
+            if len(matched) != 1:
+                raise ValueError(f"expected one token profile row for {target}/{split}")
+            row = matched.iloc[0]
+            counts.append(int(row["n"]))
+            medians.append(int(float(row["median_tokens"])))
         rows.append(
             f"{target.upper()} & {counts[0]} & {counts[1]} & {counts[2]} & "
             f"{medians[0]} & {medians[1]} & {medians[2]} \\\\"
