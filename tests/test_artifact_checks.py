@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import subprocess
 import sys
 from pathlib import Path
@@ -40,6 +41,19 @@ def test_text_integrity_discovers_final_manifests_and_manuscript() -> None:
     ]
     assert integrity.json_files(files) == files
     assert integrity.CANONICAL_MANUSCRIPT.name == "main_jisa.tex"
+
+
+def test_manifest_includes_final_jisa_release() -> None:
+    run_script("scripts/build_manifest.py")
+    manifest = json.loads((ROOT / "artifact_manifest.json").read_text(encoding="utf-8"))
+    paths = {item["path"] for item in manifest["files"]}
+    assert {
+        "paper_eatvul_defense_framework/latex_submission/main_jisa.pdf",
+        "paper_eatvul_defense_framework/figures_submission_jisa/action_boundary.pdf",
+        "results/jisa_evidence_bundle.json",
+        "manifests/jisa_final/FINAL_RUN_MANIFEST.json",
+        "requirements_jisa.txt",
+    } <= paths
 
 
 def test_feature_importance_keeps_packaged_csv_without_external_splits(tmp_path, monkeypatch, capsys) -> None:
