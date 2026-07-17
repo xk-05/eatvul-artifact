@@ -78,8 +78,9 @@ Files created or modified for repository integration:
 Fetch the three authorized release sources through the Drive connector, save only the submission package, final manuscript, and run-manifest files to a temporary staging directory, and run:
 
 ```powershell
-Get-FileHash D:\EatVul-Resources\tmp\jisa-source\JISA_submission_package.zip -Algorithm SHA256
-Get-FileHash D:\EatVul-Resources\tmp\jisa-source\Xie_JISA_manuscript.pdf -Algorithm SHA256
+$staging = Join-Path $env:TEMP "jisa-source"
+Get-FileHash (Join-Path $staging "JISA_submission_package.zip") -Algorithm SHA256
+Get-FileHash (Join-Path $staging "Xie_JISA_manuscript.pdf") -Algorithm SHA256
 ```
 
 Expected: both commands return one SHA-256 value; the package size is 756225 bytes and the Drive manuscript size is 405979 bytes.
@@ -420,7 +421,9 @@ Run:
 ```powershell
 git status --short --untracked-files=all
 git ls-files | rg "Code and Dataset|__pycache__|\.pytest_cache|\.zip$|_ast_.*\.json$"
-rg -n "D:\\|C:\\Users\\|ghp_|github_pat_|AIza" --glob "!*.pdf" --glob "!artifact_manifest.json" .
+$pathPattern = "[A-Za-z]:" + "\x5c"
+$credentialPattern = @(("gh" + "p_"), ("github" + "_pat_"), ("AI" + "za")) -join "|"
+rg -n -P "$pathPattern|$credentialPattern" --glob "!*.pdf" --glob "!artifact_manifest.json" .
 ```
 
 Expected: no tracked private archive, raw split, cache, credential, or machine-local path. Review any match rather than suppressing it.
@@ -437,9 +440,9 @@ Expected: the worktree is clean and the branch is ahead of `artifact-origin/code
 
 - [ ] **Step 6: Push the branch and update draft pull request #1**
 
-Set `GH_CONFIG_DIR` to `D:\EatVul-Resources\.tools\gh-config`, then run:
+Use an authenticated GitHub CLI session, then run:
 
-Create `D:\EatVul-Resources\tmp\jisa-source\pr-body.md` with this reviewed body, changing a validation line only when the recorded command output requires an accurate qualification:
+Create `$env:TEMP\jisa-pr-body.md` with this reviewed body, changing a validation line only when the recorded command output requires an accurate qualification:
 
 ```markdown
 ## Summary
@@ -467,9 +470,10 @@ This pull request remains draft for author review and does not merge into `main`
 ```
 
 ```powershell
+$prBody = Join-Path $env:TEMP "jisa-pr-body.md"
 git push artifact-origin codex/sync-google-drive-20260717
-D:\EatVul-Resources\.tools\bin\gh.exe pr edit 1 --repo xk-05/eatvul-jisa-artifact --title "Sync final JISA manuscript and reproducibility evidence" --body-file D:\EatVul-Resources\tmp\jisa-source\pr-body.md
-D:\EatVul-Resources\.tools\bin\gh.exe pr view 1 --repo xk-05/eatvul-jisa-artifact --json url,title,isDraft,headRefName,files,commits
+gh pr edit 1 --repo xk-05/eatvul-jisa-artifact --title "Sync final JISA manuscript and reproducibility evidence" --body-file $prBody
+gh pr view 1 --repo xk-05/eatvul-jisa-artifact --json url,title,isDraft,headRefName,files,commits
 ```
 
 The reviewed PR body must enumerate the final manuscript/TeX, derived outputs, manifests, scripts/tests, documentation changes, explicit exclusion of `Code and Dataset.zip` and raw AST-token data, and the exact validation results from Steps 2--4.

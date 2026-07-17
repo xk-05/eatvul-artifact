@@ -1,7 +1,12 @@
+import re
+import sys
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS_DIR = ROOT / "scripts"
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
 
 REQUIRED = [
     "paper_eatvul_defense_framework/latex_submission/main_jisa.tex",
@@ -31,3 +36,28 @@ def test_final_manuscript_is_the_three_rq_version() -> None:
     assert "Evidence Boundaries of AST-Token-Only Defenses" in source
     assert all(f"RQ{number}" in source for number in range(1, 4))
     assert "RQ4" not in source
+
+
+def test_public_final_evidence_has_no_machine_local_paths() -> None:
+    public_metadata = [
+        ROOT / "results" / "jisa_evidence_bundle.json",
+        ROOT / "manifests" / "jisa_final" / "FINAL_RUN_MANIFEST.json",
+        ROOT / "manifests" / "jisa_final" / "confidence_run_manifest.json",
+    ]
+    for path in public_metadata:
+        text = path.read_text(encoding="utf-8")
+        assert re.search(r"[A-Za-z]:\\", text) is None, path.relative_to(ROOT)
+
+
+def test_sanitize_value_converts_known_execution_paths_to_relative_paths() -> None:
+    from sanitize_jisa_paths import sanitize_value
+
+    drive = "D:"
+    assert sanitize_value(drive + r"\EatVul-Resources\Code and Dataset\file\data\a.json") == (
+        "Code and Dataset/file/data/a.json"
+    )
+    assert sanitize_value(
+        drive
+        + r"\EatVul-Resources\.worktrees\nested-lodo-defense\results\jisa_revision"
+    ) == "results/jisa_revision"
+    assert sanitize_value(drive + r"\Anaconda\envs\eatvul\python.exe") == "python"

@@ -32,6 +32,9 @@ as Table 2.
 The matching hashes and environment metadata are recorded in
 `manifests/jisa_final/` and
 `results/jisa_confidence_sensitivity/run_manifest.json`.
+The public evidence bundle normalizes machine-local path prefixes to
+repository-relative paths; `FINAL_RUN_MANIFEST.json` records both the original
+Drive hash and the normalized public hash. Numerical evidence is unchanged.
 
 ## Non-public inputs
 

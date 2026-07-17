@@ -92,97 +92,97 @@
           "experiment": "deletion_sensitivity_grid_combined",
           "inputs": {
             "data_asterisk_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test_ADV.json",
               "sha256": "475e84722009275460b8dea4d65edfd34225bd78c7dc6a7fe2dbd86588ddf221",
               "size_bytes": 1796605
             },
             "data_asterisk_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test.json",
               "sha256": "f1fc237016994b88d380ab5aeb184481f43fb09d47289f4ccbc06e7721412650",
               "size_bytes": 12689868
             },
             "data_asterisk_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_train.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_train.json",
               "sha256": "8fcf4a89c11dbed1e9d0a4a27065405a96b487d9adf7907c98c1208513b31e74",
               "size_bytes": 30411010
             },
             "data_cwe119_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test_ADV.json",
               "sha256": "64e5682845c81936cd56972ace1798f6398a65057f390ecd4896cf7b587e36b4",
               "size_bytes": 2313158
             },
             "data_cwe119_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test.json",
               "sha256": "4355c1835d4b24a8658b377e736c5f59f5e5e41eb5b590c6b754de2c77029e75",
               "size_bytes": 31054554
             },
             "data_cwe119_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_train.json",
               "sha256": "ff704a92d80c5988f88b9e8abf96e233e5690e3618905ad4ff2aeaad6598115c",
               "size_bytes": 72797243
             },
             "data_cwe399_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test_ADV.json",
               "sha256": "b68e64f6062a3da7d9e86524fa6214f3128d57b8d65e33bbc758dd5a58f87598",
               "size_bytes": 2848311
             },
             "data_cwe399_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test.json",
               "sha256": "308ac24b70d9a239db09f7ca9c43277fd4334aafc3df922c323d9a4683699764",
               "size_bytes": 4763410
             },
             "data_cwe399_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_train.json",
               "sha256": "0da4406369e21d605ef8a14468dac60afdb061befcef2c5e1aa6e3f75e0ab0a4",
               "size_bytes": 10581011
             },
             "data_openssl_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test_ADV.json",
               "sha256": "b2fd9e1d861d91f795ae344078e48115418088a47744bb4372c71eb675dc1efa",
               "size_bytes": 1863135
             },
             "data_openssl_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test.json",
               "sha256": "c45167b5d24c8aab93136c4717f55e74791254f9104face5eaa22181f316a07c",
               "size_bytes": 3565470
             },
             "data_openssl_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_train.json",
+              "path": "Code and Dataset/file/data/openssl_ast_train.json",
               "sha256": "b37fba27a143ec7723c7ad931f44da0b4005f9174fcd1653a82cb2027af3010d",
               "size_bytes": 8656908
             },
             "role_asterisk": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\asterisk.json",
+              "path": "results/jisa_revision/roles/asterisk.json",
               "sha256": "4bf795e269e3a796555bd30b0147af44aac317ac33f841b9b1c4dc3e6112a9a2",
               "size_bytes": 1339748
             },
             "role_cwe119": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\cwe119.json",
+              "path": "results/jisa_revision/roles/cwe119.json",
               "sha256": "7810185833b889220e4bbbf03124a9466b5c6ee1df1a8539aea44d0137c893a1",
               "size_bytes": 2861377
             },
             "role_cwe399": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\cwe399.json",
+              "path": "results/jisa_revision/roles/cwe399.json",
               "sha256": "f64aaa7645d6dcbacf2bb07ab78e9331553b8e7315b128505b17405a7b841d73",
               "size_bytes": 1254348
             },
             "role_openssl": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\openssl.json",
+              "path": "results/jisa_revision/roles/openssl.json",
               "sha256": "528f4852c218f2cb425732804dd634b9ce7f6c3596dd1debf7f7e0dac11a92cc",
               "size_bytes": 1223870
             },
             "source_manifest_cwe119": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\deletion_sensitivity_targets\\cwe119\\run_manifest.json",
+              "path": "results/jisa_revision/deletion_sensitivity_targets/cwe119/run_manifest.json",
               "sha256": "7028441892539d80085d3fbb6484c1821f3995918428e028f665eebda1e60e19",
               "size_bytes": 5899
             },
             "source_manifest_cwe399": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\deletion_sensitivity_targets\\cwe399\\run_manifest.json",
+              "path": "results/jisa_revision/deletion_sensitivity_targets/cwe399/run_manifest.json",
               "sha256": "498c6ad33f36283873edd93d115f287b5bfc431e6a35d7bc258edf319a0dd4cd",
               "size_bytes": 5897
             },
             "source_manifest_openssl": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\deletion_sensitivity_targets\\openssl\\run_manifest.json",
+              "path": "results/jisa_revision/deletion_sensitivity_targets/openssl/run_manifest.json",
               "sha256": "960d450f8d2e1066e0beb188e0defe39ac946361d3dabb72f97b8b8d2f05aa7f",
               "size_bytes": 5910
             }
@@ -304,7 +304,7 @@
               "transformers": null
             },
             "platform": "Windows-11-10.0.26200-SP0",
-            "python_executable": "D:\\Anaconda\\python.exe",
+            "python_executable": "python",
             "python_implementation": "CPython",
             "python_version": "3.12.4"
           },
@@ -66446,67 +66446,67 @@
           "experiment": "deletion_sensitivity_grid",
           "inputs": {
             "data_asterisk_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test_ADV.json",
               "sha256": "475e84722009275460b8dea4d65edfd34225bd78c7dc6a7fe2dbd86588ddf221",
               "size_bytes": 1796605
             },
             "data_asterisk_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test.json",
               "sha256": "f1fc237016994b88d380ab5aeb184481f43fb09d47289f4ccbc06e7721412650",
               "size_bytes": 12689868
             },
             "data_asterisk_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_train.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_train.json",
               "sha256": "8fcf4a89c11dbed1e9d0a4a27065405a96b487d9adf7907c98c1208513b31e74",
               "size_bytes": 30411010
             },
             "data_cwe119_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test_ADV.json",
               "sha256": "64e5682845c81936cd56972ace1798f6398a65057f390ecd4896cf7b587e36b4",
               "size_bytes": 2313158
             },
             "data_cwe119_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test.json",
               "sha256": "4355c1835d4b24a8658b377e736c5f59f5e5e41eb5b590c6b754de2c77029e75",
               "size_bytes": 31054554
             },
             "data_cwe119_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_train.json",
               "sha256": "ff704a92d80c5988f88b9e8abf96e233e5690e3618905ad4ff2aeaad6598115c",
               "size_bytes": 72797243
             },
             "data_cwe399_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test_ADV.json",
               "sha256": "b68e64f6062a3da7d9e86524fa6214f3128d57b8d65e33bbc758dd5a58f87598",
               "size_bytes": 2848311
             },
             "data_cwe399_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test.json",
               "sha256": "308ac24b70d9a239db09f7ca9c43277fd4334aafc3df922c323d9a4683699764",
               "size_bytes": 4763410
             },
             "data_cwe399_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_train.json",
               "sha256": "0da4406369e21d605ef8a14468dac60afdb061befcef2c5e1aa6e3f75e0ab0a4",
               "size_bytes": 10581011
             },
             "data_openssl_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test_ADV.json",
               "sha256": "b2fd9e1d861d91f795ae344078e48115418088a47744bb4372c71eb675dc1efa",
               "size_bytes": 1863135
             },
             "data_openssl_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test.json",
               "sha256": "c45167b5d24c8aab93136c4717f55e74791254f9104face5eaa22181f316a07c",
               "size_bytes": 3565470
             },
             "data_openssl_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_train.json",
+              "path": "Code and Dataset/file/data/openssl_ast_train.json",
               "sha256": "b37fba27a143ec7723c7ad931f44da0b4005f9174fcd1653a82cb2027af3010d",
               "size_bytes": 8656908
             },
             "role_cwe119": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\cwe119.json",
+              "path": "results/jisa_revision/roles/cwe119.json",
               "sha256": "7810185833b889220e4bbbf03124a9466b5c6ee1df1a8539aea44d0137c893a1",
               "size_bytes": 2861377
             }
@@ -66565,7 +66565,7 @@
               "transformers": null
             },
             "platform": "Windows-11-10.0.26200-SP0",
-            "python_executable": "D:\\Anaconda\\python.exe",
+            "python_executable": "python",
             "python_implementation": "CPython",
             "python_version": "3.12.4"
           },
@@ -74866,67 +74866,67 @@
           "experiment": "deletion_sensitivity_grid",
           "inputs": {
             "data_asterisk_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test_ADV.json",
               "sha256": "475e84722009275460b8dea4d65edfd34225bd78c7dc6a7fe2dbd86588ddf221",
               "size_bytes": 1796605
             },
             "data_asterisk_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test.json",
               "sha256": "f1fc237016994b88d380ab5aeb184481f43fb09d47289f4ccbc06e7721412650",
               "size_bytes": 12689868
             },
             "data_asterisk_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_train.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_train.json",
               "sha256": "8fcf4a89c11dbed1e9d0a4a27065405a96b487d9adf7907c98c1208513b31e74",
               "size_bytes": 30411010
             },
             "data_cwe119_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test_ADV.json",
               "sha256": "64e5682845c81936cd56972ace1798f6398a65057f390ecd4896cf7b587e36b4",
               "size_bytes": 2313158
             },
             "data_cwe119_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test.json",
               "sha256": "4355c1835d4b24a8658b377e736c5f59f5e5e41eb5b590c6b754de2c77029e75",
               "size_bytes": 31054554
             },
             "data_cwe119_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_train.json",
               "sha256": "ff704a92d80c5988f88b9e8abf96e233e5690e3618905ad4ff2aeaad6598115c",
               "size_bytes": 72797243
             },
             "data_cwe399_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test_ADV.json",
               "sha256": "b68e64f6062a3da7d9e86524fa6214f3128d57b8d65e33bbc758dd5a58f87598",
               "size_bytes": 2848311
             },
             "data_cwe399_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test.json",
               "sha256": "308ac24b70d9a239db09f7ca9c43277fd4334aafc3df922c323d9a4683699764",
               "size_bytes": 4763410
             },
             "data_cwe399_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_train.json",
               "sha256": "0da4406369e21d605ef8a14468dac60afdb061befcef2c5e1aa6e3f75e0ab0a4",
               "size_bytes": 10581011
             },
             "data_openssl_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test_ADV.json",
               "sha256": "b2fd9e1d861d91f795ae344078e48115418088a47744bb4372c71eb675dc1efa",
               "size_bytes": 1863135
             },
             "data_openssl_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test.json",
               "sha256": "c45167b5d24c8aab93136c4717f55e74791254f9104face5eaa22181f316a07c",
               "size_bytes": 3565470
             },
             "data_openssl_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_train.json",
+              "path": "Code and Dataset/file/data/openssl_ast_train.json",
               "sha256": "b37fba27a143ec7723c7ad931f44da0b4005f9174fcd1653a82cb2027af3010d",
               "size_bytes": 8656908
             },
             "role_cwe399": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\cwe399.json",
+              "path": "results/jisa_revision/roles/cwe399.json",
               "sha256": "f64aaa7645d6dcbacf2bb07ab78e9331553b8e7315b128505b17405a7b841d73",
               "size_bytes": 1254348
             }
@@ -74985,7 +74985,7 @@
               "transformers": null
             },
             "platform": "Windows-11-10.0.26200-SP0",
-            "python_executable": "D:\\Anaconda\\python.exe",
+            "python_executable": "python",
             "python_implementation": "CPython",
             "python_version": "3.12.4"
           },
@@ -83286,67 +83286,67 @@
           "experiment": "deletion_sensitivity_grid",
           "inputs": {
             "data_asterisk_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test_ADV.json",
               "sha256": "475e84722009275460b8dea4d65edfd34225bd78c7dc6a7fe2dbd86588ddf221",
               "size_bytes": 1796605
             },
             "data_asterisk_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test.json",
               "sha256": "f1fc237016994b88d380ab5aeb184481f43fb09d47289f4ccbc06e7721412650",
               "size_bytes": 12689868
             },
             "data_asterisk_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_train.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_train.json",
               "sha256": "8fcf4a89c11dbed1e9d0a4a27065405a96b487d9adf7907c98c1208513b31e74",
               "size_bytes": 30411010
             },
             "data_cwe119_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test_ADV.json",
               "sha256": "64e5682845c81936cd56972ace1798f6398a65057f390ecd4896cf7b587e36b4",
               "size_bytes": 2313158
             },
             "data_cwe119_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test.json",
               "sha256": "4355c1835d4b24a8658b377e736c5f59f5e5e41eb5b590c6b754de2c77029e75",
               "size_bytes": 31054554
             },
             "data_cwe119_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_train.json",
               "sha256": "ff704a92d80c5988f88b9e8abf96e233e5690e3618905ad4ff2aeaad6598115c",
               "size_bytes": 72797243
             },
             "data_cwe399_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test_ADV.json",
               "sha256": "b68e64f6062a3da7d9e86524fa6214f3128d57b8d65e33bbc758dd5a58f87598",
               "size_bytes": 2848311
             },
             "data_cwe399_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test.json",
               "sha256": "308ac24b70d9a239db09f7ca9c43277fd4334aafc3df922c323d9a4683699764",
               "size_bytes": 4763410
             },
             "data_cwe399_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_train.json",
               "sha256": "0da4406369e21d605ef8a14468dac60afdb061befcef2c5e1aa6e3f75e0ab0a4",
               "size_bytes": 10581011
             },
             "data_openssl_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test_ADV.json",
               "sha256": "b2fd9e1d861d91f795ae344078e48115418088a47744bb4372c71eb675dc1efa",
               "size_bytes": 1863135
             },
             "data_openssl_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test.json",
               "sha256": "c45167b5d24c8aab93136c4717f55e74791254f9104face5eaa22181f316a07c",
               "size_bytes": 3565470
             },
             "data_openssl_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_train.json",
+              "path": "Code and Dataset/file/data/openssl_ast_train.json",
               "sha256": "b37fba27a143ec7723c7ad931f44da0b4005f9174fcd1653a82cb2027af3010d",
               "size_bytes": 8656908
             },
             "role_openssl": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\openssl.json",
+              "path": "results/jisa_revision/roles/openssl.json",
               "sha256": "528f4852c218f2cb425732804dd634b9ce7f6c3596dd1debf7f7e0dac11a92cc",
               "size_bytes": 1223870
             }
@@ -83405,7 +83405,7 @@
               "transformers": null
             },
             "platform": "Windows-11-10.0.26200-SP0",
-            "python_executable": "D:\\Anaconda\\python.exe",
+            "python_executable": "python",
             "python_implementation": "CPython",
             "python_version": "3.12.4"
           },
@@ -116519,82 +116519,82 @@
           "experiment": "matched_budget_quarantine",
           "inputs": {
             "data_asterisk_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test_ADV.json",
               "sha256": "475e84722009275460b8dea4d65edfd34225bd78c7dc6a7fe2dbd86588ddf221",
               "size_bytes": 1796605
             },
             "data_asterisk_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test.json",
               "sha256": "f1fc237016994b88d380ab5aeb184481f43fb09d47289f4ccbc06e7721412650",
               "size_bytes": 12689868
             },
             "data_asterisk_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_train.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_train.json",
               "sha256": "8fcf4a89c11dbed1e9d0a4a27065405a96b487d9adf7907c98c1208513b31e74",
               "size_bytes": 30411010
             },
             "data_cwe119_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test_ADV.json",
               "sha256": "64e5682845c81936cd56972ace1798f6398a65057f390ecd4896cf7b587e36b4",
               "size_bytes": 2313158
             },
             "data_cwe119_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test.json",
               "sha256": "4355c1835d4b24a8658b377e736c5f59f5e5e41eb5b590c6b754de2c77029e75",
               "size_bytes": 31054554
             },
             "data_cwe119_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_train.json",
               "sha256": "ff704a92d80c5988f88b9e8abf96e233e5690e3618905ad4ff2aeaad6598115c",
               "size_bytes": 72797243
             },
             "data_cwe399_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test_ADV.json",
               "sha256": "b68e64f6062a3da7d9e86524fa6214f3128d57b8d65e33bbc758dd5a58f87598",
               "size_bytes": 2848311
             },
             "data_cwe399_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test.json",
               "sha256": "308ac24b70d9a239db09f7ca9c43277fd4334aafc3df922c323d9a4683699764",
               "size_bytes": 4763410
             },
             "data_cwe399_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_train.json",
               "sha256": "0da4406369e21d605ef8a14468dac60afdb061befcef2c5e1aa6e3f75e0ab0a4",
               "size_bytes": 10581011
             },
             "data_openssl_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test_ADV.json",
               "sha256": "b2fd9e1d861d91f795ae344078e48115418088a47744bb4372c71eb675dc1efa",
               "size_bytes": 1863135
             },
             "data_openssl_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test.json",
               "sha256": "c45167b5d24c8aab93136c4717f55e74791254f9104face5eaa22181f316a07c",
               "size_bytes": 3565470
             },
             "data_openssl_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_train.json",
+              "path": "Code and Dataset/file/data/openssl_ast_train.json",
               "sha256": "b37fba27a143ec7723c7ad931f44da0b4005f9174fcd1653a82cb2027af3010d",
               "size_bytes": 8656908
             },
             "role_asterisk": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\asterisk.json",
+              "path": "results/jisa_revision/roles/asterisk.json",
               "sha256": "4bf795e269e3a796555bd30b0147af44aac317ac33f841b9b1c4dc3e6112a9a2",
               "size_bytes": 1339748
             },
             "role_cwe119": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\cwe119.json",
+              "path": "results/jisa_revision/roles/cwe119.json",
               "sha256": "7810185833b889220e4bbbf03124a9466b5c6ee1df1a8539aea44d0137c893a1",
               "size_bytes": 2861377
             },
             "role_cwe399": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\cwe399.json",
+              "path": "results/jisa_revision/roles/cwe399.json",
               "sha256": "f64aaa7645d6dcbacf2bb07ab78e9331553b8e7315b128505b17405a7b841d73",
               "size_bytes": 1254348
             },
             "role_openssl": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\openssl.json",
+              "path": "results/jisa_revision/roles/openssl.json",
               "sha256": "528f4852c218f2cb425732804dd634b9ce7f6c3596dd1debf7f7e0dac11a92cc",
               "size_bytes": 1223870
             }
@@ -116734,7 +116734,7 @@
               "transformers": null
             },
             "platform": "Windows-11-10.0.26200-SP0",
-            "python_executable": "D:\\Anaconda\\python.exe",
+            "python_executable": "python",
             "python_implementation": "CPython",
             "python_version": "3.12.4"
           },
@@ -127172,82 +127172,82 @@
           "experiment": "RQ1",
           "inputs": {
             "data_asterisk_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test_ADV.json",
               "sha256": "475e84722009275460b8dea4d65edfd34225bd78c7dc6a7fe2dbd86588ddf221",
               "size_bytes": 1796605
             },
             "data_asterisk_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test.json",
               "sha256": "f1fc237016994b88d380ab5aeb184481f43fb09d47289f4ccbc06e7721412650",
               "size_bytes": 12689868
             },
             "data_asterisk_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_train.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_train.json",
               "sha256": "8fcf4a89c11dbed1e9d0a4a27065405a96b487d9adf7907c98c1208513b31e74",
               "size_bytes": 30411010
             },
             "data_cwe119_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test_ADV.json",
               "sha256": "64e5682845c81936cd56972ace1798f6398a65057f390ecd4896cf7b587e36b4",
               "size_bytes": 2313158
             },
             "data_cwe119_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test.json",
               "sha256": "4355c1835d4b24a8658b377e736c5f59f5e5e41eb5b590c6b754de2c77029e75",
               "size_bytes": 31054554
             },
             "data_cwe119_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_train.json",
               "sha256": "ff704a92d80c5988f88b9e8abf96e233e5690e3618905ad4ff2aeaad6598115c",
               "size_bytes": 72797243
             },
             "data_cwe399_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test_ADV.json",
               "sha256": "b68e64f6062a3da7d9e86524fa6214f3128d57b8d65e33bbc758dd5a58f87598",
               "size_bytes": 2848311
             },
             "data_cwe399_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test.json",
               "sha256": "308ac24b70d9a239db09f7ca9c43277fd4334aafc3df922c323d9a4683699764",
               "size_bytes": 4763410
             },
             "data_cwe399_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_train.json",
               "sha256": "0da4406369e21d605ef8a14468dac60afdb061befcef2c5e1aa6e3f75e0ab0a4",
               "size_bytes": 10581011
             },
             "data_openssl_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test_ADV.json",
               "sha256": "b2fd9e1d861d91f795ae344078e48115418088a47744bb4372c71eb675dc1efa",
               "size_bytes": 1863135
             },
             "data_openssl_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test.json",
               "sha256": "c45167b5d24c8aab93136c4717f55e74791254f9104face5eaa22181f316a07c",
               "size_bytes": 3565470
             },
             "data_openssl_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_train.json",
+              "path": "Code and Dataset/file/data/openssl_ast_train.json",
               "sha256": "b37fba27a143ec7723c7ad931f44da0b4005f9174fcd1653a82cb2027af3010d",
               "size_bytes": 8656908
             },
             "role_asterisk": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\asterisk.json",
+              "path": "results/jisa_revision/roles/asterisk.json",
               "sha256": "4bf795e269e3a796555bd30b0147af44aac317ac33f841b9b1c4dc3e6112a9a2",
               "size_bytes": 1339748
             },
             "role_cwe119": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\cwe119.json",
+              "path": "results/jisa_revision/roles/cwe119.json",
               "sha256": "7810185833b889220e4bbbf03124a9466b5c6ee1df1a8539aea44d0137c893a1",
               "size_bytes": 2861377
             },
             "role_cwe399": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\cwe399.json",
+              "path": "results/jisa_revision/roles/cwe399.json",
               "sha256": "f64aaa7645d6dcbacf2bb07ab78e9331553b8e7315b128505b17405a7b841d73",
               "size_bytes": 1254348
             },
             "role_openssl": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\openssl.json",
+              "path": "results/jisa_revision/roles/openssl.json",
               "sha256": "528f4852c218f2cb425732804dd634b9ce7f6c3596dd1debf7f7e0dac11a92cc",
               "size_bytes": 1223870
             }
@@ -127351,7 +127351,7 @@
               "transformers": null
             },
             "platform": "Windows-11-10.0.26200-SP0",
-            "python_executable": "D:\\Anaconda\\python.exe",
+            "python_executable": "python",
             "python_implementation": "CPython",
             "python_version": "3.12.4"
           },
@@ -127579,82 +127579,82 @@
           "experiment": "RQ2",
           "inputs": {
             "data_asterisk_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test_ADV.json",
               "sha256": "475e84722009275460b8dea4d65edfd34225bd78c7dc6a7fe2dbd86588ddf221",
               "size_bytes": 1796605
             },
             "data_asterisk_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test.json",
               "sha256": "f1fc237016994b88d380ab5aeb184481f43fb09d47289f4ccbc06e7721412650",
               "size_bytes": 12689868
             },
             "data_asterisk_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_train.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_train.json",
               "sha256": "8fcf4a89c11dbed1e9d0a4a27065405a96b487d9adf7907c98c1208513b31e74",
               "size_bytes": 30411010
             },
             "data_cwe119_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test_ADV.json",
               "sha256": "64e5682845c81936cd56972ace1798f6398a65057f390ecd4896cf7b587e36b4",
               "size_bytes": 2313158
             },
             "data_cwe119_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test.json",
               "sha256": "4355c1835d4b24a8658b377e736c5f59f5e5e41eb5b590c6b754de2c77029e75",
               "size_bytes": 31054554
             },
             "data_cwe119_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_train.json",
               "sha256": "ff704a92d80c5988f88b9e8abf96e233e5690e3618905ad4ff2aeaad6598115c",
               "size_bytes": 72797243
             },
             "data_cwe399_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test_ADV.json",
               "sha256": "b68e64f6062a3da7d9e86524fa6214f3128d57b8d65e33bbc758dd5a58f87598",
               "size_bytes": 2848311
             },
             "data_cwe399_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test.json",
               "sha256": "308ac24b70d9a239db09f7ca9c43277fd4334aafc3df922c323d9a4683699764",
               "size_bytes": 4763410
             },
             "data_cwe399_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_train.json",
               "sha256": "0da4406369e21d605ef8a14468dac60afdb061befcef2c5e1aa6e3f75e0ab0a4",
               "size_bytes": 10581011
             },
             "data_openssl_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test_ADV.json",
               "sha256": "b2fd9e1d861d91f795ae344078e48115418088a47744bb4372c71eb675dc1efa",
               "size_bytes": 1863135
             },
             "data_openssl_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test.json",
               "sha256": "c45167b5d24c8aab93136c4717f55e74791254f9104face5eaa22181f316a07c",
               "size_bytes": 3565470
             },
             "data_openssl_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_train.json",
+              "path": "Code and Dataset/file/data/openssl_ast_train.json",
               "sha256": "b37fba27a143ec7723c7ad931f44da0b4005f9174fcd1653a82cb2027af3010d",
               "size_bytes": 8656908
             },
             "role_asterisk": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\asterisk.json",
+              "path": "results/jisa_revision/roles/asterisk.json",
               "sha256": "4bf795e269e3a796555bd30b0147af44aac317ac33f841b9b1c4dc3e6112a9a2",
               "size_bytes": 1339748
             },
             "role_cwe119": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\cwe119.json",
+              "path": "results/jisa_revision/roles/cwe119.json",
               "sha256": "7810185833b889220e4bbbf03124a9466b5c6ee1df1a8539aea44d0137c893a1",
               "size_bytes": 2861377
             },
             "role_cwe399": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\cwe399.json",
+              "path": "results/jisa_revision/roles/cwe399.json",
               "sha256": "f64aaa7645d6dcbacf2bb07ab78e9331553b8e7315b128505b17405a7b841d73",
               "size_bytes": 1254348
             },
             "role_openssl": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\openssl.json",
+              "path": "results/jisa_revision/roles/openssl.json",
               "sha256": "528f4852c218f2cb425732804dd634b9ce7f6c3596dd1debf7f7e0dac11a92cc",
               "size_bytes": 1223870
             }
@@ -127758,7 +127758,7 @@
               "transformers": null
             },
             "platform": "Windows-11-10.0.26200-SP0",
-            "python_executable": "D:\\Anaconda\\python.exe",
+            "python_executable": "python",
             "python_implementation": "CPython",
             "python_version": "3.12.4"
           },
@@ -128533,7 +128533,7 @@
               {
                 "kind": "checkpoint",
                 "name": "model_directory",
-                "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base"
+                "path": "models/codebert-base"
               }
             ],
             "promoted_current_evidence": false,
@@ -128561,18 +128561,18 @@
               "asterisk"
             ],
             "experiment": "RQ3",
-            "model_dir": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base",
+            "model_dir": "models/codebert-base",
             "victim": "codebert"
           },
           "experiment": "RQ3",
           "inputs": {
             "role_asterisk": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\asterisk.json",
+              "path": "results/jisa_revision/roles/asterisk.json",
               "sha256": "4bf795e269e3a796555bd30b0147af44aac317ac33f841b9b1c4dc3e6112a9a2",
               "size_bytes": 1339748
             },
             "role_openssl": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\openssl.json",
+              "path": "results/jisa_revision/roles/openssl.json",
               "sha256": "528f4852c218f2cb425732804dd634b9ce7f6c3596dd1debf7f7e0dac11a92cc",
               "size_bytes": 1223870
             }
@@ -128604,7 +128604,7 @@
               "transformers": null
             },
             "platform": "Windows-11-10.0.26200-SP0",
-            "python_executable": "D:\\Anaconda\\python.exe",
+            "python_executable": "python",
             "python_implementation": "CPython",
             "python_version": "3.12.4"
           },
@@ -128677,92 +128677,92 @@
           "experiment": "RQ3",
           "inputs": {
             "checkpoint_config.json": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base\\config.json",
+              "path": "models/codebert-base/config.json",
               "sha256": "742474d6148a061fa975dadc09ce93725fa9673c55421ed316ef75532cc6b7aa",
               "size_bytes": 498
             },
             "checkpoint_manifest": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base\\checkpoint_manifest.json",
+              "path": "models/codebert-base/checkpoint_manifest.json",
               "sha256": "315ac433529ac9f4ffd8c24ba1d56b5282df01f001b82ed0514ef5c2a8a7d329",
               "size_bytes": 1827
             },
             "checkpoint_merges.txt": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base\\merges.txt",
+              "path": "models/codebert-base/merges.txt",
               "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
               "size_bytes": 456318
             },
             "checkpoint_pytorch_model.bin": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base\\pytorch_model.bin",
+              "path": "models/codebert-base/pytorch_model.bin",
               "sha256": "28b61fd8fa069f6bc966f4cb9572a4026ab2a784fca8fb224020d91b744e32d6",
               "size_bytes": 498627950
             },
             "checkpoint_vocab.json": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base\\vocab.json",
+              "path": "models/codebert-base/vocab.json",
               "sha256": "06b4d46c8e752d410213d9548eb27a54db70fda0319b6271fb8d59dead5e1cab",
               "size_bytes": 898822
             },
             "data_asterisk_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test_ADV.json",
               "sha256": "475e84722009275460b8dea4d65edfd34225bd78c7dc6a7fe2dbd86588ddf221",
               "size_bytes": 1796605
             },
             "data_asterisk_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test.json",
               "sha256": "f1fc237016994b88d380ab5aeb184481f43fb09d47289f4ccbc06e7721412650",
               "size_bytes": 12689868
             },
             "data_asterisk_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_train.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_train.json",
               "sha256": "8fcf4a89c11dbed1e9d0a4a27065405a96b487d9adf7907c98c1208513b31e74",
               "size_bytes": 30411010
             },
             "data_cwe119_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test_ADV.json",
               "sha256": "64e5682845c81936cd56972ace1798f6398a65057f390ecd4896cf7b587e36b4",
               "size_bytes": 2313158
             },
             "data_cwe119_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test.json",
               "sha256": "4355c1835d4b24a8658b377e736c5f59f5e5e41eb5b590c6b754de2c77029e75",
               "size_bytes": 31054554
             },
             "data_cwe119_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_train.json",
               "sha256": "ff704a92d80c5988f88b9e8abf96e233e5690e3618905ad4ff2aeaad6598115c",
               "size_bytes": 72797243
             },
             "data_cwe399_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test_ADV.json",
               "sha256": "b68e64f6062a3da7d9e86524fa6214f3128d57b8d65e33bbc758dd5a58f87598",
               "size_bytes": 2848311
             },
             "data_cwe399_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test.json",
               "sha256": "308ac24b70d9a239db09f7ca9c43277fd4334aafc3df922c323d9a4683699764",
               "size_bytes": 4763410
             },
             "data_cwe399_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_train.json",
               "sha256": "0da4406369e21d605ef8a14468dac60afdb061befcef2c5e1aa6e3f75e0ab0a4",
               "size_bytes": 10581011
             },
             "data_openssl_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test_ADV.json",
               "sha256": "b2fd9e1d861d91f795ae344078e48115418088a47744bb4372c71eb675dc1efa",
               "size_bytes": 1863135
             },
             "data_openssl_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test.json",
               "sha256": "c45167b5d24c8aab93136c4717f55e74791254f9104face5eaa22181f316a07c",
               "size_bytes": 3565470
             },
             "data_openssl_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_train.json",
+              "path": "Code and Dataset/file/data/openssl_ast_train.json",
               "sha256": "b37fba27a143ec7723c7ad931f44da0b4005f9174fcd1653a82cb2027af3010d",
               "size_bytes": 8656908
             },
             "role_asterisk": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\asterisk.json",
+              "path": "results/jisa_revision/roles/asterisk.json",
               "sha256": "4bf795e269e3a796555bd30b0147af44aac317ac33f841b9b1c4dc3e6112a9a2",
               "size_bytes": 1339748
             }
@@ -128821,7 +128821,7 @@
               "transformers": "4.21.3"
             },
             "platform": "Windows-10-10.0.26100-SP0",
-            "python_executable": "D:\\Anaconda\\envs\\eatvul\\python.exe",
+            "python_executable": "python",
             "python_implementation": "CPython",
             "python_version": "3.7.16"
           },
@@ -128919,92 +128919,92 @@
           "experiment": "RQ3",
           "inputs": {
             "checkpoint_config.json": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base\\config.json",
+              "path": "models/codebert-base/config.json",
               "sha256": "742474d6148a061fa975dadc09ce93725fa9673c55421ed316ef75532cc6b7aa",
               "size_bytes": 498
             },
             "checkpoint_manifest": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base\\checkpoint_manifest.json",
+              "path": "models/codebert-base/checkpoint_manifest.json",
               "sha256": "315ac433529ac9f4ffd8c24ba1d56b5282df01f001b82ed0514ef5c2a8a7d329",
               "size_bytes": 1827
             },
             "checkpoint_merges.txt": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base\\merges.txt",
+              "path": "models/codebert-base/merges.txt",
               "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
               "size_bytes": 456318
             },
             "checkpoint_pytorch_model.bin": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base\\pytorch_model.bin",
+              "path": "models/codebert-base/pytorch_model.bin",
               "sha256": "28b61fd8fa069f6bc966f4cb9572a4026ab2a784fca8fb224020d91b744e32d6",
               "size_bytes": 498627950
             },
             "checkpoint_vocab.json": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base\\vocab.json",
+              "path": "models/codebert-base/vocab.json",
               "sha256": "06b4d46c8e752d410213d9548eb27a54db70fda0319b6271fb8d59dead5e1cab",
               "size_bytes": 898822
             },
             "data_asterisk_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test_ADV.json",
               "sha256": "475e84722009275460b8dea4d65edfd34225bd78c7dc6a7fe2dbd86588ddf221",
               "size_bytes": 1796605
             },
             "data_asterisk_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test.json",
               "sha256": "f1fc237016994b88d380ab5aeb184481f43fb09d47289f4ccbc06e7721412650",
               "size_bytes": 12689868
             },
             "data_asterisk_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_train.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_train.json",
               "sha256": "8fcf4a89c11dbed1e9d0a4a27065405a96b487d9adf7907c98c1208513b31e74",
               "size_bytes": 30411010
             },
             "data_cwe119_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test_ADV.json",
               "sha256": "64e5682845c81936cd56972ace1798f6398a65057f390ecd4896cf7b587e36b4",
               "size_bytes": 2313158
             },
             "data_cwe119_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test.json",
               "sha256": "4355c1835d4b24a8658b377e736c5f59f5e5e41eb5b590c6b754de2c77029e75",
               "size_bytes": 31054554
             },
             "data_cwe119_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_train.json",
               "sha256": "ff704a92d80c5988f88b9e8abf96e233e5690e3618905ad4ff2aeaad6598115c",
               "size_bytes": 72797243
             },
             "data_cwe399_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test_ADV.json",
               "sha256": "b68e64f6062a3da7d9e86524fa6214f3128d57b8d65e33bbc758dd5a58f87598",
               "size_bytes": 2848311
             },
             "data_cwe399_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test.json",
               "sha256": "308ac24b70d9a239db09f7ca9c43277fd4334aafc3df922c323d9a4683699764",
               "size_bytes": 4763410
             },
             "data_cwe399_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_train.json",
               "sha256": "0da4406369e21d605ef8a14468dac60afdb061befcef2c5e1aa6e3f75e0ab0a4",
               "size_bytes": 10581011
             },
             "data_openssl_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test_ADV.json",
               "sha256": "b2fd9e1d861d91f795ae344078e48115418088a47744bb4372c71eb675dc1efa",
               "size_bytes": 1863135
             },
             "data_openssl_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test.json",
               "sha256": "c45167b5d24c8aab93136c4717f55e74791254f9104face5eaa22181f316a07c",
               "size_bytes": 3565470
             },
             "data_openssl_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_train.json",
+              "path": "Code and Dataset/file/data/openssl_ast_train.json",
               "sha256": "b37fba27a143ec7723c7ad931f44da0b4005f9174fcd1653a82cb2027af3010d",
               "size_bytes": 8656908
             },
             "role_openssl": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\openssl.json",
+              "path": "results/jisa_revision/roles/openssl.json",
               "sha256": "528f4852c218f2cb425732804dd634b9ce7f6c3596dd1debf7f7e0dac11a92cc",
               "size_bytes": 1223870
             }
@@ -129063,7 +129063,7 @@
               "transformers": "4.21.3"
             },
             "platform": "Windows-10-10.0.26100-SP0",
-            "python_executable": "D:\\Anaconda\\envs\\eatvul\\python.exe",
+            "python_executable": "python",
             "python_implementation": "CPython",
             "python_version": "3.7.16"
           },
@@ -129232,97 +129232,97 @@
           "experiment": "codebert_validated_check",
           "inputs": {
             "checkpoint_config.json": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base\\config.json",
+              "path": "models/codebert-base/config.json",
               "sha256": "742474d6148a061fa975dadc09ce93725fa9673c55421ed316ef75532cc6b7aa",
               "size_bytes": 498
             },
             "checkpoint_manifest": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base\\checkpoint_manifest.json",
+              "path": "models/codebert-base/checkpoint_manifest.json",
               "sha256": "315ac433529ac9f4ffd8c24ba1d56b5282df01f001b82ed0514ef5c2a8a7d329",
               "size_bytes": 1827
             },
             "checkpoint_merges.txt": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base\\merges.txt",
+              "path": "models/codebert-base/merges.txt",
               "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
               "size_bytes": 456318
             },
             "checkpoint_pytorch_model.bin": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base\\pytorch_model.bin",
+              "path": "models/codebert-base/pytorch_model.bin",
               "sha256": "28b61fd8fa069f6bc966f4cb9572a4026ab2a784fca8fb224020d91b744e32d6",
               "size_bytes": 498627950
             },
             "checkpoint_vocab.json": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\models\\codebert-base\\vocab.json",
+              "path": "models/codebert-base/vocab.json",
               "sha256": "06b4d46c8e752d410213d9548eb27a54db70fda0319b6271fb8d59dead5e1cab",
               "size_bytes": 898822
             },
             "data_asterisk_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test_ADV.json",
               "sha256": "475e84722009275460b8dea4d65edfd34225bd78c7dc6a7fe2dbd86588ddf221",
               "size_bytes": 1796605
             },
             "data_asterisk_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test.json",
               "sha256": "f1fc237016994b88d380ab5aeb184481f43fb09d47289f4ccbc06e7721412650",
               "size_bytes": 12689868
             },
             "data_asterisk_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_train.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_train.json",
               "sha256": "8fcf4a89c11dbed1e9d0a4a27065405a96b487d9adf7907c98c1208513b31e74",
               "size_bytes": 30411010
             },
             "data_cwe119_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test_ADV.json",
               "sha256": "64e5682845c81936cd56972ace1798f6398a65057f390ecd4896cf7b587e36b4",
               "size_bytes": 2313158
             },
             "data_cwe119_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test.json",
               "sha256": "4355c1835d4b24a8658b377e736c5f59f5e5e41eb5b590c6b754de2c77029e75",
               "size_bytes": 31054554
             },
             "data_cwe119_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_train.json",
               "sha256": "ff704a92d80c5988f88b9e8abf96e233e5690e3618905ad4ff2aeaad6598115c",
               "size_bytes": 72797243
             },
             "data_cwe399_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test_ADV.json",
               "sha256": "b68e64f6062a3da7d9e86524fa6214f3128d57b8d65e33bbc758dd5a58f87598",
               "size_bytes": 2848311
             },
             "data_cwe399_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test.json",
               "sha256": "308ac24b70d9a239db09f7ca9c43277fd4334aafc3df922c323d9a4683699764",
               "size_bytes": 4763410
             },
             "data_cwe399_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_train.json",
               "sha256": "0da4406369e21d605ef8a14468dac60afdb061befcef2c5e1aa6e3f75e0ab0a4",
               "size_bytes": 10581011
             },
             "data_openssl_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test_ADV.json",
               "sha256": "b2fd9e1d861d91f795ae344078e48115418088a47744bb4372c71eb675dc1efa",
               "size_bytes": 1863135
             },
             "data_openssl_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test.json",
               "sha256": "c45167b5d24c8aab93136c4717f55e74791254f9104face5eaa22181f316a07c",
               "size_bytes": 3565470
             },
             "data_openssl_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_train.json",
+              "path": "Code and Dataset/file/data/openssl_ast_train.json",
               "sha256": "b37fba27a143ec7723c7ad931f44da0b4005f9174fcd1653a82cb2027af3010d",
               "size_bytes": 8656908
             },
             "role_asterisk": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\asterisk.json",
+              "path": "results/jisa_revision/roles/asterisk.json",
               "sha256": "4bf795e269e3a796555bd30b0147af44aac317ac33f841b9b1c4dc3e6112a9a2",
               "size_bytes": 1339748
             },
             "role_openssl": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\openssl.json",
+              "path": "results/jisa_revision/roles/openssl.json",
               "sha256": "528f4852c218f2cb425732804dd634b9ce7f6c3596dd1debf7f7e0dac11a92cc",
               "size_bytes": 1223870
             }
@@ -129408,7 +129408,7 @@
               "transformers": "4.21.3"
             },
             "platform": "Windows-10-10.0.26100-SP0",
-            "python_executable": "D:\\Anaconda\\envs\\eatvul\\python.exe",
+            "python_executable": "python",
             "python_implementation": "CPython",
             "python_version": "3.7.16"
           },
@@ -129570,22 +129570,22 @@
           "experiment": "RQ4-RQ5",
           "inputs": {
             "role_asterisk": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\asterisk.json",
+              "path": "results/jisa_revision/roles/asterisk.json",
               "sha256": "4bf795e269e3a796555bd30b0147af44aac317ac33f841b9b1c4dc3e6112a9a2",
               "size_bytes": 1339748
             },
             "role_cwe119": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\cwe119.json",
+              "path": "results/jisa_revision/roles/cwe119.json",
               "sha256": "7810185833b889220e4bbbf03124a9466b5c6ee1df1a8539aea44d0137c893a1",
               "size_bytes": 2861377
             },
             "role_cwe399": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\cwe399.json",
+              "path": "results/jisa_revision/roles/cwe399.json",
               "sha256": "f64aaa7645d6dcbacf2bb07ab78e9331553b8e7315b128505b17405a7b841d73",
               "size_bytes": 1254348
             },
             "role_openssl": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\openssl.json",
+              "path": "results/jisa_revision/roles/openssl.json",
               "sha256": "528f4852c218f2cb425732804dd634b9ce7f6c3596dd1debf7f7e0dac11a92cc",
               "size_bytes": 1223870
             }
@@ -129689,7 +129689,7 @@
               "transformers": null
             },
             "platform": "Windows-11-10.0.26200-SP0",
-            "python_executable": "D:\\Anaconda\\python.exe",
+            "python_executable": "python",
             "python_implementation": "CPython",
             "python_version": "3.12.4"
           },
@@ -130003,82 +130003,82 @@
           "experiment": "RQ6",
           "inputs": {
             "data_asterisk_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test_ADV.json",
               "sha256": "475e84722009275460b8dea4d65edfd34225bd78c7dc6a7fe2dbd86588ddf221",
               "size_bytes": 1796605
             },
             "data_asterisk_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test.json",
               "sha256": "f1fc237016994b88d380ab5aeb184481f43fb09d47289f4ccbc06e7721412650",
               "size_bytes": 12689868
             },
             "data_asterisk_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_train.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_train.json",
               "sha256": "8fcf4a89c11dbed1e9d0a4a27065405a96b487d9adf7907c98c1208513b31e74",
               "size_bytes": 30411010
             },
             "data_cwe119_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test_ADV.json",
               "sha256": "64e5682845c81936cd56972ace1798f6398a65057f390ecd4896cf7b587e36b4",
               "size_bytes": 2313158
             },
             "data_cwe119_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test.json",
               "sha256": "4355c1835d4b24a8658b377e736c5f59f5e5e41eb5b590c6b754de2c77029e75",
               "size_bytes": 31054554
             },
             "data_cwe119_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_train.json",
               "sha256": "ff704a92d80c5988f88b9e8abf96e233e5690e3618905ad4ff2aeaad6598115c",
               "size_bytes": 72797243
             },
             "data_cwe399_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test_ADV.json",
               "sha256": "b68e64f6062a3da7d9e86524fa6214f3128d57b8d65e33bbc758dd5a58f87598",
               "size_bytes": 2848311
             },
             "data_cwe399_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test.json",
               "sha256": "308ac24b70d9a239db09f7ca9c43277fd4334aafc3df922c323d9a4683699764",
               "size_bytes": 4763410
             },
             "data_cwe399_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_train.json",
               "sha256": "0da4406369e21d605ef8a14468dac60afdb061befcef2c5e1aa6e3f75e0ab0a4",
               "size_bytes": 10581011
             },
             "data_openssl_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test_ADV.json",
               "sha256": "b2fd9e1d861d91f795ae344078e48115418088a47744bb4372c71eb675dc1efa",
               "size_bytes": 1863135
             },
             "data_openssl_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test.json",
               "sha256": "c45167b5d24c8aab93136c4717f55e74791254f9104face5eaa22181f316a07c",
               "size_bytes": 3565470
             },
             "data_openssl_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_train.json",
+              "path": "Code and Dataset/file/data/openssl_ast_train.json",
               "sha256": "b37fba27a143ec7723c7ad931f44da0b4005f9174fcd1653a82cb2027af3010d",
               "size_bytes": 8656908
             },
             "role_asterisk": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\asterisk.json",
+              "path": "results/jisa_revision/roles/asterisk.json",
               "sha256": "4bf795e269e3a796555bd30b0147af44aac317ac33f841b9b1c4dc3e6112a9a2",
               "size_bytes": 1339748
             },
             "role_cwe119": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\cwe119.json",
+              "path": "results/jisa_revision/roles/cwe119.json",
               "sha256": "7810185833b889220e4bbbf03124a9466b5c6ee1df1a8539aea44d0137c893a1",
               "size_bytes": 2861377
             },
             "role_cwe399": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\cwe399.json",
+              "path": "results/jisa_revision/roles/cwe399.json",
               "sha256": "f64aaa7645d6dcbacf2bb07ab78e9331553b8e7315b128505b17405a7b841d73",
               "size_bytes": 1254348
             },
             "role_openssl": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\roles\\openssl.json",
+              "path": "results/jisa_revision/roles/openssl.json",
               "sha256": "528f4852c218f2cb425732804dd634b9ce7f6c3596dd1debf7f7e0dac11a92cc",
               "size_bytes": 1223870
             }
@@ -130191,7 +130191,7 @@
               "transformers": null
             },
             "platform": "Windows-11-10.0.26200-SP0",
-            "python_executable": "D:\\Anaconda\\python.exe",
+            "python_executable": "python",
             "python_implementation": "CPython",
             "python_version": "3.12.4"
           },
@@ -130697,82 +130697,82 @@
           "experiment": "strict_shared_project_exclusion",
           "inputs": {
             "data_asterisk_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test_ADV.json",
               "sha256": "475e84722009275460b8dea4d65edfd34225bd78c7dc6a7fe2dbd86588ddf221",
               "size_bytes": 1796605
             },
             "data_asterisk_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_test.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_test.json",
               "sha256": "f1fc237016994b88d380ab5aeb184481f43fb09d47289f4ccbc06e7721412650",
               "size_bytes": 12689868
             },
             "data_asterisk_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\asterisk_ast_train.json",
+              "path": "Code and Dataset/file/data/asterisk_ast_train.json",
               "sha256": "8fcf4a89c11dbed1e9d0a4a27065405a96b487d9adf7907c98c1208513b31e74",
               "size_bytes": 30411010
             },
             "data_cwe119_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test_ADV.json",
               "sha256": "64e5682845c81936cd56972ace1798f6398a65057f390ecd4896cf7b587e36b4",
               "size_bytes": 2313158
             },
             "data_cwe119_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_test.json",
               "sha256": "4355c1835d4b24a8658b377e736c5f59f5e5e41eb5b590c6b754de2c77029e75",
               "size_bytes": 31054554
             },
             "data_cwe119_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe119_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe119_ast_train.json",
               "sha256": "ff704a92d80c5988f88b9e8abf96e233e5690e3618905ad4ff2aeaad6598115c",
               "size_bytes": 72797243
             },
             "data_cwe399_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test_ADV.json",
               "sha256": "b68e64f6062a3da7d9e86524fa6214f3128d57b8d65e33bbc758dd5a58f87598",
               "size_bytes": 2848311
             },
             "data_cwe399_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_test.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_test.json",
               "sha256": "308ac24b70d9a239db09f7ca9c43277fd4334aafc3df922c323d9a4683699764",
               "size_bytes": 4763410
             },
             "data_cwe399_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\cwe399_ast_train.json",
+              "path": "Code and Dataset/file/data/cwe399_ast_train.json",
               "sha256": "0da4406369e21d605ef8a14468dac60afdb061befcef2c5e1aa6e3f75e0ab0a4",
               "size_bytes": 10581011
             },
             "data_openssl_adv": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test_ADV.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test_ADV.json",
               "sha256": "b2fd9e1d861d91f795ae344078e48115418088a47744bb4372c71eb675dc1efa",
               "size_bytes": 1863135
             },
             "data_openssl_test": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_test.json",
+              "path": "Code and Dataset/file/data/openssl_ast_test.json",
               "sha256": "c45167b5d24c8aab93136c4717f55e74791254f9104face5eaa22181f316a07c",
               "size_bytes": 3565470
             },
             "data_openssl_train": {
-              "path": "D:\\EatVul-Resources\\Code and Dataset\\file\\data\\openssl_ast_train.json",
+              "path": "Code and Dataset/file/data/openssl_ast_train.json",
               "sha256": "b37fba27a143ec7723c7ad931f44da0b4005f9174fcd1653a82cb2027af3010d",
               "size_bytes": 8656908
             },
             "role_asterisk": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\strict\\roles\\asterisk.json",
+              "path": "results/jisa_revision/strict/roles/asterisk.json",
               "sha256": "969ec7a48ddaa5bf01ce00e8a27223a3b0d2f081551a282cfd50d4ecd0e2f092",
               "size_bytes": 1339120
             },
             "role_cwe119": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\strict\\roles\\cwe119.json",
+              "path": "results/jisa_revision/strict/roles/cwe119.json",
               "sha256": "af109bb0a4f8cc6ce97355f54061e2997240582d18bc47806996eb3a07e312c8",
               "size_bytes": 2837359
             },
             "role_cwe399": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\strict\\roles\\cwe399.json",
+              "path": "results/jisa_revision/strict/roles/cwe399.json",
               "sha256": "5fa1c9281ebaaa52bf356b95db6ef22549fc00887a065d37b434e421dd615c57",
               "size_bytes": 1230330
             },
             "role_openssl": {
-              "path": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision\\strict\\roles\\openssl.json",
+              "path": "results/jisa_revision/strict/roles/openssl.json",
               "sha256": "4aee5e52e7483aabe9f0f77277985db9e886fd11144640c1acdc58fe6a2a04d5",
               "size_bytes": 1223233
             }
@@ -130849,7 +130849,7 @@
               "transformers": null
             },
             "platform": "Windows-11-10.0.26200-SP0",
-            "python_executable": "D:\\Anaconda\\python.exe",
+            "python_executable": "python",
             "python_implementation": "CPython",
             "python_version": "3.12.4"
           },
@@ -131875,7 +131875,7 @@
     }
   },
   "protocol_version": "jisa-leakage-free-v1",
-  "results_root": "D:\\EatVul-Resources\\.worktrees\\nested-lodo-defense\\results\\jisa_revision",
+  "results_root": "results/jisa_revision",
   "roles": [
     {
       "calibration_fraction": 0.2,

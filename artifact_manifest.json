@@ -1,6 +1,6 @@
 {
   "schema": "jisa-eatvul-artifact-manifest-v1",
-  "file_count": 126,
+  "file_count": 127,
   "files": [
     {
       "path": ".gitattributes",
@@ -29,8 +29,8 @@
     },
     {
       "path": "DATA.md",
-      "bytes": 2220,
-      "sha256": "1b6bcececee511f41649a8dc59c65002a0a7074bbf5ac0765423db73a58de0fc"
+      "bytes": 2444,
+      "sha256": "0e4cf0e37333af0eb17ecd4c7bd8f2a5f9e59e8a2bde729240f278b569c02e7c"
     },
     {
       "path": "JISA_REVISION_NOTES.md",
@@ -124,8 +124,8 @@
     },
     {
       "path": "manifests/jisa_final/FINAL_RUN_MANIFEST.json",
-      "bytes": 1821,
-      "sha256": "d6b960376098069ebb4ef57a5361b2ba5482e0a6f453ceb3f10419f1138538e2"
+      "bytes": 2053,
+      "sha256": "43d643c32cdeae90d42de081b836c3591af28265d386269832fde6ee40dd7ef1"
     },
     {
       "path": "manifests/jisa_final/confidence_run_manifest.json",
@@ -429,8 +429,8 @@
     },
     {
       "path": "results/jisa_evidence_bundle.json",
-      "bytes": 5765218,
-      "sha256": "6e0c6a0dd8b3a874131c3f2055de9fc2633a83e454af9e5642652d882d9f3796"
+      "bytes": 5757974,
+      "sha256": "c083befa174cd0cb0357a42eab8476f20ead836c50d1b716ff0df2184f8fac0f"
     },
     {
       "path": "results/jisa_matched_budget_summary.csv",
@@ -608,6 +608,11 @@
       "sha256": "7575f4ca445107b53e1dd4f2483046f61eb31dbd7fc8c6b8bae885390e269b11"
     },
     {
+      "path": "scripts/sanitize_jisa_paths.py",
+      "bytes": 1600,
+      "sha256": "fb257685adfda4cb1256e4567992a5d5a1e66e4eb2d203ffb6467cafd40b4f89"
+    },
+    {
       "path": "scripts/summarize_official_linevul.py",
       "bytes": 4915,
       "sha256": "031544e4e6a04221da6029bae246f259af42782dcbed2920d923ecc005d49b62"
@@ -624,8 +629,8 @@
     },
     {
       "path": "tests/test_jisa_release_boundary.py",
-      "bytes": 1335,
-      "sha256": "2fff431d2518385f2edd68e58f6749c7dc5766840b99e30bef6d4971c041fe6f"
+      "bytes": 2470,
+      "sha256": "bd48be763f11c34d0d1b70ee4773ed3edef6343544b5114db019f7b2082e4f67"
     },
     {
       "path": "tests/test_materialize_jisa_evidence.py",

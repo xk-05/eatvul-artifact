@@ -37,7 +37,9 @@
     },
     {
       "name": "jisa_evidence_bundle.json",
-      "sha256": "6e0c6a0dd8b3a874131c3f2055de9fc2633a83e454af9e5642652d882d9f3796"
+      "sha256": "c083befa174cd0cb0357a42eab8476f20ead836c50d1b716ff0df2184f8fac0f",
+      "source_sha256": "6e0c6a0dd8b3a874131c3f2055de9fc2633a83e454af9e5642652d882d9f3796",
+      "public_transformation": "Machine-local path prefixes were converted to repository-relative paths; experiment values were unchanged."
     }
   ],
   "data_boundary": {
