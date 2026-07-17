@@ -1,7 +1,6 @@
 # Highlights
 
-- AST-token artifacts support project-coherent suspicious-bypass detection.
-- Quarantine reduces silent EaTVul-style bypasses without claiming repair.
-- Mixed-source transfer remains weak and not broad deployment evidence.
-- Token-only deletion does not validate source-level sanitization.
-- Reliable recovery needs source spans, boundaries, CFGs, PDGs, or parsers.
+- AST-token defenses support review routing, not verified automatic repair.
+- At a 5% budget, realized review spans 2.5--18.4% across four targets.
+- Target-confidence review captures 12 of 354 raw adversarial bypasses.
+- Seven of eight deletion grids have zero median detector-output recovery.

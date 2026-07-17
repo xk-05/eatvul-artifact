@@ -1,29 +1,28 @@
-# Table and Figure Reproduction Map
+# Final Table and Figure Reproduction Map
 
-| Manuscript item | Source script | Source data/result file | Output file | Reproducibility from current files | Notes |
-| --- | --- | --- | --- | --- | --- |
-| Table 2: dataset sizes | `scripts/eatvul_reproduce.py dataset-summary` | Local external `Code and Dataset/file/data/*_ast_*.json` | console CSV summary | Reproducible after external data preparation | Counts verified for ASTERISK, OPENSSL, CWE119, CWE399. |
-| Table 4: sample-level gate under hard override | `scripts/eatvul_defense.py` | `results/eatvul_defense/lodo_calib_fpr_0.1_results.csv` | same CSV | Fully reproducible for aggregate rows | Full rerun requires `conda run -n eatvul`. |
-| Table 5: aggregate-count uncertainty checks | aggregate recomputation from Table 4 counts | `results/eatvul_defense/lodo_calib_fpr_0.1_results.csv` | manuscript table | Reproducible from aggregate counts | Fisher tests are aggregate-count checks, not paired per-sample tests. |
-| Table 6: gate feature-family contribution | `scripts/export_gate_feature_importance.py` | Local external `Code and Dataset/file/data/*_ast_*.json`; `results/eatvul_defense/gate_feature_family_importance.csv` | `results/eatvul_defense/gate_feature_family_importance.csv` | Stored CSV auditable; recomputation requires external data preparation | The manuscript reports the recomputed `LODO_average` rounded to one decimal. |
-| Table 7: anomaly baseline comparison | `scripts/eatvul_anomaly_baselines.py` | `results/eatvul_anomaly_baselines/anomaly_baseline_results.csv` | same CSV | Fully reproducible for aggregate rows | OPENSSL and ASTERISK rows are reported. |
-| Table 8: CodeBERT bounded sanity check | `scripts/eatvul_neural_target_gate.py` | `results/neural_target_gate/neural_target_gate_results.csv` | same CSV | Aggregate-file reproducible; full rerun is expensive | Requires local model/dependency setup. |
-| Table 9: diagnostic deletion boundary-test summary | `scripts/eatvul_localize_sanitize.py`; `scripts/eatvul_component_sanitize.py` | fixed-window and component CSVs | same CSVs | Fully reproducible for aggregate rows | Deletion tests are diagnostic, not deployable sanitizers. |
-| Table 10: quarantine policy | `scripts/eatvul_quarantine_defense.py` | `results/eatvul_quarantine_defense/quarantine_cleanblock0.1_benignonly_results.csv` | same CSV | Fully reproducible for aggregate rows | Residual silent-bypass rate counts automatically accepted benign bypasses. |
-| Table 11: F1-constrained hard override | `scripts/eatvul_f1_constrained_defense.py` | `results/eatvul_f1_constrained_defense/f1_constrained_maxf1drop0.03_benignonly_results.csv` | same CSV | Fully reproducible for aggregate rows | Hard override is a diagnostic policy. |
-| Table 12: integrated comparison | manuscript synthesis | Tables 4, 7, 9, 10, 11 | manuscript table | Auditable from cited tables | Contains qualitative comparator rows. |
-| Table 13: supplementary diagnostic material excluded from main claims | manuscript synthesis | Supplementary source-text stress-check files under `results/extension_experiments/` where present | manuscript appendix table | Auditable from cited files and manuscript text | These diagnostics are excluded from the main evidence and should not be used as primary claims. |
-| Table 14: BiLSTM-attention supplementary neural reference | `scripts/eatvul_neural_target_gate.py` | `results/neural_target_gate/neural_target_gate_results.csv` | same CSV | Aggregate-file reproducible; full rerun is expensive | Supplementary bounded neural reference only. |
-| Table 15: diagnostic deletion token-removal proxy metrics | `scripts/eatvul_localize_sanitize.py`; `scripts/eatvul_component_sanitize.py` | fixed-window and component CSVs | same CSVs | Fully reproducible for aggregate rows | Removed-token ratios are proxies, not insertion-span recall. |
-| Table 16: full integrated comparison | manuscript synthesis | Tables 4, 7, 9, 10, 11, and qualitative comparison rows | manuscript appendix table | Auditable from cited tables | Full comparison table combining supported, diagnostic, and qualitative rows. |
-| Figure 1 | manuscript figure asset | `paper_eatvul_defense_framework/figures_submission/` | `dataset_overview_en.png` or conceptual figure asset | Auditable from figure file | Visual asset checked by `scripts/make_figures.py`. |
-| Figure 2 | figure-generation scripts and stored figure | `paper_eatvul_defense_framework/figures_submission/sample_gate_results_en.png` | same PNG | Auditable from stored figure | Regeneration depends on local plotting scripts. |
-| Figure 3 | figure-generation scripts and stored figure | `paper_eatvul_defense_framework/figures_submission/window_sanitize_results_en.png` | same PNG | Auditable from stored figure | Regeneration depends on local plotting scripts. |
+The canonical manuscript is `paper_eatvul_defense_framework/latex_submission/main_jisa.tex`.
+Run `python scripts/materialize_jisa_evidence.py` to regenerate the derived TeX
+tables and vector figures from the public evidence.
 
-## Items Not Fully Reproducible from Current Files
+| Manuscript item | Canonical output | Backing public evidence | Verification |
+| --- | --- | --- | --- |
+| Table 2: dataset roles and median token lengths | `latex_submission/generated/jisa_dataset_profile.tex` | `results/jisa_confidence_sensitivity/token_length_profile.csv` | exact fragment hash plus CSV parse |
+| Table 3: matched screening at nominal 5% | `latex_submission/generated/jisa_matched_budget_5.tex` | `results/jisa_evidence_bundle.json`; `results/jisa_matched_budget_summary.csv` | verified 100-row matched-budget grid |
+| Table 4: target-confidence baseline | `latex_submission/generated/jisa_confidence_baseline.tex` | `results/jisa_confidence_sensitivity/confidence_summary.csv`; `confidence_adv_samples.csv` | sample-row recomputation and exact fragment hash |
+| Table 5: duplicate sensitivity | `latex_submission/generated/jisa_duplicate_sensitivity.tex` | `results/jisa_confidence_sensitivity/duplicate_sensitivity.csv` | confidence verifier and exact fragment hash |
+| Table 6: cross-target screening stability | `latex_submission/generated/jisa_screening_stability.tex` | `results/jisa_matched_budget_summary.csv` | verified grid and exact fragment hash |
+| Table 7: bounded CodeBERT feasibility | `latex_submission/generated/jisa_codebert_results.tex` | `results/jisa_evidence_bundle.json` | verified bundle and exact fragment hash |
+| Table 8: token length versus 256-token limit | `latex_submission/generated/jisa_token_length.tex` | `results/jisa_confidence_sensitivity/token_length_profile.csv` | profile parse and exact fragment hash |
+| Table 9: fixed deletion sensitivity | `latex_submission/generated/jisa_deletion_sensitivity.tex` | `results/jisa_evidence_bundle.json` | verified bundle and exact fragment hash |
+| Figure 1: evidence-to-action boundary | `figures_submission_jisa/action_boundary.pdf` | conceptual boundary encoded in `scripts/materialize_jisa_evidence.py` | render inspection |
+| Figure 2: capture versus review | `figures_submission_jisa/capture_vs_review.pdf` | `results/jisa_matched_budget_summary.csv` | regenerated curves and render inspection |
+| Figure 3: residual bypass versus review | `figures_submission_jisa/residual_vs_review.pdf` | `results/jisa_matched_budget_summary.csv` | regenerated curves and render inspection |
 
-- Complete paired prediction logs for all defense layers are not present.
-- True inserted spans, source diffs, CFGs, PDGs, and compiler-validated adaptive
-  snippets are not present.
-- Some figure/table synthesis rows are auditable from result files and
-  manuscript text but do not yet have a single standalone regeneration script.
+Paths beginning with `latex_submission/` are relative to
+`paper_eatvul_defense_framework/`. `scripts/check_reported_values.py` verifies
+the final Tables 2--9 fragments and the complete backing grids. PDF figure bytes
+can vary with Matplotlib/PDF metadata; rendered content is the appropriate
+cross-environment comparison.
+
+Older tables and PNG figures retained elsewhere in the repository belong to
+earlier manuscript iterations and are not canonical for the final JISA paper.
