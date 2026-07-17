@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\caption{Serialized AST-token length relative to the 256-token CodeBERT limit.}
+\label{tab:length-truncation}
+\scriptsize
+\begin{tabular}{llrrr}
+\toprule
+Target & Role & Median & P95 & $>256$ \\
+\midrule
+ASTERISK & test & 3893 & 15188 & 83.9\% \\
+ASTERISK & adv & 4698 & 12694 & 90.0\% \\
+OPENSSL & test & 1546 & 11444 & 88.3\% \\
+OPENSSL & adv & 4698 & 12877 & 90.0\% \\
+CWE119 & test & 2044 & 4540 & 100.0\% \\
+CWE119 & adv & 1800 & 4497 & 100.0\% \\
+CWE399 & test & 2356 & 6064 & 100.0\% \\
+CWE399 & adv & 2192 & 5335 & 100.0\% \\
+\bottomrule
+\end{tabular}
+\end{table}

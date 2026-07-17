@@ -1,81 +1,66 @@
 # Data Documentation
 
-The main manuscript evaluates four EaTVul-style AST-token datasets:
-ASTERISK, OPENSSL, CWE119, and CWE399. These split files are third-party or
-derived third-party resources with redistribution terms that are not confirmed
-in this release package. They are therefore not redistributed through public Git
-tracking. Aggregate result CSVs needed for table audit remain in `results/`.
+## Evaluated roles
 
-## Dataset Summary
+The final manuscript evaluates four EaTVul-style serialized AST-token targets:
 
-When prepared locally, the AST-token split files should use these paths:
+| Target | Train | Unattacked test | ADV test |
+| --- | ---: | ---: | ---: |
+| ASTERISK | 880 | 367 | 50 |
+| OPENSSL | 520 | 213 | 50 |
+| CWE119 | 5670 | 2451 | 200 |
+| CWE399 | 545 | 255 | 200 |
 
-| Dataset | Role | Clean train | Clean test | ADV test | Local paths |
-| --- | --- | ---: | ---: | ---: | --- |
-| ASTERISK | Project-coherent | 880 | 367 | 50 | `Code and Dataset/file/data/asterisk_ast_*.json` |
-| OPENSSL | Project-coherent | 520 | 213 | 50 | `Code and Dataset/file/data/openssl_ast_*.json` |
-| CWE119 | Mixed-source stress setting | 5670 | 2451 | 200 | `Code and Dataset/file/data/cwe119_ast_*.json` |
-| CWE399 | Mixed-source stress setting | 545 | 255 | 200 | `Code and Dataset/file/data/cwe399_ast_*.json` |
+Counts and token-length summaries used by the final paper are released in
+`results/jisa_confidence_sensitivity/token_length_profile.csv` and materialized
+as Table 2.
 
-## Required and Optional Data
+## Public derived evidence
 
-The lightweight aggregate-table audit uses the stored result CSV files under
-`results/`, manuscript sources, and validation scripts. It does not require
-redistributing the external AST-token split files.
+- `results/jisa_evidence_bundle.json`: verified evidence for the matched-budget,
+  model-coverage, and deletion analyses.
+- `results/jisa_matched_budget_summary.csv`: 100 target/method/budget rows.
+- `results/jisa_confidence_sensitivity/confidence_summary.csv`: 20 target/budget
+  summary rows.
+- `results/jisa_confidence_sensitivity/confidence_adv_samples.csv`: 2,500
+  sample-budget evaluation rows used by the confidence verifier.
+- `results/jisa_confidence_sensitivity/duplicate_sensitivity.csv`: 15 pooled
+  duplicate-control rows.
+- `results/jisa_confidence_sensitivity/token_length_profile.csv`: 12 role-level
+  token-length rows.
 
-Dataset-size checks, feature-importance recomputation, and full reruns of the
-main TF-IDF/logistic-regression target, gate, anomaly-baseline, quarantine,
-F1-constrained, and diagnostic-deletion experiments require the AST-token split
-files to be prepared locally under `Code and Dataset/file/data/`.
+The matching hashes and environment metadata are recorded in
+`manifests/jisa_final/` and
+`results/jisa_confidence_sensitivity/run_manifest.json`.
+The public evidence bundle normalizes machine-local path prefixes to
+repository-relative paths; `FINAL_RUN_MANIFEST.json` records both the original
+Drive hash and the normalized public hash. Numerical evidence is unchanged.
 
-Neural sanity-check reruns may additionally require pretrained CodeBERT or
-other Hugging Face model files and local fine-tuned checkpoints. Those files are
-not required for auditing the stored aggregate CSV values.
+## Non-public inputs
 
-## Redistribution Status
+The repository does not redistribute `Code and Dataset.zip` or raw AST-token
+splits. Their redistribution terms are not established for this release. A
+locally authorized full-retraining layout is:
 
-The AST-token files came from a local EaTVul-style resource package. Their
-upstream redistribution terms are not established in this package and they are
-not covered by the repository MIT license. The public release records their
-expected paths, sizes, and SHA256 checksums in `THIRD_PARTY_DATA.md`, but removes
-the files from Git tracking.
-
-Historical local archives (`Code and Dataset.zip`, `model.zip`), Apple metadata
-files, EaTVul helper code under `Code and Dataset/file/code/`, model caches,
-checkpoints, and pretrained weights are not part of the tracked public release.
-Local copies may remain in an author or reviewer workspace, but they are
-ignored to avoid implying redistribution under this artifact license.
-
-See `THIRD_PARTY_DATA.md` for the resource-by-resource inventory.
-
-## Checksums
-
-Run:
-
-```bash
-python scripts/build_manifest.py
+```text
+Code and Dataset/file/data/
+  asterisk_ast_train.json
+  asterisk_ast_test.json
+  asterisk_ast_test_ADV.json
+  openssl_ast_train.json
+  openssl_ast_test.json
+  openssl_ast_test_ADV.json
+  cwe119_ast_train.json
+  cwe119_ast_test.json
+  cwe119_ast_test_ADV.json
+  cwe399_ast_train.json
+  cwe399_ast_test.json
+  cwe399_ast_test_ADV.json
 ```
 
-The generated `artifact_manifest.json` includes SHA256 checksums for tracked
-artifact files such as manuscript sources, scripts, documentation, result CSVs,
-and configuration sidecars. It intentionally excludes the license-unclear
-external AST-token split files. Their pre-removal checksums are recorded in
-`THIRD_PARTY_DATA.md`.
+The fast audit, table materialization, and confidence-output verification do not
+require these files. Full model retraining does.
 
-## Preparation for Full Reruns
-
-To run commands that need the external AST-token data:
-
-1. Obtain the upstream EaTVul-style AST-token resources under the applicable
-   upstream terms.
-2. Place the split files under `Code and Dataset/file/data/` with the filenames
-   listed in the dataset table above.
-3. Run `python scripts/eatvul_reproduce.py dataset-summary` and confirm the
-   expected split counts.
-4. Compare local file checksums against the inventory in `THIRD_PARTY_DATA.md`
-   when using the same resource package.
-
-True inserted spans, source diffs, CFGs, PDGs, and parser-validated source
-contexts are not available in this artifact. The diagnostic deletion tables
-therefore report token-removal proxy metrics rather than source-level repair or
-insertion-span recovery.
+True inserted spans, source diffs, source-to-token mappings, CFGs, PDGs, and
+compiler/security validation contexts are unavailable. This absence is part of
+the paper's evidence boundary and prevents a source-repair claim.

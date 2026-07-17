@@ -1,81 +1,80 @@
 # Reproducibility Guide
 
-## What Can Be Reproduced
+## Environment
 
-The main numerical claims in the AST-token defense-boundary manuscript can be
-audited from the tracked files in this repository where aggregate result CSVs
-are available. Dataset-size checks, Table 6 feature-importance recomputation,
-and full experiment reruns require locally prepared external AST-token split
-files under `Code and Dataset/file/data/`:
-
-- dataset sizes for ASTERISK, OPENSSL, CWE119, and CWE399;
-- sample-level gate results under hard override;
-- aggregate-count uncertainty checks;
-- feature-family contribution summary;
-- anomaly-baseline comparison;
-- bounded CodeBERT/BiLSTM sanity-check rows where result files are present;
-- fixed-window diagnostic deletion rows;
-- AST-token component diagnostic deletion rows;
-- quarantine and F1-constrained deployment-policy rows.
-
-## What Is Aggregate-File Reproducible
-
-Some tables are reproduced from aggregate CSVs because complete paired
-prediction logs are not available for every defense layer. This is intentional
-and documented in the manuscript.
-
-## Smoke Commands
+The final focused run used the exact packages in `requirements_jisa.txt`:
+NumPy 1.26.4, pandas 2.3.3, scikit-learn 1.5.2, SciPy 1.17.1,
+Matplotlib, and pytest 9.1.1. The checks also run on newer compatible Python
+environments; the repository currently requires Python 3.9 or newer.
 
 ```bash
+python -m venv .venv
+.venv/bin/python -m pip install -r requirements_jisa.txt
+```
+
+On Windows, use `.venv\Scripts\python.exe` in place of `.venv/bin/python`.
+
+## Fast audit from public files
+
+```bash
+python -m pytest tests/test_jisa_confidence_sensitivity.py tests/test_materialize_jisa_evidence.py tests/test_artifact_checks.py -v
+python scripts/jisa_confidence_sensitivity.py verify
 python scripts/check_text_integrity.py
-python -m compileall scripts
 python scripts/check_artifact.py
 python scripts/check_reported_values.py
 ```
 
-After preparing the external AST-token split files locally, also run:
+Expected outcomes are a passing test suite, `confidence sensitivity verification
+passed`, `Text integrity check passed`, `Artifact check passed`, and a final
+Tables 2--9 verification message.
+
+## Materialize final evidence
 
 ```bash
-python scripts/eatvul_reproduce.py dataset-summary
+python scripts/materialize_jisa_evidence.py
 ```
 
-The original experiment environment did not fully lock exact historical package
-versions. This release therefore records a Python 3.9 Conda environment with
-bounded dependency ranges in `environment.yml` and `requirements.txt`.
+This uses the public verified bundle and CSV profiles to generate Tables 2--9
+and Figures 1--3. It no longer requires raw AST-token splits for the dataset
+profile. Matplotlib-generated PDF bytes can vary by library version or embedded
+metadata; inspect rendered figures when comparing across environments.
 
-## Representative Rerun Commands
-
-Prepare the external AST-token split files described in `DATA.md` before
-running the representative full-rerun commands below.
+## Confidence-output verification
 
 ```bash
-conda run -n eatvul python scripts/eatvul_defense.py --leave-one-dataset-out --calibrate-clean-fpr 0.1
-conda run -n eatvul python scripts/eatvul_anomaly_baselines.py
-conda run -n eatvul python scripts/eatvul_quarantine_defense.py --clean-block-budget 0.1
-conda run -n eatvul python scripts/eatvul_f1_constrained_defense.py --max-clean-f1-drop 0.03
-conda run -n eatvul python scripts/eatvul_localize_sanitize.py --datasets asterisk openssl cwe119 cwe399 --calibrate-window-fpr 0.01 --window 1536 --stride 768 --max-spans 2 --candidate-windows 32 --min-prob-gain 0.005 --gate-on-benign
-conda run -n eatvul python scripts/eatvul_component_sanitize.py --datasets asterisk openssl cwe119 cwe399 --calibrate-component-fpr 0.01 --max-cluster 3 --max-spans 1 --candidate-components 16 --min-prob-gain 0.001 --gate-on-benign --calibration-items 200
-conda run -n eatvul python scripts/export_gate_feature_importance.py
+python scripts/jisa_confidence_sensitivity.py verify
 ```
 
-For the diagnostic deletion rows, the reported fixed-window setting uses
-`min_prob_gain = 0.005`, while the reported AST-token component setting uses
-`min_prob_gain = 0.001`. The sidecar config JSONs in the corresponding
-`results/` directories record these values.
+The verifier checks hashes from the confidence run manifest and recomputes the
+20 summary rows from the 2,500 released sample-budget rows.
 
-## Paper Compilation
+Running the experiment instead of verifying stored outputs requires authorized
+raw splits under the paths in `DATA.md`:
 
-The canonical source is:
-
-```text
-paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex
+```bash
+python scripts/jisa_confidence_sensitivity.py run
 ```
 
-The compatibility entry point is:
+## Manuscript build
 
-```text
-paper_eatvul_defense_framework/latex_submission/main.tex
+The canonical source is
+`paper_eatvul_defense_framework/latex_submission/main_jisa.tex`.
+
+```bash
+cd paper_eatvul_defense_framework/latex_submission
+latexmk -pdf -interaction=nonstopmode -halt-on-error main_jisa.tex
 ```
 
-Compile with the bundled Tectonic helper when available, or use a local LaTeX
-installation.
+The authorized final output is ten pages. Figures are loaded from
+`../figures_submission_jisa/`; tables are loaded from `generated/`.
+
+## Provenance
+
+`manifests/jisa_final/FINAL_RUN_MANIFEST.json` records the final source hashes,
+ten-page build, validation status, and publication boundary.
+`manifests/jisa_final/confidence_run_manifest.json` records seed 7, the five
+budgets, four targets, package versions, runtime, and output hashes.
+
+Legacy scripts and aggregate files remain available for historical inspection,
+but the final paper's authoritative table map is
+`docs/TABLE_REPRODUCTION_MAP.md`.

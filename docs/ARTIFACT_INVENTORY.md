@@ -1,128 +1,40 @@
-# Artifact Inventory
+# Final JISA Artifact Inventory
 
-## Repository Context
+## Manuscript package
 
-- Public review artifact: `https://github.com/xk-05/eatvul-jisa-artifact`.
-- Public branch: `main`.
-- Purpose: inventory the manuscript sources, reviewer-facing documentation,
-  scripts, aggregate result files, and known reproducibility boundaries for the
-  JISA review package.
+- `paper_eatvul_defense_framework/latex_submission/main_jisa.tex`
+- `paper_eatvul_defense_framework/latex_submission/main_jisa.pdf`
+- `paper_eatvul_defense_framework/latex_submission/references.bib`
+- Elsevier CAS class/style/bibliography files and thumbnail assets
+- `paper_eatvul_defense_framework/latex_submission/generated/jisa_*.tex`
+- cover letter, highlights, declaration draft, and submission README
+- `paper_eatvul_defense_framework/figures_submission_jisa/*.pdf`
 
-## Manuscript
+## Derived evidence
 
-- Main LaTeX source:
-  `paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex`
-- Compatibility entry point:
-  `paper_eatvul_defense_framework/latex_submission/main.tex`
-- Bibliography:
-  `paper_eatvul_defense_framework/latex_submission/references.bib`
-- Current audited PDF:
-  `paper_eatvul_defense_framework/latex_submission/build_citation_bib_check/main_usenix_style_round3_clean.pdf`
+- `results/jisa_evidence_bundle.json`: verified multi-experiment bundle.
+- `results/jisa_matched_budget_summary.csv`: 100 matched-budget rows.
+- `results/jisa_confidence_sensitivity/confidence_adv_samples.csv`: 2,500
+  sample-budget rows.
+- `results/jisa_confidence_sensitivity/confidence_summary.csv`: 20 summary
+  rows.
+- `results/jisa_confidence_sensitivity/duplicate_sensitivity.csv`: 15 control
+  rows.
+- `results/jisa_confidence_sensitivity/token_length_profile.csv`: 12 role rows.
 
-## Figures
+## Provenance and software
 
-Submission figures are in:
+- `manifests/jisa_final/FINAL_RUN_MANIFEST.json`
+- `manifests/jisa_final/confidence_run_manifest.json`
+- `results/jisa_confidence_sensitivity/run_manifest.json`
+- `requirements_jisa.txt`
+- `scripts/materialize_jisa_evidence.py`
+- `scripts/jisa_confidence_sensitivity.py`
+- focused tests under `tests/test_jisa_*.py` and
+  `tests/test_materialize_jisa_evidence.py`
 
-```text
-paper_eatvul_defense_framework/figures_submission/
-```
+## Exclusions
 
-Expected files:
-
-- `dataset_overview_en.png`
-- `sample_gate_results_en.png`
-- `gate_feature_contribution_en.png`
-- `window_sanitize_results_en.png`
-- `component_sanitize_results_en.png`
-- `deployment_tradeoff_en.png`
-
-## Main Evaluation Scripts
-
-- `scripts/eatvul_defense.py`
-- `scripts/eatvul_anomaly_baselines.py`
-- `scripts/eatvul_neural_target_gate.py`
-- `scripts/eatvul_localize_sanitize.py`
-- `scripts/eatvul_component_sanitize.py`
-- `scripts/eatvul_quarantine_defense.py`
-- `scripts/eatvul_f1_constrained_defense.py`
-- `scripts/eatvul_reproduce.py`
-
-## Wrapper and Artifact Scripts
-
-- `scripts/run_gate.py`
-- `scripts/run_anomaly_baselines.py`
-- `scripts/run_diagnostic_deletion.py`
-- `scripts/run_quarantine_policy.py`
-- `scripts/make_tables.py`
-- `scripts/make_figures.py`
-- `scripts/check_artifact.py`
-- `scripts/check_reported_values.py`
-- `scripts/export_gate_feature_importance.py`
-- `scripts/build_manifest.py`
-
-## Local External AST-token Splits
-
-```text
-Code and Dataset/file/data/
-```
-
-These files are not redistributed through public Git tracking because their
-redistribution terms are not confirmed in this package. Prepare them locally
-from the upstream/source package when running dataset-size checks,
-feature-importance recomputation, or full experiment reruns.
-
-Expected datasets:
-
-- `asterisk_ast_train.json`, `asterisk_ast_test.json`, `asterisk_ast_test_ADV.json`
-- `openssl_ast_train.json`, `openssl_ast_test.json`, `openssl_ast_test_ADV.json`
-- `cwe119_ast_train.json`, `cwe119_ast_test.json`, `cwe119_ast_test_ADV.json`
-- `cwe399_ast_train.json`, `cwe399_ast_test.json`, `cwe399_ast_test_ADV.json`
-
-## Aggregate Result Tables
-
-- `results/eatvul_defense/lodo_calib_fpr_0.1_results.csv`
-- `results/eatvul_defense/gate_feature_family_importance.csv`
-- `results/eatvul_anomaly_baselines/anomaly_baseline_results.csv`
-- `results/neural_target_gate/neural_target_gate_results.csv`
-- `results/eatvul_local_defense/localize_sanitize_w1536_s768_fpr0.01_max2_guided_benign_gate_no_sample_gate_results.csv`
-- `results/eatvul_component_defense/component_sanitize_fpr0.01_cluster3_max1_benign_gate_no_sample_gate_results.csv`
-- `results/eatvul_quarantine_defense/quarantine_cleanblock0.1_benignonly_results.csv`
-- `results/eatvul_f1_constrained_defense/f1_constrained_maxf1drop0.03_benignonly_results.csv`
-
-## Configuration Sidecars
-
-- `results/eatvul_local_defense/localize_sanitize_w1536_s768_fpr0.01_max2_guided_benign_gate_no_sample_gate_config.json`
-- `results/eatvul_component_defense/component_sanitize_fpr0.01_cluster3_max1_benign_gate_no_sample_gate_config.json`
-
-## Third-party Data and License Notes
-
-- `THIRD_PARTY_DATA.md` records bundled and referenced data/model resources,
-  known checksums, redistribution status, and required reviewer/user action
-  where permissions are unknown.
-
-## Selected Per-sample or Diagnostic Logs
-
-Selected logs exist where generated by prior runs, including:
-
-- `results/codebert_poc/openssl_pilot/predictions.txt`
-- `results/codebert_poc/openssl_pilot/predictions_clean.txt`
-- `results/codebert_poc/openssl_pilot/predictions_adv.txt`
-- selected sanitized JSON outputs under `results/eatvul_local_defense/`
-- selected sanitized JSON outputs under `results/eatvul_component_defense/`
-- supplementary source-text stress-check prediction files under
-  `results/extension_experiments/`
-
-These are not complete paired logs for every defense layer.
-
-## Local Files Not Intended for Public Artifact Commit
-
-- `.edge-profile/`
-- `.hf_cache/`
-- `.matplotlib/`
-- `.pydeps/`
-- `models/`
-- `external/`
-- `tmp/`
-- checkpoint and model binary outputs
-
-These are ignored or require separate license/release review.
+`Code and Dataset.zip`, raw AST-token splits, model caches, credentials, and
+temporary build outputs are not tracked. Historical scripts/results retained in
+other directories are auxiliary provenance, not the final manuscript table map.

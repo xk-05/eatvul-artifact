@@ -1,0 +1,51 @@
+{
+  "artifact": "EaTVul JISA final manuscript and derived experiment outputs",
+  "manifest_date": "2026-07-17",
+  "paper_title": "Evidence Boundaries of AST-Token-Only Defenses against EaTVul-Style Insertion Evasion",
+  "git_revision": "d37b2c3",
+  "validation": {
+    "focused_tests": "4 passed",
+    "confidence_output_verifier": "passed",
+    "latex_build": "passed",
+    "pdf_pages": 10,
+    "undefined_references_or_citations": 0,
+    "zip_integrity": "passed"
+  },
+  "commands": [
+    ".venv/bin/python -m pytest tests/test_jisa_confidence_sensitivity.py tests/test_materialize_jisa_evidence.py -v",
+    ".venv/bin/python scripts/jisa_confidence_sensitivity.py verify",
+    ".venv/bin/python scripts/materialize_jisa_evidence.py",
+    "TEXMFVAR=/tmp/texmf-var latexmk -pdf -interaction=nonstopmode -halt-on-error main_jisa.tex",
+    "unzip -t JISA_submission_package.zip"
+  ],
+  "key_outputs": [
+    {
+      "name": "Xie_JISA_manuscript.pdf",
+      "sha256": "b6fe8625b7648e9400077757e8f66762c5db7d18d44d921d6ff8a2372fb1fea7"
+    },
+    {
+      "name": "JISA_submission_package.zip",
+      "sha256": "6f1ac5796a8053ebb2b82f440628925a31e2fd9ba8bfdc9660ebec8d081256e3"
+    },
+    {
+      "name": "main_jisa.tex",
+      "sha256": "88d514f5f074dcedd1392d3a56f659496b273a2d3e2d9269e65b97b7e6a7b025"
+    },
+    {
+      "name": "confidence_adv_samples.csv",
+      "sha256": "1a399b999a3a296eb4ea1ca38c23592fc574a212c117870116f534865cbb1247"
+    },
+    {
+      "name": "jisa_evidence_bundle.json",
+      "sha256": "c083befa174cd0cb0357a42eab8476f20ead836c50d1b716ff0df2184f8fac0f",
+      "source_sha256": "6e0c6a0dd8b3a874131c3f2055de9fc2633a83e454af9e5642652d882d9f3796",
+      "public_transformation": "Machine-local path prefixes were converted to repository-relative paths; experiment values were unchanged."
+    }
+  ],
+  "data_boundary": {
+    "raw_ast_token_splits_redistributed": false,
+    "reason": "Redistribution authorization has not been established.",
+    "missing_historical_backup_part": ".010",
+    "derived_outputs_included": true
+  }
+}
