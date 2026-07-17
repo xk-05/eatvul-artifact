@@ -52,6 +52,9 @@ Code and Dataset/__MACOSX/
 Code and Dataset/file/code/
 Code and Dataset/**/*.DS_Store
 
+# Local feature-development worktrees.
+.worktrees/
+
 # Keep selected aggregate results and documented artifact files trackable.
 !results/**/*.csv
 !results/**/*.json
