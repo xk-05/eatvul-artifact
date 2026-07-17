@@ -31,9 +31,35 @@ REQUIRED_FILES = [
     "data/README.md",
     "scripts/check_reported_values.py",
     "scripts/export_gate_feature_importance.py",
+    "scripts/materialize_jisa_evidence.py",
+    "scripts/jisa_confidence_sensitivity.py",
     "paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex",
+    "paper_eatvul_defense_framework/latex_submission/main_jisa.tex",
+    "paper_eatvul_defense_framework/latex_submission/main_jisa.pdf",
     "paper_eatvul_defense_framework/latex_submission/references.bib",
+    "paper_eatvul_defense_framework/figures_submission_jisa/action_boundary.pdf",
+    "paper_eatvul_defense_framework/figures_submission_jisa/capture_vs_review.pdf",
+    "paper_eatvul_defense_framework/figures_submission_jisa/residual_vs_review.pdf",
+    "results/jisa_evidence_bundle.json",
+    "results/jisa_matched_budget_summary.csv",
+    "results/jisa_confidence_sensitivity/confidence_adv_samples.csv",
+    "results/jisa_confidence_sensitivity/confidence_summary.csv",
+    "results/jisa_confidence_sensitivity/duplicate_sensitivity.csv",
+    "results/jisa_confidence_sensitivity/token_length_profile.csv",
+    "manifests/jisa_final/FINAL_RUN_MANIFEST.json",
+    "manifests/jisa_final/confidence_run_manifest.json",
     "highlights.md",
+]
+
+REQUIRED_FINAL_TABLES = [
+    "jisa_dataset_profile.tex",
+    "jisa_matched_budget_5.tex",
+    "jisa_confidence_baseline.tex",
+    "jisa_duplicate_sensitivity.tex",
+    "jisa_screening_stability.tex",
+    "jisa_codebert_results.tex",
+    "jisa_token_length.tex",
+    "jisa_deletion_sensitivity.tex",
 ]
 
 CONFIG_FILES = {
@@ -52,6 +78,23 @@ CONFIG_FILES = {
 }
 
 RESULT_COLUMNS = {
+    "results/jisa_confidence_sensitivity/confidence_summary.csv": {
+        "dataset",
+        "budget",
+        "calibration_n",
+        "test_review_rate",
+        "adv_benign_predictions",
+        "adv_captured",
+        "residual_silent_bypass_rate",
+    },
+    "results/jisa_matched_budget_summary.csv": {
+        "target",
+        "method_family",
+        "nominal_budget",
+        "clean_review_rate",
+        "captured_adversarial_count",
+        "residual_silent_bypass_rate",
+    },
     "results/eatvul_defense/lodo_calib_fpr_0.1_results.csv": {
         "dataset",
         "target_clean_f1",
@@ -127,8 +170,8 @@ MISSING_OBJECT_TERMS = [
     "complete paired prediction logs",
 ]
 
-SECRET_PATTERNS = [".env", "id_rsa", "token", "credentials", "apikey", "api_key"]
-KNOWN_LARGE_OK = {"Code and Dataset.zip", "model.zip"}
+SECRET_PATTERNS = [".env", "id_rsa", "credentials", "apikey", "api_key"]
+PROHIBITED_TRACKED_FILES = {"Code and Dataset.zip"}
 
 
 def fail(message: str) -> None:
@@ -145,10 +188,15 @@ def rel(path: Path) -> str:
 
 
 def check_required_files() -> None:
-    missing = [p for p in REQUIRED_FILES if not (ROOT / p).exists()]
+    required = list(REQUIRED_FILES)
+    required.extend(
+        f"paper_eatvul_defense_framework/latex_submission/generated/{name}"
+        for name in REQUIRED_FINAL_TABLES
+    )
+    missing = [p for p in required if not (ROOT / p).exists()]
     if missing:
         fail("missing required files: " + ", ".join(missing))
-    print(f"Required files: {len(REQUIRED_FILES)} OK")
+    print(f"Required files: {len(required)} OK")
 
 
 def check_result_columns() -> None:
@@ -165,6 +213,13 @@ def check_result_columns() -> None:
             fail(f"{file_name} missing columns: {', '.join(missing)}")
         if not rows:
             fail(f"{file_name} has no rows")
+        if file_name.endswith("confidence_summary.csv"):
+            datasets = {row["dataset"].lower() for row in rows}
+            budgets = {float(row["budget"]) for row in rows}
+            if datasets != set(DATA_SPLITS):
+                fail(f"{file_name} does not contain all four targets")
+            if budgets != {0.01, 0.03, 0.05, 0.1, 0.15}:
+                fail(f"{file_name} has unexpected budgets: {sorted(budgets)}")
     print(f"Result files: {len(RESULT_COLUMNS)} OK")
 
 
@@ -240,14 +295,18 @@ def check_tracked_file_hygiene() -> None:
         return
     suspicious = []
     large = []
+    prohibited = []
     for item in tracked:
         name = Path(item).name.lower()
         if any(pattern in name for pattern in SECRET_PATTERNS):
             suspicious.append(item)
+        if Path(item).name in PROHIBITED_TRACKED_FILES:
+            prohibited.append(item)
         path = ROOT / item
         if path.exists() and path.is_file() and path.stat().st_size > 100 * 1024 * 1024:
-            if item not in KNOWN_LARGE_OK:
-                large.append(item)
+            large.append(item)
+    if prohibited:
+        fail("prohibited private release files are tracked: " + ", ".join(prohibited))
     if suspicious:
         fail("tracked files look secret-like: " + ", ".join(suspicious))
     if large:

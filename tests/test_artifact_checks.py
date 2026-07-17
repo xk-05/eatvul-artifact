@@ -28,6 +28,18 @@ def test_artifact_structure_check_passes() -> None:
 def test_reported_values_check_passes() -> None:
     result = run_script("scripts/check_reported_values.py")
     assert "Reported-value check passed" in result.stdout
+    assert "Tables 2-9" in result.stdout
+
+
+def test_text_integrity_discovers_final_manifests_and_manuscript() -> None:
+    import check_text_integrity as integrity
+
+    files = [
+        Path("manifests/jisa_final/FINAL_RUN_MANIFEST.json"),
+        Path("results/jisa_evidence_bundle.json"),
+    ]
+    assert integrity.json_files(files) == files
+    assert integrity.CANONICAL_MANUSCRIPT.name == "main_jisa.tex"
 
 
 def test_feature_importance_keeps_packaged_csv_without_external_splits(tmp_path, monkeypatch, capsys) -> None:

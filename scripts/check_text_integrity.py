@@ -12,6 +12,9 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+CANONICAL_MANUSCRIPT = (
+    ROOT / "paper_eatvul_defense_framework" / "latex_submission" / "main_jisa.tex"
+)
 
 TEXT_SUFFIXES = {
     ".py",
@@ -56,6 +59,12 @@ CORE_FILE_MIN_LINES = {
     "scripts/make_tables.py": 20,
     "scripts/make_figures.py": 20,
     "scripts/build_manifest.py": 50,
+    "scripts/materialize_jisa_evidence.py": 200,
+    "scripts/jisa_confidence_sensitivity.py": 300,
+    "results/jisa_matched_budget_summary.csv": 100,
+    "results/jisa_confidence_sensitivity/confidence_summary.csv": 20,
+    "results/jisa_confidence_sensitivity/token_length_profile.csv": 12,
+    "manifests/jisa_final/FINAL_RUN_MANIFEST.json": 20,
     "results/eatvul_defense/lodo_calib_fpr_0.1_results.csv": 5,
     "results/eatvul_defense/gate_feature_family_importance.csv": 5,
     "results/eatvul_anomaly_baselines/anomaly_baseline_results.csv": 5,
@@ -69,6 +78,7 @@ CORE_FILE_MIN_LINES = {
     ".gitattributes": 10,
     "paper_eatvul_defense_framework/latex_submission/main.tex": 2,
     "paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex": 100,
+    "paper_eatvul_defense_framework/latex_submission/main_jisa.tex": 200,
     "paper_eatvul_defense_framework/latex_submission/references.bib": 20,
 }
 REQUIRED_GITATTRIBUTES_RULES = {
@@ -269,13 +279,21 @@ def check_csv(files: list[Path], errors: list[str]) -> None:
     print(f"CSV parse: {len(csv_files)} tracked result CSV files checked")
 
 
-def check_json(files: list[Path], errors: list[str]) -> None:
-    json_files = [
+def json_files(files: list[Path]) -> list[Path]:
+    return [
         rel
         for rel in files
-        if rel.as_posix().startswith("results/") and rel.suffix in {".json", ".jsonl"}
+        if (
+            rel.as_posix().startswith("results/")
+            or rel.as_posix().startswith("manifests/jisa_final/")
+        )
+        and rel.suffix in {".json", ".jsonl"}
     ]
-    for rel in json_files:
+
+
+def check_json(files: list[Path], errors: list[str]) -> None:
+    discovered = json_files(files)
+    for rel in discovered:
         path = ROOT / rel
         try:
             if rel.suffix == ".jsonl":
@@ -288,7 +306,7 @@ def check_json(files: list[Path], errors: list[str]) -> None:
                 json.loads(read_text(path))
         except Exception as exc:
             fail(errors, f"{rel}: JSON parse failed: {exc}")
-    print(f"JSON parse: {len(json_files)} tracked result JSON/JSONL files checked")
+    print(f"JSON parse: {len(discovered)} tracked result/manifest JSON files checked")
 
 
 def check_requirements(errors: list[str]) -> None:
@@ -423,50 +441,36 @@ def check_makefile(errors: list[str]) -> None:
 
 
 def check_tex(errors: list[str]) -> None:
-    wrapper = ROOT / "paper_eatvul_defense_framework/latex_submission/main.tex"
-    wrapper_lines = wrapper.read_text(encoding="utf-8").splitlines()
-    wrapper_content = []
-    for line in wrapper_lines:
-        stripped = line.strip()
-        if not stripped:
-            continue
-        if stripped.startswith("%") and stripped != "% !TEX root = main.tex":
-            continue
-        wrapper_content.append(line)
-    expected_wrapper = [
-        "% !TEX root = main.tex",
-        r"\input{main_usenix_style_round3_clean.tex}",
-    ]
-    if wrapper_content != expected_wrapper:
-        fail(
-            errors,
-            f"{wrapper.relative_to(ROOT)}: wrapper must contain TEX root and input as the only non-empty lines",
-        )
-
-    manuscript = ROOT / "paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex"
+    manuscript = CANONICAL_MANUSCRIPT
     manuscript_lines = manuscript.read_text(encoding="utf-8").splitlines()
     if len(manuscript_lines) <= 2:
         fail(errors, f"{manuscript.relative_to(ROOT)}: suspiciously short TeX file")
-    has_root = False
     has_documentclass = False
-    for index, line in enumerate(manuscript_lines, start=1):
+    for line in manuscript_lines:
         stripped = line.strip()
-        if "% !TEX root" in line:
-            has_root = True
-            if "\\input" in line or "\\documentclass" in line:
-                fail(
-                    errors,
-                    f"{manuscript.relative_to(ROOT)}:{index}: TEX root directive shares line with TeX code",
-                )
         if stripped.startswith(r"\documentclass"):
             has_documentclass = True
-            if stripped.startswith("%"):
-                fail(errors, f"{manuscript.relative_to(ROOT)}:{index}: documentclass is commented")
-    if not has_root:
-        fail(errors, f"{manuscript.relative_to(ROOT)}: missing TEX root directive")
     if not has_documentclass:
         fail(errors, f"{manuscript.relative_to(ROOT)}: missing uncommented documentclass line")
-    print("TeX wrappers: checked")
+    manuscript_text = "\n".join(manuscript_lines)
+    for number in range(1, 4):
+        if f"RQ{number}" not in manuscript_text:
+            fail(errors, f"{manuscript.relative_to(ROOT)}: missing RQ{number}")
+    if "RQ4" in manuscript_text:
+        fail(errors, f"{manuscript.relative_to(ROOT)}: contains superseded RQ4")
+    for filename in (
+        "jisa_dataset_profile.tex",
+        "jisa_matched_budget_5.tex",
+        "jisa_confidence_baseline.tex",
+        "jisa_duplicate_sensitivity.tex",
+        "jisa_screening_stability.tex",
+        "jisa_codebert_results.tex",
+        "jisa_token_length.tex",
+        "jisa_deletion_sensitivity.tex",
+    ):
+        if filename not in manuscript_text:
+            fail(errors, f"{manuscript.relative_to(ROOT)}: does not include generated/{filename}")
+    print("Canonical JISA TeX: checked")
 
 
 def check_docs(errors: list[str]) -> None:
@@ -508,4 +512,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
