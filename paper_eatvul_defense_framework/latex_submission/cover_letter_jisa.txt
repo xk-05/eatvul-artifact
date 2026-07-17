@@ -1,0 +1,16 @@
+Dear Editor,
+
+We submit our manuscript entitled "Evidence Boundaries of AST-Token-Only Defenses against EaTVul-Style Insertion Evasion" for consideration in the Journal of Information Security and Applications.
+
+This manuscript studies a practical software-security problem: what defensive actions remain justified when a vulnerability-detection defender has access only to public serialized AST-token artifacts and detector outputs, but not source spans, source diffs, exact insertion boundaries, CFGs, or PDGs. This setting arises in third-party scanning, supply-chain auditing, and artifact-only benchmark evaluation.
+
+The contribution is not a routine application of existing AI/ML models to a standard security dataset. Instead, the paper provides an observation-constrained capability-boundary analysis for EaTVul-style insertion evasion. It separates screening, quarantine, diagnostic override, and automatic sanitization as distinct security actions with different evidence requirements. Across four targets, realized review load and adversarial capture vary strongly by target. A newly executed target-confidence control captures only 12 of 354 raw bypasses, while seven of eight fixed token-deletion grids have zero median detector-output recovery. The practical implication is that AST-token artifacts can support locally calibrated review routing, but reliable automatic recovery requires richer source-level evidence and validation.
+
+We believe this work fits JISA because it addresses a modern information-security challenge in software vulnerability detection and derives practice-oriented guidance for artifact-constrained defensive systems.
+
+The manuscript is original, has not been published previously, and is not under consideration elsewhere. The work is defensive and does not introduce a new attack-generation algorithm or new prompts for producing evasive snippets.
+
+Corresponding author email: q1131714258@gmail.com
+
+Sincerely,
+Kang Xie

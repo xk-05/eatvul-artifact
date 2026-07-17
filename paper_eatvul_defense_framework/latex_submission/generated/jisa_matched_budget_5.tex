@@ -1,0 +1,32 @@
+\begin{table*}[t]
+\centering
+\caption{Matched screening at the nominal 5\% calibration budget. Counts are shown to avoid prevalence-dependent composites.}
+\label{tab:matched-five}
+\scriptsize
+\begin{tabular}{llrrr}
+\toprule
+Target & Method & Unattacked review & Captured/bypass & Residual/all ADV \\ 
+\midrule
+ASTERISK & Supervised Gate & 19/367 (5.2\%) & 1/32 & 31/50 \\
+ASTERISK & Isolation Forest & 24/367 (6.5\%) & 2/32 & 30/50 \\
+ASTERISK & One-Class SVM & 21/367 (5.7\%) & 0/32 & 32/50 \\
+ASTERISK & Local Outlier Factor & 9/367 (2.5\%) & 1/32 & 31/50 \\
+ASTERISK & Mahalanobis & 19/367 (5.2\%) & 2/32 & 30/50 \\
+OPENSSL & Supervised Gate & 15/213 (7.0\%) & 5/38 & 33/50 \\
+OPENSSL & Isolation Forest & 11/213 (5.2\%) & 23/38 & 15/50 \\
+OPENSSL & One-Class SVM & 15/213 (7.0\%) & 32/38 & 6/50 \\
+OPENSSL & Local Outlier Factor & 7/213 (3.3\%) & 19/38 & 19/50 \\
+OPENSSL & Mahalanobis & 11/213 (5.2\%) & 26/38 & 12/50 \\
+CWE119 & Supervised Gate & 85/2451 (3.5\%) & 7/144 & 137/200 \\
+CWE119 & Isolation Forest & 129/2451 (5.3\%) & 12/144 & 132/200 \\
+CWE119 & One-Class SVM & 131/2451 (5.3\%) & 11/144 & 133/200 \\
+CWE119 & Local Outlier Factor & 84/2451 (3.4\%) & 0/144 & 144/200 \\
+CWE119 & Mahalanobis & 136/2451 (5.5\%) & 13/144 & 131/200 \\
+CWE399 & Supervised Gate & 38/255 (14.9\%) & 32/140 & 108/200 \\
+CWE399 & Isolation Forest & 38/255 (14.9\%) & 40/140 & 100/200 \\
+CWE399 & One-Class SVM & 47/255 (18.4\%) & 42/140 & 98/200 \\
+CWE399 & Local Outlier Factor & 25/255 (9.8\%) & 24/140 & 116/200 \\
+CWE399 & Mahalanobis & 32/255 (12.5\%) & 32/140 & 108/200 \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -1,0 +1,43 @@
+{
+  "experiment": "jisa-confidence-tie-duplicate-sensitivity",
+  "seed": 7,
+  "budgets": [
+    0.01,
+    0.03,
+    0.05,
+    0.1,
+    0.15
+  ],
+  "datasets": [
+    "asterisk",
+    "openssl",
+    "cwe119",
+    "cwe399"
+  ],
+  "runtime_seconds": 18.28379535675049,
+  "python": "3.12.13 (main, Mar  3 2026, 14:59:34) [Clang 21.1.4 ]",
+  "platform": "Linux-6.12.47-x86_64-with-glibc2.39",
+  "packages": {
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "scikit_learn": "1.5.2"
+  },
+  "outputs": {
+    "confidence_adv_samples.csv": {
+      "sha256": "1a399b999a3a296eb4ea1ca38c23592fc574a212c117870116f534865cbb1247",
+      "size_bytes": 331281
+    },
+    "confidence_summary.csv": {
+      "sha256": "8c45132dbe44014e92deef1a7f2c6755aec51dc9f153002dbc136af16d6aba0d",
+      "size_bytes": 4643
+    },
+    "duplicate_sensitivity.csv": {
+      "sha256": "707185d1b3588670f5c2dc797b74373d52b8e8c897546cf131765cbe551bd659",
+      "size_bytes": 1159
+    },
+    "token_length_profile.csv": {
+      "sha256": "3cac9d2e9100b13240747c44b72689f4882494570ab2e51ac4b90906481b0bbc",
+      "size_bytes": 841
+    }
+  }
+}

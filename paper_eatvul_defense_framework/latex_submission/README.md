@@ -1,43 +1,36 @@
-# EaTVul Defense LaTeX Submission Package
+# JISA LaTeX submission package
 
-This folder contains the canonical LaTeX manuscript for the EaTVul AST-token defense boundary study. The source filename is inherited from earlier manuscript iterations; `main.tex` is retained as a neutral compatibility entry point for the JISA/Elsevier submission package.
+This directory contains the canonical manuscript formatted with Elsevier's
+CAS double-column template.
 
-## Files
+## Build
 
-- `main_usenix_style_round3_clean.tex`: canonical manuscript source.
-- `main.tex`: compatibility entry point that inputs the canonical source for portable builds.
-- `references.bib`: BibTeX references used by the manuscript.
-- `build_citation_bib_check/main_usenix_style_round3_clean.pdf`: current compiled PDF for the AST-token capability-boundary version.
-
-## Compile
-
-From this directory with Tectonic:
+From this directory, run:
 
 ```bash
-tectonic main.tex
+TEXMFVAR=/tmp/texmf-var latexmk -pdf -interaction=nonstopmode -halt-on-error main_jisa.tex
 ```
 
-Or with TeX Live:
+The compiled manuscript is `main_jisa.pdf`. Figures are read from
+`../figures_submission_jisa/`, and generated tables are in `generated/`.
 
-```bash
-latexmk -pdf -xelatex main.tex
-```
+## Submission files
 
-The manuscript imports figures from:
+- `main_jisa.tex`: editable manuscript source.
+- `references.bib`: bibliography database.
+- `cas-dc.cls`, `cas-common.sty`, `cas-model2-names.bst`: Elsevier CAS files.
+- `highlights.txt`: four highlights, each at most 85 characters.
+- `cover_letter_jisa.txt`: draft cover letter.
+- `elsevier_declarations_draft.txt`: declarations requiring author confirmation.
 
-- `../figures_submission/*.png`
+## Reproducibility boundary
 
-Key result sources:
+The derived artifact verifies the newly executed target-confidence experiment
+from sample-level outputs. The larger fixed-grid results are represented by a
+hash-verified evidence bundle because the received source backup does not
+contain all historical raw output files. Raw AST-token inputs are intentionally
+excluded because redistribution authorization has not been established.
 
-- `results/eatvul_defense/lodo_calib_fpr_0.1_results.csv`
-- `results/eatvul_defense/gate_feature_family_importance.csv`
-- `results/eatvul_anomaly_baselines/anomaly_baseline_results.csv`
-- `results/neural_target_gate/neural_target_gate_results.csv`
-- `results/eatvul_local_defense/localize_sanitize_w1536_s768_fpr0.01_max2_guided_benign_gate_no_sample_gate_results.csv`
-- `results/eatvul_component_defense/component_sanitize_fpr0.01_cluster3_max1_benign_gate_no_sample_gate_results.csv`
-- `results/eatvul_quarantine_defense/quarantine_cleanblock0.1_benignonly_results.csv`
-- `results/eatvul_f1_constrained_defense/f1_constrained_maxf1drop0.03_benignonly_results.csv`
-
-The RQ1 sample-level gate table uses the 10% clean-FPR calibrated LODO output. Gate-positive examples are source-dataset adversarial insertion samples; gate-negative examples are source-dataset clean vulnerable samples. The 10% deployment threshold is calibrated on target clean non-vulnerable samples. The AST-token component deletion rows use the cluster-3, max-span-1 boundary-test output with `min_prob_gain = 0.001`; the fixed-window deletion rows use `min_prob_gain = 0.005`.
-
-The manuscript's central claim is not that complete automatic sanitization is solved. It argues that AST-token evidence supports detection and quarantine, while reliable automatic sanitization remains blocked by missing source spans, insertion boundaries, CFGs, and PDGs.
+Before submission, the author must add a permanent repository identifier for
+the redistributable derived artifact and verify the complete affiliation,
+funding, competing-interest, and authorship metadata.

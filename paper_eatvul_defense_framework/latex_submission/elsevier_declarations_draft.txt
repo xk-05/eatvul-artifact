@@ -1,0 +1,21 @@
+Elsevier declaration candidate text
+
+Author confirmation required before submission for all declarations below.
+
+Declaration of competing interest:
+The author declares no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+
+Funding:
+This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
+
+CRediT author statement:
+Kang Xie: Conceptualization, Methodology, Software, Validation, Formal analysis, Investigation, Writing - original draft, Writing - review & editing.
+
+Data availability:
+The study requires received EaTVul-style AST-token split files as local inputs. These inputs are not redistributed because redistribution authorization is not established. The submission artifact contains input checksums and expected row counts, configurations, aggregate tables, and per-sample derived decisions that do not reproduce raw function text. A permanent repository identifier must be inserted in the manuscript and submission system after the derived artifact is deposited.
+
+Ethics / responsible use:
+The study evaluates defensive detection, quarantine, and diagnostic deletion tests for adversarial code-insertion artifacts under an observation-constrained setting. The results should be used to improve review routing and defense evaluation, not to facilitate evasion or automatic repair claims.
+
+Declaration of generative AI and AI-assisted technologies in the manuscript preparation process:
+During preparation of this work, the author used OpenAI Codex for language revision, consistency checks, LaTeX formatting support, and execution of author-specified reproducibility checks. The author reviewed and edited all outputs and takes full responsibility for the content of the publication.

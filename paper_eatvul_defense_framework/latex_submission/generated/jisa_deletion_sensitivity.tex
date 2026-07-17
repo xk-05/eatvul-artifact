@@ -1,0 +1,20 @@
+\begin{table*}[t]
+\centering
+\caption{Full fixed deletion grid. Best feasible is the largest reduction with clean-F1 drop at most 0.03 and is exploratory, not selected for deployment.}
+\label{tab:deletion-sensitivity}
+\scriptsize
+\begin{tabular}{llrrrr}
+\toprule
+Target & Diagnostic & Cells & Median & IQR & Best feasible \\ 
+\midrule
+ASTERISK & localize & 135 & 0.0\% & 0.0--0.0\% & -- \\
+ASTERISK & component & 108 & 0.0\% & 0.0--0.0\% & -- \\
+OPENSSL & localize & 135 & 0.0\% & 0.0--2.0\% & 6.0\% \\
+OPENSSL & component & 108 & 1.0\% & 0.0--4.0\% & 4.0\% \\
+CWE119 & localize & 135 & 0.0\% & 0.0--0.0\% & 1.5\% \\
+CWE119 & component & 108 & 0.0\% & 0.0--0.0\% & 0.5\% \\
+CWE399 & localize & 135 & 0.0\% & 0.0--0.0\% & 0.0\% \\
+CWE399 & component & 108 & 0.0\% & 0.0--0.0\% & 0.0\% \\
+\bottomrule
+\end{tabular}
+\end{table*}
