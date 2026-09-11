@@ -1,6 +1,6 @@
 # EaTVul Defense LaTeX Submission Package
 
-This folder contains the canonical LaTeX manuscript for the EaTVul AST-token defense boundary study. The source filename is inherited from earlier manuscript iterations; `main.tex` is retained as a neutral compatibility entry point for the JISA/Elsevier submission package.
+This folder contains the canonical LaTeX manuscript for the EaTVul AST-token defense boundary study. The source filename is inherited from earlier manuscript iterations; `main.tex` is retained as a neutral compatibility entry point for the submission package.
 
 ## Files
 

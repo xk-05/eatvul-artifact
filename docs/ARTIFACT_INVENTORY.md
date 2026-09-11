@@ -2,11 +2,11 @@
 
 ## Repository Context
 
-- Public review artifact: `https://github.com/xk-05/eatvul-jisa-artifact`.
+- Public verification artifact: `https://github.com/xk-05/eatvul-artifact`.
 - Public branch: `main`.
 - Purpose: inventory the manuscript sources, reviewer-facing documentation,
   scripts, aggregate result files, and known reproducibility boundaries for the
-  JISA review package.
+  verification artifact.
 
 ## Manuscript
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Lightweight artifact validator for the JISA review package."""
+"""Lightweight validator for the verification artifact."""
 
 from __future__ import annotations
 

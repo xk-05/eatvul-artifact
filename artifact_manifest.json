@@ -1,6 +1,6 @@
 {
-  "schema": "jisa-eatvul-artifact-manifest-v1",
-  "file_count": 85,
+  "schema": "eatvul-artifact-manifest-v1",
+  "file_count": 84,
   "files": [
     {
       "path": ".gitattributes",
@@ -24,8 +24,8 @@
     },
     {
       "path": "CITATION.cff",
-      "bytes": 488,
-      "sha256": "2cd8e3a6a57c1cf4c2c86ee014e168b31c1cea8e285485f67eb2817f13e85009"
+      "bytes": 483,
+      "sha256": "21d4eac838f41166bdb4e7212901e59811d8d6e7e86c9e71d50ae386ea9c6e1e"
     },
     {
       "path": "DATA.md",
@@ -49,18 +49,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 22013,
-      "sha256": "325a201f478d038403c24e0d6f04d21931ac1e475a955238af78756c01766955"
+      "bytes": 22012,
+      "sha256": "fa3e50567250d8a00524c8d11d086f80929ad983d8c2670266a9ea1cd0e1e0f5"
     },
     {
       "path": "REPRODUCIBILITY.md",
       "bytes": 3298,
       "sha256": "c9a8c935e2243a1ebfc61f8ce5faadb85e862a3a431c86f18bcfd907b78ba58e"
-    },
-    {
-      "path": "SUBMISSION_JISA.md",
-      "bytes": 4035,
-      "sha256": "56784513c2d785bbe8f9e4dfc4caf9c326d1492b24a044dfe93debbcf3fc22f8"
     },
     {
       "path": "THIRD_PARTY_DATA.md",
@@ -89,8 +84,8 @@
     },
     {
       "path": "docs/ARTIFACT_INVENTORY.md",
-      "bytes": 4521,
-      "sha256": "cf8df5837d47e072676df6659bdcced6091e369fdbe72df17f18c1ebbc0df711"
+      "bytes": 4524,
+      "sha256": "dfa5234b0b04b7bc1927576b20f1c73051909d26c38aadd4149c48e57d45ea97"
     },
     {
       "path": "docs/LIMITATIONS_FOR_REVIEWERS.md",
@@ -154,8 +149,8 @@
     },
     {
       "path": "paper_eatvul_defense_framework/latex_submission/main_usenix_style_round3_clean.tex",
-      "bytes": 116587,
-      "sha256": "ae2a2a2582a7cf10d6136b0b45771040740d030b4e55894244b3911e8171206a"
+      "bytes": 116588,
+      "sha256": "d0f6c9ea765568744fa7076ef4c8bd6bd31e484fc0ef588f0df944085c93321c"
     },
     {
       "path": "paper_eatvul_defense_framework/latex_submission/references.bib",
@@ -284,8 +279,8 @@
     },
     {
       "path": "scripts/build_manifest.py",
-      "bytes": 2762,
-      "sha256": "a4e17dfe59450e6be0463610a2f348a707c00349093f0ce0de4c71d838c7a350"
+      "bytes": 2752,
+      "sha256": "bf80c6cde3584f4d316580cd9895e9a052dfe91d31e18746f5821c56e83d406b"
     },
     {
       "path": "scripts/build_nature_eatvul_figure.py",
@@ -299,8 +294,8 @@
     },
     {
       "path": "scripts/check_artifact.py",
-      "bytes": 8491,
-      "sha256": "6f15fd92e5769741d814afe95a74540c5f91eadd4ae75540e94c8b83512ae9ba"
+      "bytes": 8484,
+      "sha256": "a8faa6ec9709736bd1d317cd41935f57cd2824b6dfa7194e1ae831dfda9e9503"
     },
     {
       "path": "scripts/check_reported_values.py",
@@ -309,8 +304,8 @@
     },
     {
       "path": "scripts/check_text_integrity.py",
-      "bytes": 17965,
-      "sha256": "c227f42cbde7c65dcfe9073793da2a47574e288e2ef085c49c44ba218cd4c1b3"
+      "bytes": 17959,
+      "sha256": "a4b3a0b7fff2915a64e7360fad891f80f19fc02027c12583087f250b8a2a1838"
     },
     {
       "path": "scripts/download_codebert.py",

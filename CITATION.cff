@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this artifact, please cite the accompanying JISA manuscript."
+message: "If you use this artifact, please cite the accompanying manuscript."
 title: "Detection, Not Sanitization: Capability Boundaries of AST-token-only Defenses against EaTVul-style Code Insertion"
 authors:
   - family-names: "Xie"

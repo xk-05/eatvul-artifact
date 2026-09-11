@@ -1,4 +1,4 @@
-# Detection, Not Sanitization: JISA Reproducibility Artifact
+# Detection, Not Sanitization: Verification Artifact
 
 This repository is the reproducibility artifact for the manuscript
 **Detection, Not Sanitization: Capability Boundaries of AST-token-only Defenses
@@ -743,4 +743,4 @@ offensive attack-generation tools.
 ## Citation
 
 Use `CITATION.cff` for software citation metadata. Update DOI, URL, and
-publication metadata after the JISA submission receives final identifiers.
+publication metadata after the manuscript receives final publication identifiers.

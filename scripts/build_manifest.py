@@ -25,7 +25,7 @@ INCLUDE_PATTERNS = [
     "pyproject.toml",
     "Makefile",
     "highlights.md",
-    "SUBMISSION_JISA.md",
+    "SUBMISSION.md",
     ".gitattributes",
     ".gitignore",
     ".github/workflows/*.yml",
@@ -82,7 +82,7 @@ def main() -> int:
             if include_file(path):
                 files[rel] = path
     manifest = {
-        "schema": "jisa-eatvul-artifact-manifest-v1",
+        "schema": "eatvul-artifact-manifest-v1",
         "file_count": len(files),
         "files": [
             {

@@ -42,7 +42,7 @@ CORE_DOCS = [
     "REPRODUCIBILITY.md",
     "DATA.md",
     "THIRD_PARTY_DATA.md",
-    "SUBMISSION_JISA.md",
+    "SUBMISSION.md",
     "docs/RUNBOOK.md",
     "docs/TABLE_REPRODUCTION_MAP.md",
 ]
@@ -508,4 +508,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -1,4 +1,4 @@
-# JISA / Elsevier Submission Wrapper
+# Manuscript Submission Wrapper
 
 This file records the clean submission-facing entry points for the manuscript
 and artifact. It does not claim that the manuscript has been converted to an
@@ -12,7 +12,7 @@ USENIX-style filename for continuity and provides a neutral wrapper.
 - Compatibility wrapper:
   `paper_eatvul_defense_framework/latex_submission/main.tex`
 - Submission-build PDF:
-  `paper_eatvul_defense_framework/latex_submission/build_jisa_sync_check/main_usenix_style_round3_clean.pdf`
+  `paper_eatvul_defense_framework/latex_submission/build_submission_sync_check/main_usenix_style_round3_clean.pdf`
 - Tracked review PDF:
   `paper_eatvul_defense_framework/latex_submission/build_citation_bib_check/main_usenix_style_round3_clean.pdf`
 
@@ -49,11 +49,11 @@ latexmk -xelatex -interaction=nonstopmode main.tex
 - Optional graphical abstract: convert the local SVG draft to an
   Elsevier-supported submission format such as PDF, EPS, TIFF, or Office before
   uploading.
-- Artifact/repository URL: `https://github.com/xk-05/eatvul-jisa-artifact`.
+- Artifact/repository URL: `https://github.com/xk-05/eatvul-artifact`.
 - Artifact documentation: `README.md`, `ARTIFACT.md`, `DATA.md`,
   `THIRD_PARTY_DATA.md`, `docs/TABLE_REPRODUCTION_MAP.md`.
 
-## JISA Framing Reminder
+## Evidence Framing Reminder
 
 This is a security deployment and capability-boundary paper, not a generic ML
 classifier paper. The supported deployment endpoint is detection plus
